@@ -1,0 +1,12 @@
+{
+  "name": "ecommerce-front",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular-mocks": "1.3.6",
+    "w20": "^2.0.0",
+    "traverson-angular": "~2.1.3"
+  },
+  "resolutions": {
+    "angular": ">=1.3.0"
+  }
+}

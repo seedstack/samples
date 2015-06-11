@@ -1,0 +1,50 @@
+{
+    "id": "ecommerce",
+    "name": "W20 ecommerce fragment",
+
+    "modules": {
+        "products": {
+            "path": "{ecommerce}/modules/products",
+            "autoload": true
+        },
+        "product": {
+            "path": "{ecommerce}/modules/product",
+            "autoload": true
+        },
+        "backend": {
+            "path": "{ecommerce}/mock/backend",
+            "autoload": true
+        },
+        "style": {
+            "path": "[css]!{ecommerce}/style/style.css",
+            "autoload": true
+        }
+    },
+
+    "i18n": {
+        "en": ["{ecommerce}/i18n/messages-en.json"],
+        "fr": ["{ecommerce}/i18n/messages-fr.json"]
+    },
+
+    "routes": {
+        "/products": {
+            "templateUrl":"{ecommerce}/views/products.html",
+            "controller":"ProductsController"
+        },
+        "/product/:name": {
+            "templateUrl":"{ecommerce}/views/product.html",
+            "controller":"ProductController"
+        }
+    },
+
+    "requireConfig": {
+        "paths": {
+            "{angular-mocks}": "bower_components/angular-mocks",
+            "{traverson-angular}": "bower_components/traverson-angular/browser/dist"
+        },
+        "shim": {
+            "{angular-mocks}/angular-mocks": [ "{angular}/angular" ],
+            "{traverson-angular}/traverson-angular": [ "{angular}/angular" ]
+        }
+    }
+}

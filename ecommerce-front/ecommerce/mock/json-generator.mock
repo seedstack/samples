@@ -1,0 +1,32 @@
+http://www.json-generator.com/
+
+{
+  pages: {
+    current: 0,
+      total: 20
+  },
+    _links: {
+      self: { href: '/rest/products' },
+      next: { href: '/rest/products?page=2' },
+      find: { href: '/rest/products/{name}', templated: true }
+    },
+      _embedded: {
+        products: [
+          '{{repeat(10)}}',
+          {
+             name: '{{company()}}',
+             picture: 'http://placehold.it/700x300',
+             pricing: '{{floating(0, 500, 2)}}',
+             description: '{{lorem(2, "paragraphs")}}',
+             details: [
+             '{{repeat(5)}}',
+             '{{lorem(4, "words")}}'
+             ],
+             tags: [
+               '{{repeat(3)}}',
+               '{{random("tag1", "tag2", "tag3", "tag4", "tag5", "tag6")}}'
+             ]
+          }
+        ]
+      }
+}
