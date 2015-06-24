@@ -3,6 +3,10 @@
     "name": "W20 ecommerce fragment",
 
     "modules": {
+        "hypermedia": {
+            "path": "{ecommerce}/modules/lib/hypermedia",
+            "autoload": true
+        },
         "products": {
             "path": "{ecommerce}/modules/products",
             "autoload": true
@@ -39,12 +43,10 @@
 
     "requireConfig": {
         "paths": {
-            "{angular-mocks}": "bower_components/angular-mocks",
-            "{traverson-angular}": "bower_components/traverson-angular/browser/dist"
+            "{angular-mocks}": "bower_components/angular-mocks"
         },
         "shim": {
-            "{angular-mocks}/angular-mocks": [ "{angular}/angular" ],
-            "{traverson-angular}/traverson-angular": [ "{angular}/angular" ]
+            "{angular-mocks}/angular-mocks": [ "{angular}/angular" ]
         }
     }
 }

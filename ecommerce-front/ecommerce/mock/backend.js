@@ -8,9 +8,29 @@ define([
 
     var module = angular.module('mock-backend', ['ngMockE2E']);
 
-    module.run(['$httpBackend', '$http', function ($httpBackend, $http) {
+    module.run(['$httpBackend', '$http', function ($httpBackend) {
 
-        var products ={
+        var home = {
+            "resources": {
+                "products": {
+                    "href": "/rest/products"
+                },
+                "product": {
+                    "href-template": "/rest/products/{product_name}",
+                    "href-vars": {
+                        "product_name": "/rest/param/product_name"
+                    },
+                    "hints": {
+                        "allow": ["GET", "PUT", "DELETE"],
+                        "formats": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        };
+
+        var products = {
             "pages": {
                 "current": 0,
                 "total": 20
@@ -30,52 +50,136 @@ define([
             "_embedded": {
                 "products": [
                     {
-                        "name": "Pushcart",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/0"
+                            }
+                        },
+                        "name": "Neocent",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 359.77,
-                        "description": "Proident ex reprehenderit eu labore sint officia laborum fugiat ipsum cillum. Culpa consequat occaecat eu aute aliquip nulla ut velit enim deserunt dolor magna velit veniam. Exercitation proident consectetur occaecat nulla fugiat deserunt excepteur quis. Eiusmod occaecat est est nisi ullamco cupidatat labore ut exercitation. Officia dolore exercitation ipsum esse ea id labore dolore tempor cillum laborum. Ad dolor nostrud commodo deserunt. Ad consequat elit excepteur occaecat dolore do nostrud nulla sint magna quis culpa cupidatat minim.\r\nProident anim dolor ea anim nostrud officia esse ex velit in aliquip. Nostrud et minim sint magna adipisicing ea adipisicing magna Lorem consequat aliquip dolor. Eu est dolor excepteur cupidatat. Lorem et aliquip nostrud irure amet ipsum do non exercitation consectetur voluptate laborum aliquip consequat. Consectetur consequat pariatur reprehenderit irure consequat esse mollit tempor do. Ut occaecat cupidatat cillum ipsum et non. Occaecat eu nostrud nulla tempor laboris exercitation consequat ad cupidatat.\r\n",
+                        "pricing": 224.29,
+                        "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
                         "details": [
-                            "commodo cillum culpa cillum",
-                            "ad esse tempor aute",
-                            "nostrud non consequat nulla",
-                            "deserunt culpa deserunt ullamco",
-                            "aute sint deserunt nisi"
+                            "deserunt veniam voluptate voluptate",
+                            "deserunt nulla aliqua aliquip",
+                            "ex ullamco exercitation occaecat",
+                            "nulla do aute laboris",
+                            "ad eu reprehenderit laborum"
                         ],
                         "tags": [
-                            "tag6",
-                            "tag2",
+                            "tag4",
+                            "tag3",
+                            "tag6"
+                        ]
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/1"
+                            }
+                        },
+                        "name": "Quarx",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 297.8,
+                        "description": "Amet dolor consectetur cupidatat est do eiusmod laborum id ea duis in duis incididunt. Voluptate reprehenderit ipsum duis nostrud. Ad officia enim ipsum voluptate incididunt cillum excepteur ad nisi ad aute ipsum. Nostrud id sit proident non Lorem.\r\nVoluptate commodo eu dolor nostrud sint cillum ad aliqua in sunt sunt sint. Dolore labore et consectetur consectetur culpa culpa cupidatat nulla aliqua est cupidatat ex minim et. Aliquip velit occaecat fugiat proident veniam nisi dolor nostrud ad cillum velit velit. Magna incididunt consequat reprehenderit voluptate officia qui duis amet velit ea id minim officia. Laboris elit ipsum fugiat fugiat pariatur labore eu nulla in.\r\n",
+                        "details": [
+                            "excepteur mollit aliqua minim",
+                            "id adipisicing non officia",
+                            "consequat tempor eiusmod ex",
+                            "ut do voluptate eu",
+                            "esse voluptate ad eu"
+                        ],
+                        "tags": [
+                            "tag1",
+                            "tag4",
                             "tag4"
                         ]
                     },
                     {
-                        "name": "Quilch",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/2"
+                            }
+                        },
+                        "name": "Geekwagon",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 486.19,
-                        "description": "Laborum veniam consequat nisi elit magna. Lorem excepteur dolor labore aliquip sint occaecat esse excepteur ad enim in. Mollit qui qui esse sunt elit deserunt laborum sint.\r\nFugiat ut aute magna cillum ullamco id. In commodo ut sint amet consequat laboris ullamco cillum labore est exercitation commodo sint. Velit mollit consectetur consequat adipisicing in velit adipisicing cillum ipsum aliquip do cillum incididunt ullamco. Qui aliquip occaecat esse veniam dolore adipisicing deserunt excepteur commodo proident ullamco reprehenderit do.\r\n",
+                        "pricing": 184.51,
+                        "description": "Ut ea cillum qui aute occaecat fugiat ex mollit laborum velit. Est ad aute in minim tempor sunt amet. Est aute aliqua laboris elit enim sunt magna velit officia cupidatat dolor nostrud. Laboris in laboris culpa laborum eu nisi nulla occaecat irure laboris consectetur in proident excepteur.\r\nDolore proident officia dolore amet non. Et culpa mollit dolore commodo officia laboris dolor dolore veniam. Commodo est id adipisicing eu culpa laboris. Ex tempor esse nostrud nisi tempor esse consequat deserunt et fugiat eu enim.\r\n",
                         "details": [
-                            "tempor deserunt sit est",
-                            "eu enim amet incididunt",
-                            "esse labore ex Lorem",
-                            "exercitation esse laboris fugiat",
-                            "id veniam Lorem ex"
+                            "duis Lorem elit laborum",
+                            "veniam do esse est",
+                            "magna tempor excepteur incididunt",
+                            "duis nulla nulla incididunt",
+                            "ullamco mollit ea nostrud"
+                        ],
+                        "tags": [
+                            "tag3",
+                            "tag4",
+                            "tag4"
+                        ]
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/3"
+                            }
+                        },
+                        "name": "Tsunamia",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 66.4,
+                        "description": "Ipsum amet id quis consectetur nulla et. Sint Lorem cupidatat enim nulla deserunt proident laborum consequat laborum esse. Sunt tempor velit deserunt duis in dolore ut pariatur voluptate et.\r\nDuis eu commodo labore veniam amet nisi aute exercitation proident ut reprehenderit exercitation. Adipisicing laboris aliquip nulla qui culpa consequat officia. Lorem anim sunt fugiat eu irure aliqua laboris esse culpa non duis sit anim. Laborum sint enim qui aliqua ullamco. Minim duis et fugiat consequat incididunt elit cillum consectetur aute sunt ex ex ea.\r\n",
+                        "details": [
+                            "deserunt nostrud dolor minim",
+                            "deserunt exercitation consectetur ipsum",
+                            "consectetur eiusmod magna laboris",
+                            "irure tempor veniam excepteur",
+                            "commodo ut tempor tempor"
                         ],
                         "tags": [
                             "tag5",
-                            "tag1",
+                            "tag2",
                             "tag5"
                         ]
                     },
                     {
-                        "name": "Centice",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/4"
+                            }
+                        },
+                        "name": "Isis",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 383.86,
-                        "description": "Laborum ex sit cillum laborum. Ex ad sunt id dolor excepteur elit nulla amet magna ullamco pariatur sunt occaecat. Ex laboris esse ea ut culpa. Qui magna veniam sunt non labore aliquip aliqua ex.\r\nNisi commodo labore excepteur sint quis tempor labore. Veniam voluptate non exercitation ea. Veniam tempor aliqua commodo ipsum nulla non laborum cillum id aliquip sunt adipisicing. Aliqua tempor eiusmod cillum enim ipsum.\r\n",
+                        "pricing": 161.49,
+                        "description": "Ad in magna incididunt exercitation veniam elit cillum aute ut Lorem voluptate eiusmod. Duis duis anim sunt voluptate deserunt enim nostrud quis nisi nulla id adipisicing. Sunt nisi magna irure duis minim dolor voluptate aute esse cillum.\r\nLaborum veniam ipsum est ex voluptate. Nulla irure mollit pariatur commodo est nulla. Exercitation consequat non enim anim reprehenderit ut sint magna et aliquip qui veniam elit do. Pariatur eu sunt cupidatat anim proident ipsum ad commodo eu in ut est amet. Deserunt amet quis id proident ipsum eiusmod eiusmod aliqua eu. Qui qui in officia dolore ut tempor laboris cupidatat eu. Cillum fugiat in eiusmod laborum mollit adipisicing quis laboris irure enim.\r\n",
                         "details": [
-                            "duis nostrud non nostrud",
-                            "proident non qui consequat",
-                            "quis officia nostrud id",
-                            "eiusmod consequat nisi sint",
-                            "cillum minim labore ullamco"
+                            "aute veniam sit cupidatat",
+                            "commodo ipsum eu qui",
+                            "exercitation nulla labore in",
+                            "cillum deserunt veniam labore",
+                            "non qui laborum eu"
+                        ],
+                        "tags": [
+                            "tag1",
+                            "tag6",
+                            "tag6"
+                        ]
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/5"
+                            }
+                        },
+                        "name": "Vidto",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 248.31,
+                        "description": "Dolor deserunt exercitation duis sint reprehenderit adipisicing eu. Id laborum sit voluptate ex laborum enim nostrud elit incididunt duis eu incididunt cupidatat tempor. Consectetur incididunt aliqua eu fugiat sint aliquip enim consectetur sint consequat incididunt commodo. Exercitation nisi commodo tempor do veniam voluptate reprehenderit officia duis. Enim consectetur ullamco ea aliquip consectetur do sint anim dolor labore minim. Ullamco velit do magna et qui ad velit ullamco deserunt dolor elit mollit. Excepteur dolore labore excepteur ad duis duis ex tempor non incididunt officia aliqua.\r\nConsectetur pariatur id minim duis. Id reprehenderit fugiat mollit non anim proident tempor officia anim laboris veniam. Esse enim culpa culpa aute cupidatat quis.\r\n",
+                        "details": [
+                            "sint in ex est",
+                            "et ullamco irure consectetur",
+                            "magna aute nostrud occaecat",
+                            "velit velit quis duis",
+                            "aliqua sit laboris id"
                         ],
                         "tags": [
                             "tag1",
@@ -84,128 +188,94 @@ define([
                         ]
                     },
                     {
-                        "name": "Animalia",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/6"
+                            }
+                        },
+                        "name": "Chorizon",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 59.07,
-                        "description": "Eu dolor labore voluptate culpa minim. Esse quis ipsum sunt nostrud laborum minim exercitation eiusmod ex esse exercitation veniam. Est magna culpa enim deserunt laborum non enim consequat pariatur aliquip duis in. Nostrud nulla ex eu esse nulla sunt do officia qui eiusmod qui. Sit magna consequat voluptate duis mollit pariatur fugiat. Do eiusmod quis veniam pariatur enim cupidatat cillum non.\r\nCommodo do cupidatat laborum irure aliquip dolor tempor ipsum. Sint irure do est sint velit fugiat pariatur anim laboris voluptate dolore tempor ea. Eu eu sint est non eiusmod irure est enim. Laboris adipisicing exercitation mollit tempor eiusmod exercitation ex Lorem irure incididunt tempor consequat do esse. Tempor dolor consequat enim laboris ea ea voluptate aliqua est ut eu exercitation reprehenderit. Amet ea exercitation mollit quis amet adipisicing.\r\n",
+                        "pricing": 200.54,
+                        "description": "Labore adipisicing aute amet duis laborum cillum occaecat in ex eiusmod exercitation adipisicing elit. Aliquip est incididunt sunt cupidatat eiusmod proident ea amet occaecat consectetur sit ipsum aliqua. Pariatur Lorem veniam id ipsum incididunt sint nulla adipisicing fugiat. Anim do irure aliqua non qui duis fugiat nulla. Do tempor dolor irure ut aliqua irure culpa adipisicing. Occaecat sunt duis officia aliquip anim consequat ipsum dolor sunt duis dolore reprehenderit consectetur.\r\nVeniam non labore ut irure irure magna Lorem. Lorem reprehenderit sint exercitation enim excepteur nulla in do ipsum. Veniam reprehenderit elit velit est. Laboris ut anim amet aliquip tempor quis labore duis consectetur et consequat.\r\n",
                         "details": [
-                            "enim veniam laborum veniam",
-                            "tempor deserunt elit commodo",
-                            "nulla aute consequat adipisicing",
-                            "ea et quis consequat",
-                            "deserunt commodo exercitation veniam"
+                            "ut est adipisicing occaecat",
+                            "eiusmod fugiat laborum esse",
+                            "veniam voluptate exercitation sint",
+                            "excepteur tempor voluptate dolore",
+                            "est ullamco eiusmod voluptate"
                         ],
                         "tags": [
-                            "tag1",
-                            "tag6",
-                            "tag2"
-                        ]
-                    },
-                    {
-                        "name": "Voratak",
-                        "picture": "http://placehold.it/700x300",
-                        "pricing": 88.57,
-                        "description": "Anim ut consequat quis incididunt id ex reprehenderit consequat ut incididunt id. Incididunt labore enim quis irure ea pariatur do consequat veniam quis est Lorem aute. Consectetur cillum pariatur eiusmod do ad nisi minim. Cupidatat cillum elit cupidatat minim. Est Lorem tempor elit dolore est ut adipisicing irure excepteur enim cillum exercitation elit. Culpa ex irure voluptate deserunt pariatur eu ullamco laborum. Reprehenderit reprehenderit anim dolor enim minim enim non aliqua.\r\nAnim reprehenderit incididunt tempor non minim consequat eiusmod laborum dolore proident. Esse deserunt non labore nisi veniam enim. Officia mollit velit proident reprehenderit elit mollit sint voluptate dolore veniam. Aute in reprehenderit cillum laboris. Non tempor minim exercitation ut incididunt et excepteur excepteur adipisicing mollit fugiat Lorem. Officia laborum veniam aliqua sunt velit excepteur.\r\n",
-                        "details": [
-                            "nostrud id enim cupidatat",
-                            "dolor id deserunt non",
-                            "ad anim ea eiusmod",
-                            "amet id ex et",
-                            "excepteur pariatur Lorem tempor"
-                        ],
-                        "tags": [
-                            "tag6",
-                            "tag2",
-                            "tag1"
-                        ]
-                    },
-                    {
-                        "name": "Gallaxia",
-                        "picture": "http://placehold.it/700x300",
-                        "pricing": 491.82,
-                        "description": "Minim laboris incididunt laboris sit nisi occaecat Lorem duis dolor. Eiusmod eu irure incididunt duis voluptate sint duis proident minim nisi consequat aliqua sint ad. Ea dolor aliquip nulla est. Nisi aute nulla in ea qui irure est occaecat nulla. Consequat est adipisicing sit Lorem magna excepteur incididunt id aliquip magna fugiat.\r\nUllamco in Lorem anim do fugiat amet quis cillum amet sit laboris. Proident adipisicing sit eu ullamco dolor in deserunt pariatur veniam aute. Enim ea culpa magna eu laboris in Lorem. Eiusmod exercitation laborum incididunt tempor elit laboris exercitation ut voluptate pariatur do ea in.\r\n",
-                        "details": [
-                            "occaecat minim ea duis",
-                            "dolore et ad et",
-                            "excepteur exercitation proident nostrud",
-                            "in dolor tempor sit",
-                            "eiusmod sit id aliqua"
-                        ],
-                        "tags": [
-                            "tag1",
-                            "tag6",
-                            "tag2"
-                        ]
-                    },
-                    {
-                        "name": "Cuizine",
-                        "picture": "http://placehold.it/700x300",
-                        "pricing": 23.33,
-                        "description": "Do nisi consectetur aliqua ipsum excepteur duis pariatur minim tempor. Nulla cupidatat labore incididunt pariatur fugiat irure minim consequat aliquip ex excepteur laboris cupidatat sint. Ut magna dolore magna id et voluptate aute dolore anim deserunt laborum. Consectetur incididunt aute elit magna amet consequat anim ad officia. Nulla deserunt sunt fugiat proident esse ex. Excepteur ipsum adipisicing culpa officia adipisicing.\r\nAnim occaecat amet irure ex ut. Reprehenderit anim ullamco do ipsum veniam occaecat consectetur nisi voluptate proident anim dolore quis commodo. Labore exercitation Lorem labore labore reprehenderit eiusmod. Elit pariatur pariatur eiusmod commodo ipsum tempor. Ut velit aliqua exercitation aute ut velit cupidatat Lorem aliqua commodo. Quis ullamco labore anim tempor. Exercitation minim eiusmod non cupidatat.\r\n",
-                        "details": [
-                            "excepteur sunt esse consequat",
-                            "do occaecat qui quis",
-                            "quis in velit dolore",
-                            "in ad Lorem aliquip",
-                            "nostrud quis proident voluptate"
-                        ],
-                        "tags": [
-                            "tag6",
                             "tag5",
-                            "tag6"
+                            "tag1",
+                            "tag2"
                         ]
                     },
                     {
-                        "name": "Eweville",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/7"
+                            }
+                        },
+                        "name": "Concility",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 456.93,
-                        "description": "Fugiat deserunt cillum est sunt irure cupidatat. Voluptate dolore ullamco id dolore velit culpa reprehenderit ex ea adipisicing ullamco qui nisi ullamco. Magna aliquip laboris et anim incididunt. Nostrud consectetur sunt fugiat fugiat ipsum. Et nostrud excepteur et dolor velit nisi aliqua eu aliquip tempor esse sunt adipisicing consectetur. Ad anim aliquip sint amet labore cillum ullamco. Laboris aliqua voluptate do excepteur culpa in in qui commodo duis adipisicing in.\r\nAute officia cupidatat fugiat nisi commodo. Irure consequat adipisicing ut ipsum occaecat. Nulla excepteur cillum consequat deserunt velit deserunt ex deserunt. Et mollit pariatur ex veniam sit veniam aliqua pariatur nostrud ex. Occaecat est dolor tempor ipsum duis Lorem elit fugiat ullamco. Deserunt sint id sint sunt culpa excepteur.\r\n",
+                        "pricing": 460.4,
+                        "description": "Consequat laboris et proident aute aliquip est sit ipsum est. Commodo mollit nisi ea magna cupidatat sit dolor ad mollit Lorem ex sint. Amet ullamco dolore sint laboris. Tempor culpa quis magna pariatur fugiat aliqua ullamco do. Lorem occaecat consequat culpa pariatur excepteur mollit non ea voluptate aliqua enim esse laboris culpa. Ex proident et et consequat sunt.\r\nUt dolore velit ea Lorem fugiat ullamco labore voluptate consectetur non sit voluptate ullamco. Exercitation quis cupidatat officia consequat incididunt cillum ex aliqua. Officia enim in ipsum consectetur non anim qui excepteur velit elit. Enim consequat consectetur dolore sit sunt. Esse dolor proident in anim anim non incididunt nisi elit nulla.\r\n",
                         "details": [
-                            "id sint aliqua irure",
-                            "fugiat aliqua amet ut",
-                            "consectetur nostrud minim do",
-                            "ea esse laborum excepteur",
-                            "consequat dolor culpa est"
+                            "ipsum magna veniam ad",
+                            "consequat amet ut duis",
+                            "proident nisi exercitation nisi",
+                            "commodo commodo incididunt velit",
+                            "proident culpa consequat aliquip"
+                        ],
+                        "tags": [
+                            "tag3",
+                            "tag4",
+                            "tag2"
+                        ]
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/8"
+                            }
+                        },
+                        "name": "Avit",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 252.19,
+                        "description": "Et sint magna fugiat ad proident excepteur id exercitation nisi eu. Cillum elit sit eiusmod occaecat id in culpa voluptate duis sunt ut deserunt ipsum. Cillum occaecat in occaecat sint ullamco irure amet ea elit nisi excepteur. Ad veniam duis occaecat qui enim sint amet est. Amet ex tempor labore minim magna magna reprehenderit aliqua.\r\nUllamco sunt ullamco incididunt commodo nisi ad. Adipisicing mollit laboris amet adipisicing nisi. Exercitation deserunt aliqua aliqua pariatur eiusmod consectetur culpa occaecat. Veniam commodo excepteur fugiat Lorem duis mollit quis ullamco veniam velit. Quis exercitation quis mollit magna est. Excepteur in veniam cupidatat commodo officia anim aliqua.\r\n",
+                        "details": [
+                            "quis laboris non fugiat",
+                            "do commodo voluptate enim",
+                            "non fugiat minim nostrud",
+                            "eu exercitation ea velit",
+                            "laboris duis in laborum"
                         ],
                         "tags": [
                             "tag3",
                             "tag6",
-                            "tag5"
+                            "tag2"
                         ]
                     },
                     {
-                        "name": "Qaboos",
+                        "_links": {
+                            "self": {
+                                "href": "/rest/products/9"
+                            }
+                        },
+                        "name": "Plasmox",
                         "picture": "http://placehold.it/700x300",
-                        "pricing": 314.7,
-                        "description": "Incididunt officia quis sit exercitation amet veniam do aliqua do mollit qui eiusmod labore. Eu duis id sint irure consequat dolor sit dolor aute commodo quis in. Commodo Lorem enim velit Lorem mollit ad nulla ut.\r\nPariatur eiusmod et sit nulla Lorem aliquip id aliquip aute anim. Dolor enim dolore commodo duis Lorem quis. Do occaecat ut qui mollit commodo Lorem minim ullamco do ea nulla amet aliquip.\r\n",
+                        "pricing": 77.31,
+                        "description": "Laborum non fugiat nisi anim aute id anim labore ipsum dolor qui proident adipisicing. Elit occaecat nostrud qui culpa et officia mollit. In voluptate laboris Lorem occaecat sit enim ullamco. Veniam irure elit adipisicing id non minim do officia consequat incididunt do magna dolore. Cillum pariatur excepteur do anim aute aliquip incididunt consectetur ipsum qui. Eu Lorem tempor sunt culpa.\r\nAmet occaecat est eiusmod ut ea laboris tempor. Nisi labore occaecat aute non laborum ipsum aliquip eu amet. Quis quis elit Lorem officia sit pariatur in pariatur excepteur irure. Enim labore eiusmod officia minim sit labore et tempor.\r\n",
                         "details": [
-                            "est aliqua ut ipsum",
-                            "eiusmod elit veniam magna",
-                            "dolore enim sunt id",
-                            "adipisicing excepteur exercitation consequat",
-                            "proident eu ex magna"
+                            "aliqua ad id et",
+                            "veniam irure magna enim",
+                            "consequat qui ea adipisicing",
+                            "proident irure est sit",
+                            "consectetur voluptate nulla magna"
                         ],
                         "tags": [
                             "tag3",
-                            "tag2",
-                            "tag6"
-                        ]
-                    },
-                    {
-                        "name": "Comcur",
-                        "picture": "http://placehold.it/700x300",
-                        "pricing": 416.57,
-                        "description": "Do minim occaecat adipisicing quis magna ad sunt id quis velit nulla ea proident ea. Aute Lorem id cupidatat est ex do veniam sit in mollit sit commodo pariatur. Aliqua reprehenderit ea deserunt ullamco non amet.\r\nCommodo cupidatat et nostrud dolor proident culpa amet adipisicing ea. Nostrud ullamco elit ut ipsum adipisicing mollit labore consectetur velit eiusmod. Tempor anim reprehenderit minim irure commodo elit ad nostrud ea pariatur proident quis ad. Incididunt eu in nulla ipsum irure culpa eiusmod mollit reprehenderit adipisicing pariatur. Excepteur veniam nisi qui eiusmod officia qui id ipsum cillum. Quis deserunt aliqua incididunt consequat.\r\n",
-                        "details": [
-                            "esse excepteur laboris enim",
-                            "cillum nisi ut adipisicing",
-                            "cupidatat cillum aliqua id",
-                            "qui adipisicing laboris dolor",
-                            "non nostrud elit ullamco"
-                        ],
-                        "tags": [
-                            "tag6",
-                            "tag2",
+                            "tag1",
                             "tag3"
                         ]
                     }
@@ -232,7 +302,8 @@ define([
             ]
         };
 
-        $httpBackend.whenGET(/\/rest\/products$/).respond(JSON.stringify(products));
+        $httpBackend.whenGET(/\/rest\/hypermedia\/home$/).respond(JSON.stringify(home));
+        $httpBackend.whenGET(/\/rest\/products$/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
         $httpBackend.whenGET(/\/rest\/products\/.*/).respond(product);
 
         $httpBackend.whenGET(/html/).passThrough();

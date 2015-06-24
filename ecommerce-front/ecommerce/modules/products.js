@@ -3,30 +3,32 @@ define([
     'jquery',
     '{angular}/angular',
     '{angular-resource}/angular-resource',
-    '{traverson-angular}/traverson-angular'
+    '{ecommerce}/modules/lib/hypermedia'
 
 ], function (require, $, angular) {
     'use strict';
 
-    var module = angular.module('products', ['ngResource', 'traverson' ]);
+    var module = angular.module('products', ['ngResource', 'w20Hypermedia']);
 
-    module.factory('hapi', ['traverson', function (traverson) {
-      return function(path) {
-          return traverson.from(path).useAngularHttp();
-      };
+    module.config(['HypermediaRestInterceptorProvider', function (HypermediaRestInterceptorProvider) {
+        HypermediaRestInterceptorProvider.apply();
     }]);
 
-    module.controller('ProductsController', [ '$scope', '$resource', 'hapi', '$location',
-        function ($scope, $resource, hapi, $location) {
+    module.controller('ProductsController', [ '$rootScope', '$scope', '$resource', '$location',
+        function ($rootScope, $scope, $resource, $location) {
 
-            hapi('/rest/products').newRequest()
-                .getResource()
-                .result
-                .then(function (data) {
-                    $scope.products = data;
-                }, function (error) {
-                    throw new Error(error);
+            var Products = $resource('/rest/products');
+
+            Products.query(function (products) {
+                $scope.products = products;
+            });
+
+            $scope.view = function (product) {
+                product.$links('self').get(function (product) {
+                    $rootScope.selectedProduct = product;
+                    $location.path('ecommerce/product/' + product.name);
                 });
+            };
 
         }]);
 

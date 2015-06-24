@@ -12,10 +12,10 @@
     <!-- /.row -->
 
     <!-- Product One -->
-    <div data-ng-repeat="product in products._embedded.products">
+    <div data-ng-repeat="product in products">
         <div class="row">
             <div class="col-md-7">
-                <a data-ng-href="#!/ecommerce/product/{{ product.name }}">
+                <a data-ng-click="view(product)">
                     <img class="img-responsive" data-ng-src="{{ product.picture }}" alt="no image">
                 </a>
             </div>
@@ -23,7 +23,7 @@
                 <h3>{{ product.name }}</h3>
                 <h4>Price: {{ product.pricing }}</h4>
                 <p> {{ product.description }}</p>
-                <a class="btn btn-primary" data-ng-click="find(product)" data-ng-href="#!/ecommerce/product/{{ product.name }}">
+                <a class="btn btn-primary" data-ng-click="view(product)">
                     View Product
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>

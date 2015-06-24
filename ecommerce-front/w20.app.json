@@ -24,7 +24,7 @@
                 "home": "/ecommerce/products",
                 "blank": "/blank",
                 "notFound": "/not-found",
-                "redirectAfterRouteError": "/error",
+                "redirectAfterRouteError": "/ecommerce/products",
                 "defaultSandboxPermissions": "",
                 "defaultSandboxId": ""
             },

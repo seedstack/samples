@@ -9,16 +9,11 @@ define([
 
     var module = angular.module('product', ['ngResource', 'ngRoute']);
 
-    module.controller('ProductController', [ '$scope', '$resource', 'hapi', '$routeParams',
-        function ($scope, $resource, hapi, $routeParams) {
+    module.controller('ProductController', [ '$rootScope', '$scope', '$resource', '$routeParams',
+        function ($rootScope, $scope, $resource, $routeParams) {
 
-            hapi()
+            $scope.product = $rootScope.selectedProduct;
 
-            var product = $resource('/rest/products/:name');
-
-            product.get({name: $routeParams.name}, function (product) {
-                $scope.product = product;
-            });
         }]);
 
     return {

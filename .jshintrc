@@ -49,7 +49,6 @@
     "rhino"         : false,
     "wsh"           : false,
 
-    "quotmark"      : "single",
     "nomen"         : false,
     "onevar"        : false,
     "passfail"      : false,

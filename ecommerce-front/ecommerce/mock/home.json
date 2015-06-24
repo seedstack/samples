@@ -1,0 +1,19 @@
+{
+    "resources": {
+        "products": {
+            "href": "/rest/products"
+        },
+        "product": {
+            "href-template": "/rest/products/{product_name}",
+            "href-vars": {
+                "product_name": "/rest/param/product_name"
+            },
+            "hints": {
+                "allow": ["GET", "PUT", "DELETE"],
+                "formats": {
+                    "application/json": {}
+                }
+            }
+        }
+    }
+}
