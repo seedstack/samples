@@ -7,6 +7,10 @@
             "path": "{ecommerce}/modules/lib/hypermedia",
             "autoload": true
         },
+        "services": {
+            "path": "{ecommerce}/modules/services",
+            "autoload": true
+        },
         "products": {
             "path": "{ecommerce}/modules/products",
             "autoload": true

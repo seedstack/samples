@@ -6,31 +6,6 @@ define([
 
     'use strict';
 
-    /*
-     The MIT License (MIT)
-
-     Copyright (c) 2014 - 2015 Guy Brand
-
-     Permission is hereby granted, free of charge, to any person obtaining a copy
-     of this software and associated documentation files (the "Software"), to deal
-     in the Software without restriction, including without limitation the rights
-     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     copies of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
-
-     The above copyright notice and this permission notice shall be included in
-     all copies or substantial portions of the Software.
-
-     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     THE SOFTWARE.
-
-     */
-
     /**
      * @module w20Hypermedia
      *
@@ -49,11 +24,11 @@ define([
         'embeddedNewKey': '$embedded',
         'embeddedNamedResources': false,
         'resourcesKey': '$links',
+        'metadata': '$metadata',
         'resourcesFunction': undefined,
         'fetchFunction': undefined,
         'fetchAllKey': '_allLinks'
     };
-
 
     /**
      * @module w20Hypermedia
@@ -61,7 +36,6 @@ define([
      * Provider for the HypermediaRestAdapter which is the core of this module.
      */
     module.provider("HypermediaRestAdapter", function () {
-
 
         return {
 
@@ -416,44 +390,15 @@ define([
 
                                 return HypermediaRestAdapter.process(response.data).then(function (processedResponse) {
 
-                                    // if the response contains embedded resources
-                                    if (angular.isArray(processedResponse.$embedded)) {
-
-                                        // set those embedded resources as the response instead of the original object.
-                                        // This will allow to use the default 'query' method of $resource which expect an array of resources.
-                                        response.data = processedResponse.$embedded;
-
-                                        // if the response contains references to other resources
-                                        if (processedResponse.$links) {
-                                            // add those resources links as a property on the response data array
-                                            response.data.$links = processedResponse.$links;
-                                            // remove the original links (named _links in hal) property from the processed response
-                                            delete processedResponse[config.linksKey];
-                                        }
-
-                                        // add the additional metadata as properties of the array of embedded resources
-                                        response.data.$metadata = {};
-                                        angular.forEach(processedResponse, function (value, key) {
-                                            if (key !== config.resourcesKey && key !== config.embeddedNewKey) {
-                                                if (!response.data.$metadata[key]) {
-                                                    response.data.$metadata[key] = value;
-                                                } else {
-                                                    throw new Error('Metadata already defined');
-                                                }
-                                            }
-                                        });
-
-                                        // if the response does not contain embedded resource it is most likely a single result and
-                                        // can be returned untransformed
-                                    } else {
-                                        response.data = processedResponse;
-                                    }
+                                    // adapt the response data depending on the presence of embedded resources
+                                    // if embedded resources are present return an array, else return an object
+                                    response.data = payloadAdapter(processedResponse);
 
                                     return response || $q.when(response);
                                 });
 
                             } else {
-                                return response || $q.when(response);
+                                return response;
                             }
                         }
                     };
@@ -507,6 +452,50 @@ define([
     }]);
 
     /* Utility functions */
+
+    /**
+     * Adapt a processed response depending on the presence of an embedded payload.
+     * If embedded data are present it returns the embedded resources of the processed response decorated
+     * with resources links and possible metadata as the actual response data.
+     * Otherwise it simply returns the processedResponse.
+     * This will allow to use the default 'query' method of $resource which expect an array of resources.
+     *
+     * @param processedResponse the response processed by the global http interceptor
+     */
+    function payloadAdapter (processedResponse) {
+
+        // if the response contains embedded resources
+        if (angular.isArray(processedResponse[config.embeddedNewKey])) {
+
+            // if the response contains references to other resources (links)
+            if (processedResponse[config.resourcesKey]) {
+                // add those resources links as a property on the response data array
+                processedResponse[config.embeddedNewKey][config.resourcesKey] = processedResponse[config.resourcesKey];
+                // remove the original links (named _links in hal) property from the processed response
+                delete processedResponse[config.linksKey];
+            }
+
+            // add the additional metadata as properties of the array of embedded resources
+            processedResponse[config.embeddedNewKey][config.metadata] = {};
+            angular.forEach(processedResponse, function (value, key) {
+                if (key !== config.resourcesKey && key !== config.embeddedNewKey) {
+                    if (!processedResponse[config.embeddedNewKey][config.metadata][key]) {
+                        processedResponse[config.embeddedNewKey][config.metadata][key] = value;
+                    } else {
+                        throw new Error('Metadata already defined');
+                    }
+                }
+            });
+
+            // return an Array with metadata attributes an resources links
+            return processedResponse[config.embeddedNewKey];
+
+            // if the response does not contain embedded resource it is most likely a single result and
+            // is returned untransformed
+        } else {
+            return processedResponse;
+        }
+    }
 
     /**
      * Makes a deep extend of the given destination object and the source objects.

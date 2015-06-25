@@ -15,7 +15,7 @@
     <div data-ng-repeat="product in products">
         <div class="row">
             <div class="col-md-7">
-                <a data-ng-click="view(product)">
+                <a data-ng-click="select(product)">
                     <img class="img-responsive" data-ng-src="{{ product.picture }}" alt="no image">
                 </a>
             </div>
@@ -23,7 +23,7 @@
                 <h3>{{ product.name }}</h3>
                 <h4>Price: {{ product.pricing }}</h4>
                 <p> {{ product.description }}</p>
-                <a class="btn btn-primary" data-ng-click="view(product)">
+                <a class="btn btn-primary" data-ng-click="select(product)">
                     View Product
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
