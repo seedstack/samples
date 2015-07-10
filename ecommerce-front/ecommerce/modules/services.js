@@ -11,11 +11,11 @@ define([
 
     var module = angular.module('services', ['ngResource']);
 
-    module.factory('Products', ['HomeService', '$location', '$routeParams', function (HomeService, $location, $routeParams) {
+    module.factory('Products', ['HomeService', '$location', '$routeParams', function (homeService, $location, $routeParams) {
 
         var Products = {
-            all: function () { return HomeService.resource('products'); },
-            one: function (name) { return HomeService.resource('product', { name: name }); }
+            all: function () { return homeService('ecommerce').resource('products'); },
+            one: function (name) { return homeService('ecommerce').resource('product', { name: name }); }
         };
 
         var selectedProduct;

@@ -46,7 +46,9 @@
             },
             "utils": {},
             "hypermedia": {
-                "homeResources": "/rest/hypermedia/home"
+                "homeResources": {
+                    "ecommerce": "/rest/hypermedia/home"
+                }
             }
         }
     }
