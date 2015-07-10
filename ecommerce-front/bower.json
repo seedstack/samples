@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "dependencies": {
     "angular-mocks": "1.3.6",
-    "w20": "^2.0.0",
-    "traverson-angular": "~2.1.3"
+    "w20": "https://github.com/kavi87/w20.git#412e6eb3141684d221583f015cd046a56f47753b"
   },
   "resolutions": {
     "angular": ">=1.3.0"

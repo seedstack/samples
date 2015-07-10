@@ -44,7 +44,10 @@
                 "redirectAfterLogin": "/",
                 "persistentRestrictions": false
             },
-            "utils": {}
+            "utils": {},
+            "hypermedia": {
+                "homeResources": "/rest/hypermedia/home"
+            }
         }
     }
 }

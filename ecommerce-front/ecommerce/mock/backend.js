@@ -16,9 +16,9 @@ define([
                     "href": "/rest/products"
                 },
                 "product": {
-                    "href-template": "/rest/products/{product_name}",
+                    "href-template": "/rest/product/{name}",
                     "href-vars": {
-                        "product_name": "/rest/param/product_name"
+                        "name": "/rest/param/name"
                     },
                     "hints": {
                         "allow": ["GET", "PUT", "DELETE"],
@@ -43,7 +43,7 @@ define([
                     "href": "/rest/products?page=2"
                 },
                 "find": {
-                    "href": "/rest/products/{name}",
+                    "href": "/rest/products/{?q}",
                     "templated": true
                 }
             },
@@ -52,7 +52,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/0"
+                                "href": "/rest/product/0"
                             }
                         },
                         "name": "Neocent",
@@ -75,7 +75,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/1"
+                                "href": "/rest/product/1"
                             }
                         },
                         "name": "Quarx",
@@ -98,7 +98,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/2"
+                                "href": "/rest/product/2"
                             }
                         },
                         "name": "Geekwagon",
@@ -121,7 +121,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/3"
+                                "href": "/rest/product/3"
                             }
                         },
                         "name": "Tsunamia",
@@ -144,7 +144,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/4"
+                                "href": "/rest/product/4"
                             }
                         },
                         "name": "Isis",
@@ -167,7 +167,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/5"
+                                "href": "/rest/product/5"
                             }
                         },
                         "name": "Vidto",
@@ -190,7 +190,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/6"
+                                "href": "/rest/product/6"
                             }
                         },
                         "name": "Chorizon",
@@ -213,7 +213,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/7"
+                                "href": "/rest/product/7"
                             }
                         },
                         "name": "Concility",
@@ -236,7 +236,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/8"
+                                "href": "/rest/product/8"
                             }
                         },
                         "name": "Avit",
@@ -259,7 +259,7 @@ define([
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/products/9"
+                                "href": "/rest/product/9"
                             }
                         },
                         "name": "Plasmox",
@@ -277,6 +277,75 @@ define([
                             "tag3",
                             "tag1",
                             "tag3"
+                        ]
+                    }
+                ]
+            }
+        };
+
+        var productsSearched =  {
+            "pages": {
+                "current": 0,
+                "total": 20
+            },
+            "_links": {
+                "self": {
+                    "href": "/rest/products"
+                },
+                "next": {
+                    "href": "/rest/products?page=2"
+                },
+                "find": {
+                    "href": "/rest/products/{?q}",
+                    "templated": true
+                }
+            },
+            "_embedded": {
+                "products": [
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/0"
+                            }
+                        },
+                        "name": "Neocent",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 224.29,
+                        "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
+                        "details": [
+                            "deserunt veniam voluptate voluptate",
+                            "deserunt nulla aliqua aliquip",
+                            "ex ullamco exercitation occaecat",
+                            "nulla do aute laboris",
+                            "ad eu reprehenderit laborum"
+                        ],
+                        "tags": [
+                            "tag4",
+                            "tag3",
+                            "tag6"
+                        ]
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/1"
+                            }
+                        },
+                        "name": "Quarx",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 297.8,
+                        "description": "Amet dolor consectetur cupidatat est do eiusmod laborum id ea duis in duis incididunt. Voluptate reprehenderit ipsum duis nostrud. Ad officia enim ipsum voluptate incididunt cillum excepteur ad nisi ad aute ipsum. Nostrud id sit proident non Lorem.\r\nVoluptate commodo eu dolor nostrud sint cillum ad aliqua in sunt sunt sint. Dolore labore et consectetur consectetur culpa culpa cupidatat nulla aliqua est cupidatat ex minim et. Aliquip velit occaecat fugiat proident veniam nisi dolor nostrud ad cillum velit velit. Magna incididunt consequat reprehenderit voluptate officia qui duis amet velit ea id minim officia. Laboris elit ipsum fugiat fugiat pariatur labore eu nulla in.\r\n",
+                        "details": [
+                            "excepteur mollit aliqua minim",
+                            "id adipisicing non officia",
+                            "consequat tempor eiusmod ex",
+                            "ut do voluptate eu",
+                            "esse voluptate ad eu"
+                        ],
+                        "tags": [
+                            "tag1",
+                            "tag4",
+                            "tag4"
                         ]
                     }
                 ]
@@ -304,7 +373,8 @@ define([
 
         $httpBackend.whenGET(/\/rest\/hypermedia\/home$/).respond(JSON.stringify(home));
         $httpBackend.whenGET(/\/rest\/products$/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
-        $httpBackend.whenGET(/\/rest\/products\/.*/).respond(product);
+        $httpBackend.whenGET(/\/rest\/products\/\?q\=/).respond(JSON.stringify(productsSearched), { 'content-type': 'application/hal+json' });
+        $httpBackend.whenGET(/\/rest\/product\/.*/).respond(product);
 
         $httpBackend.whenGET(/html/).passThrough();
         $httpBackend.whenGET(/\.json/).passThrough();

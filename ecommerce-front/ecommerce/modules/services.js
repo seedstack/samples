@@ -2,39 +2,52 @@ define([
     'require',
     'jquery',
     '{angular}/angular',
-    '{angular-resource}/angular-resource',
-    '{ecommerce}/modules/lib/hypermedia'
+
+    '{w20-core}/modules/hypermedia',
+    '{angular-resource}/angular-resource'
 
 ], function (require, $, angular) {
     'use strict';
 
-    var module = angular.module('services', ['ngResource', 'w20Hypermedia']);
+    var module = angular.module('services', ['ngResource']);
 
-    module.config(['HypermediaRestInterceptorProvider', function (HypermediaRestInterceptorProvider) {
-        HypermediaRestInterceptorProvider.apply();
-    }]);
+    module.factory('Products', ['HomeService', '$location', '$routeParams', function (HomeService, $location, $routeParams) {
 
-    module.factory('Products', ['$resource', '$location', '$routeParams', function ($resource, $location, $routeParams) {
-        var Products = $resource('/rest/products/:name'),
-            selectedProduct;
+        var Products = {
+            all: function () { return HomeService.resource('products'); },
+            one: function (name) { return HomeService.resource('product', { name: name }); }
+        };
+
+        var selectedProduct;
 
         return {
-            query: function (callback) {
-                return Products.query(function (products) {
-                    if (callback) { callback(products); }
+            query: function (c) {
+                return Products.all().query(function (products) {
+                    if (c) {
+                        c(products);
+                    }
                 });
             },
-            select: function (product) {
-                product.$links('self').get(function (product) { selectedProduct = product; });
-                $location.path('ecommerce/product/' + product.name);
+            get: function (name, c) {
+                return Products.one(name).get(function (product) {
+                    if (c) {
+                        c(product);
+                    }
+                });
             },
-            selected: function (callback) {
+            select: function (product, c) {
+                product.$links('self').get(function (product) {
+                    selectedProduct = product;
+                    if (c) {
+                        c(selectedProduct);
+                    }
+                });
+            },
+            selected: function (c) {
                 if (selectedProduct) {
-                    return selectedProduct;
+                    return c ? c(selectedProduct) : selectedProduct;
                 } else {
-                    return Products.get({ name: $routeParams.name }, function (product) {
-                        if (callback) { callback(product); }
-                    });
+                    this.get($routeParams.name, c);
                 }
             }
         };

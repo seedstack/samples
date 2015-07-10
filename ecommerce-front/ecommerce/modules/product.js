@@ -2,18 +2,18 @@ define([
     'require',
     'jquery',
     '{angular}/angular',
+
     '{angular-resource}/angular-resource',
     '{ecommerce}/modules/services'
 
 ], function (require, $, angular) {
     'use strict';
 
-    var module = angular.module('product', ['ngResource', 'ngRoute']);
+    var module = angular.module('product', []);
 
-    module.controller('ProductController', [ '$rootScope', '$scope', '$resource', '$routeParams', 'Products',
-        function ($rootScope, $scope, $resource, $routeParams, Products) {
+    module.controller('ProductController', ['Products', function (Products) {
 
-            $scope.product = Products.selected();
+            this.product = Products.selected();
 
         }]);
 
