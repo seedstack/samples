@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration>
+    <include resource="org/seedstack/seed/core/logging/logback-defaults.xml"/>
+
+    <root level="INFO">
+        <!-- Switch to STDOUT if color output is not supported -->
+        <appender-ref ref="STDOUT-COLOR" />
+    </root>
+</configuration>

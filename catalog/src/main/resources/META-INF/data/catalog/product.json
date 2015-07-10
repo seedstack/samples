@@ -1,0 +1,41 @@
+[
+  {
+    "group": "catalog",
+    "name": "product",
+    "items": [
+      {
+        "picture": "http://placehold.it/700x300",
+        "name": "Digiprint",
+        "pricing": {"amount": 475.97, "currency": "USD"},
+        "description": "Reprehenderit irure quis dolor ex et ipsum culpa et consequat. Aliquip ipsum excepteur enim ipsum cillum dolore occaecat eiusmod mollit pariatur et esse mollit officia. Culpa ullamco minim id dolor id officia dolore enim enim elit. .\r\n",
+        "tags": [
+          "tag6",
+          "tag2",
+          "tag5"
+        ]
+      },
+      {
+        "picture": "http://placehold.it/700x300",
+        "name": "Biflex",
+        "pricing": {"amount": 327.28, "currency": "USD"},
+        "description": "In sunt officia reprehenderit culpa cupidatat pariatur reprehenderit officia. Fugiat voluptate et eu et culpa. Et eiusmod aute eu in ea ut quis Lorem amet officia. Exercitation officia incididunt eu irure.\r\n",
+        "tags": [
+          "tag6",
+          "tag3",
+          "tag4"
+        ]
+      },
+      {
+        "picture": "http://placehold.it/700x300",
+        "name": "Comvey",
+        "pricing": {"amount": 19.26, "currency": "USD"},
+        "description": "Et ullamco est incididunt aliqua reprehenderit id reprehenderit cupidatat do fugiat laborum dolor proident. Qui elit ex incididunt ut tempor nisi labore mollit quis Lorem minim occaecat fugiat.\r\n",
+        "tags": [
+          "tag2",
+          "tag2",
+          "tag6"
+        ]
+      }
+    ]
+  }
+]
