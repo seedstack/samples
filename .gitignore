@@ -23,3 +23,6 @@ bower_components/
 
 #Vim
 *~
+
+target/
+lib/
