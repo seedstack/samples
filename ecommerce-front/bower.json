@@ -1,0 +1,11 @@
+{
+  "name": "ecommerce-front",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular-mocks": "1.3.6",
+    "w20": "https://github.com/kavi87/w20.git#82eef5862bc6acbf070bc11d9e8919f06ce517bf"
+  },
+  "resolutions": {
+    "angular": ">=1.3.0"
+  }
+}
