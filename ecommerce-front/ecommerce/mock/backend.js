@@ -13,7 +13,10 @@ define([
         var home = {
             "resources": {
                 "products": {
-                    "href": "/rest/products"
+                    "href-template": "/rest/products{?page}",
+                    "href-vars": {
+                        "page": "/rest/param/page"
+                    }
                 },
                 "product": {
                     "href-template": "/rest/product/{name}",
@@ -31,30 +34,23 @@ define([
         };
 
         var products = {
-            "pages": {
-                "current": 0,
-                "total": 20
-            },
+            "currentPage": 1,
+            "totalProduct": 20,
             "_links": {
                 "self": {
-                    "href": "/rest/products"
+                    "href": "/rest/products?page=1"
                 },
                 "next": {
                     "href": "/rest/products?page=2"
                 },
                 "find": {
-                    "href": "/rest/products/{?q}",
+                    "href": "/rest/products{?q}",
                     "templated": true
                 }
             },
             "_embedded": {
                 "products": [
                     {
-                        "_links": {
-                            "self": {
-                                "href": "/rest/product/0"
-                            }
-                        },
                         "name": "Neocent",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 224.29,
@@ -66,18 +62,16 @@ define([
                             "nulla do aute laboris",
                             "ad eu reprehenderit laborum"
                         ],
-                        "tags": [
-                            "tag4",
-                            "tag3",
-                            "tag6"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/1"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Quarx",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 297.8,
@@ -89,18 +83,17 @@ define([
                             "ut do voluptate eu",
                             "esse voluptate ad eu"
                         ],
-                        "tags": [
-                            "tag1",
-                            "tag4",
-                            "tag4"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/2"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
+
                         "name": "Geekwagon",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 184.51,
@@ -112,18 +105,16 @@ define([
                             "duis nulla nulla incididunt",
                             "ullamco mollit ea nostrud"
                         ],
-                        "tags": [
-                            "tag3",
-                            "tag4",
-                            "tag4"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/3"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Tsunamia",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 66.4,
@@ -135,18 +126,16 @@ define([
                             "irure tempor veniam excepteur",
                             "commodo ut tempor tempor"
                         ],
-                        "tags": [
-                            "tag5",
-                            "tag2",
-                            "tag5"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/4"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Isis",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 161.49,
@@ -158,18 +147,16 @@ define([
                             "cillum deserunt veniam labore",
                             "non qui laborum eu"
                         ],
-                        "tags": [
-                            "tag1",
-                            "tag6",
-                            "tag6"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/5"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Vidto",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 248.31,
@@ -181,18 +168,16 @@ define([
                             "velit velit quis duis",
                             "aliqua sit laboris id"
                         ],
-                        "tags": [
-                            "tag1",
-                            "tag5",
-                            "tag3"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/6"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Chorizon",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 200.54,
@@ -204,18 +189,16 @@ define([
                             "excepteur tempor voluptate dolore",
                             "est ullamco eiusmod voluptate"
                         ],
-                        "tags": [
-                            "tag5",
-                            "tag1",
-                            "tag2"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/7"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Concility",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 460.4,
@@ -227,18 +210,16 @@ define([
                             "commodo commodo incididunt velit",
                             "proident culpa consequat aliquip"
                         ],
-                        "tags": [
-                            "tag3",
-                            "tag4",
-                            "tag2"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/8"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Avit",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 252.19,
@@ -250,18 +231,16 @@ define([
                             "eu exercitation ea velit",
                             "laboris duis in laborum"
                         ],
-                        "tags": [
-                            "tag3",
-                            "tag6",
-                            "tag2"
-                        ]
-                    },
-                    {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/9"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
-                        },
+                        }
+                    },
+                    {
                         "name": "Plasmox",
                         "picture": "http://placehold.it/700x300",
                         "pricing": 77.31,
@@ -273,30 +252,33 @@ define([
                             "proident irure est sit",
                             "consectetur voluptate nulla magna"
                         ],
-                        "tags": [
-                            "tag3",
-                            "tag1",
-                            "tag3"
-                        ]
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
+                            }
+                        }
                     }
                 ]
             }
         };
 
         var productsSearched =  {
-            "pages": {
+
                 "current": 0,
-                "total": 20
-            },
+                "total": 20,
+
             "_links": {
                 "self": {
-                    "href": "/rest/products"
+                    "href": "/rest/products?page=1"
                 },
                 "next": {
                     "href": "/rest/products?page=2"
                 },
                 "find": {
-                    "href": "/rest/products/{?q}",
+                    "href": "/rest/products{?q}",
                     "templated": true
                 }
             },
@@ -306,6 +288,9 @@ define([
                         "_links": {
                             "self": {
                                 "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
                         },
                         "name": "Neocent",
@@ -318,17 +303,16 @@ define([
                             "ex ullamco exercitation occaecat",
                             "nulla do aute laboris",
                             "ad eu reprehenderit laborum"
-                        ],
-                        "tags": [
-                            "tag4",
-                            "tag3",
-                            "tag6"
                         ]
+
                     },
                     {
                         "_links": {
                             "self": {
-                                "href": "/rest/product/1"
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
                             }
                         },
                         "name": "Quarx",
@@ -341,11 +325,6 @@ define([
                             "consequat tempor eiusmod ex",
                             "ut do voluptate eu",
                             "esse voluptate ad eu"
-                        ],
-                        "tags": [
-                            "tag1",
-                            "tag4",
-                            "tag4"
                         ]
                     }
                 ]
@@ -353,8 +332,8 @@ define([
         };
 
         var product = {
-            "picture": "http://placehold.it/700x300",
             "name": "Soprano",
+            "picture": "http://placehold.it/700x300",
             "pricing": 293.66,
             "description": "Reprehenderit irure quis dolor ex et ipsum culpa et consequat. Aliquip ipsum excepteur enim ipsum cillum dolore occaecat eiusmod mollit pariatur et esse mollit officia. Culpa ullamco minim id dolor id officia dolore enim enim elit. Sunt est ea ullamco laboris amet exercitation commodo irure occaecat nisi veniam adipisicing. Magna cupidatat aliqua et magna sunt veniam et excepteur aute eiusmod deserunt nisi velit",
             "details": [
@@ -364,17 +343,119 @@ define([
                 "nisi tempor aute elit",
                 "incididunt nulla commodo dolore"
             ],
-            "tags": [
-                "tag3",
-                "tag5",
-                "tag3"
-            ]
+            "_links": {
+                "self": {
+                    "href": "/rest/products/3"
+                },
+                "tags": {
+                    "href": "/rest/products/3/tags"
+                },
+                "related": {
+                    "href": "/rest/products/3/related"
+                }
+            },
+            "_embedded": {
+                "related": [{
+                    "_links": {
+                        "self": {
+                            "href": "/rest/product/0"
+                        },
+                        "tags": {
+                            "href": "/rest/product/0/tags"
+                        }
+                    },
+                    "name": "Neocent",
+                    "picture": "http://placehold.it/700x300",
+                    "pricing": 224.29,
+                    "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
+                    "details": [
+                        "deserunt veniam voluptate voluptate",
+                        "deserunt nulla aliqua aliquip",
+                        "ex ullamco exercitation occaecat",
+                        "nulla do aute laboris",
+                        "ad eu reprehenderit laborum"
+                    ]
+
+                },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
+                            }
+                        },
+                        "name": "Neocent",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 224.29,
+                        "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
+                        "details": [
+                            "deserunt veniam voluptate voluptate",
+                            "deserunt nulla aliqua aliquip",
+                            "ex ullamco exercitation occaecat",
+                            "nulla do aute laboris",
+                            "ad eu reprehenderit laborum"
+                        ]
+
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
+                            }
+                        },
+                        "name": "Neocent",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 224.29,
+                        "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
+                        "details": [
+                            "deserunt veniam voluptate voluptate",
+                            "deserunt nulla aliqua aliquip",
+                            "ex ullamco exercitation occaecat",
+                            "nulla do aute laboris",
+                            "ad eu reprehenderit laborum"
+                        ]
+
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "/rest/product/0"
+                            },
+                            "tags": {
+                                "href": "/rest/product/0/tags"
+                            }
+                        },
+                        "name": "Neocent",
+                        "picture": "http://placehold.it/700x300",
+                        "pricing": 224.29,
+                        "description": "Sint magna eiusmod adipisicing amet enim culpa eu aliqua labore. Mollit magna laborum magna quis aute ullamco. Lorem ex excepteur esse elit.\r\nDeserunt sint laborum ullamco tempor laboris cupidatat. Sint sunt cupidatat consequat cupidatat deserunt amet incididunt. Ea exercitation labore officia mollit enim tempor excepteur cillum esse.\r\n",
+                        "details": [
+                            "deserunt veniam voluptate voluptate",
+                            "deserunt nulla aliqua aliquip",
+                            "ex ullamco exercitation occaecat",
+                            "nulla do aute laboris",
+                            "ad eu reprehenderit laborum"
+                        ]
+
+                    }]
+            }
         };
 
+        var tags = ['tag1', 'tag2', 'tag3'];
+
+        var related = {};
+
         $httpBackend.whenGET(/\/rest\/hypermedia\/home$/).respond(JSON.stringify(home));
-        $httpBackend.whenGET(/\/rest\/products$/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
-        $httpBackend.whenGET(/\/rest\/products\/\?q\=/).respond(JSON.stringify(productsSearched), { 'content-type': 'application/hal+json' });
-        $httpBackend.whenGET(/\/rest\/product\/.*/).respond(product);
+        $httpBackend.whenGET(/\/rest\/products\?page/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
+        $httpBackend.whenGET(/\/rest\/products\?q\=/).respond(JSON.stringify(productsSearched), { 'content-type': 'application/hal+json' });
+        $httpBackend.whenGET(/\/rest\/product\/0\/tags/).respond(JSON.stringify(tags));
+        $httpBackend.whenGET(/\/rest\/product\/.*$/).respond(JSON.stringify(product), { 'content-type': 'application/hal+json' });
+        $httpBackend.whenGET(/\/rest\/product\/0\/related/).respond(JSON.stringify(related), { 'content-type': 'application/hal+json' });
 
         $httpBackend.whenGET(/html/).passThrough();
         $httpBackend.whenGET(/\.json/).passThrough();

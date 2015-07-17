@@ -17,7 +17,7 @@
                 <label for="search"> Search products
                     <input id="search" type="text" class="form-control" data-ng-model="query"/>
                 </label>
-                <button type="submit" class="btn btn-default"> Search </button>
+                <button type="submit" class="btn btn-default"> Search</button>
             </form>
         </div>
         <div class="col-lg-12">
@@ -26,10 +26,26 @@
     </div>
     <!-- /.row -->
 
+
+
+    <!-- Pager -->
+    <div class="row">
+        <button data-ng-click="pdts.previousPage()"
+                data-ng-show="pdts.previous"
+                class="btn btn-default pull-left">
+            <i class="fa fa-arrow-left"></i> Previous
+        </button>
+        <button data-ng-click="pdts.nextPage()"
+                data-ng-show="pdts.next"
+                class="btn btn-default pull-right">
+            Next <i class="fa fa-arrow-right"></i>
+        </button>
+    </div>
+    <!-- /.row -->
     <hr/>
 
     <!-- Products list -->
-    <div data-ng-repeat="product in pdts.products">
+    <div class="row" data-ng-repeat="product in pdts.products">
         <div class="row">
             <div class="col-md-7">
                 <a data-ng-click="pdts.select(product)">
@@ -39,10 +55,18 @@
             <div class="col-md-5">
                 <h3>{{ product.name }}</h3>
                 <h4>Price: {{ product.pricing }}</h4>
+                <ul class="list-inline">
+                    <li data-ng-repeat="tag in product.tags track by $index">
+                        <span class="label label-default tags"> {{ tag }} </span>
+                    </li>
+                </ul>
                 <p> {{ product.description }}</p>
                 <a class="btn btn-primary" data-ng-click="pdts.select(product)">
                     View Product
                     <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                <a class="btn btn-default" data-ng-hide="product.tags" data-ng-click="pdts.tags(product)">
+                    Find tags
                 </a>
             </div>
         </div>

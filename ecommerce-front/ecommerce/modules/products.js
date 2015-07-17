@@ -10,18 +10,29 @@ define([
 
     var module = angular.module('products', []);
 
-    module.controller('ProductsController', ['Products', '$location', function (Products, $location) {
+    module.controller('ProductsController', ['$scope', 'Products', '$location', function ($scope, Products, $location) {
         var self = this;
 
-        function set (embedded) {
-            self.products = embedded;
+        function set(resource) {
+            self.resource = resource;
+            self.products = self.resource.$embedded('products');
+            self.next = self.resource.$links('next');
+            self.previous = self.resource.$links('previous');
         }
+
+        self.nextPage = function () {
+            self.next.get(set);
+        };
+
+        self.previousPage = function () {
+            self.previous.get(set);
+        };
 
         self.search = function (query) {
             if (query) {
-                self.products.$links('find', { q: query }).query(set);
+                self.resource.$links('find', { q: query }).get(set);
             } else {
-                Products.query(set);
+                Products.list(1, set);
             }
         };
 
@@ -31,7 +42,11 @@ define([
             });
         };
 
-        Products.query(set);
+        self.tags = function (product) {
+            product.tags = product.$links('tags').query();
+        };
+
+        Products.list(1, set);
 
     }]);
 

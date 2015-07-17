@@ -14,15 +14,19 @@ define([
     module.factory('Products', ['HomeService', '$location', '$routeParams', function (homeService, $location, $routeParams) {
 
         var Products = {
-            all: function () { return homeService('ecommerce').resource('products'); },
-            one: function (name) { return homeService('ecommerce').resource('product', { name: name }); }
+            all: function (page) {
+                return homeService('ecommerce').resource('products', { page: page });
+            },
+            one: function (name) {
+                return homeService('ecommerce').resource('product', { name: name });
+            }
         };
 
         var selectedProduct;
 
         return {
-            query: function (c) {
-                return Products.all().query(function (products) {
+            list: function (page, c) {
+                return Products.all(page).get(function (products) {
                     if (c) {
                         c(products);
                     }

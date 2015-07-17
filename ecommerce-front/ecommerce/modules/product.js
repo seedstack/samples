@@ -11,11 +11,23 @@ define([
 
     var module = angular.module('product', []);
 
-    module.controller('ProductController', ['Products', function (Products) {
+    module.controller('ProductController', ['Products', '$location', function (Products, $location) {
+        var self = this;
 
-            this.product = Products.selected();
+        function set(selected) {
+            self.product = selected;
+            self.relatedProducts = self.product.$embedded('related');
+        }
 
-        }]);
+        self.select = function (product) {
+            Products.select(product, function(selectedProduct) {
+                $location.path('/ecommerce/product/' + selectedProduct.name);
+            });
+        };
+
+        Products.selected(set);
+
+    }]);
 
     return {
         angularModules: [ 'product' ]

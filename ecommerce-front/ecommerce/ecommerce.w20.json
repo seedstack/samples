@@ -25,6 +25,10 @@
         }
     },
 
+    "api": {
+        "ecommerce": "/rest/hypermedia/home"
+    },
+
     "i18n": {
         "en": ["{ecommerce}/i18n/messages-en.json"],
         "fr": ["{ecommerce}/i18n/messages-fr.json"]
