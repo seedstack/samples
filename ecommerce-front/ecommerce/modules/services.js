@@ -15,7 +15,7 @@ define([
 
         var Products = {
             all: function (page) {
-                return homeService('ecommerce').resource('products', { page: page });
+                return homeService('ecommerce').resource('catalog', { page: page });
             },
             one: function (name) {
                 return homeService('ecommerce').resource('product', { name: name });

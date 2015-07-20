@@ -26,7 +26,7 @@
     },
 
     "api": {
-        "ecommerce": "/rest/hypermedia/home"
+        "ecommerce": "http://b932250.inetpsa.com:8080/rest/"
     },
 
     "i18n": {

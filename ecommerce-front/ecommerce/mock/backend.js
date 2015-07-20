@@ -451,7 +451,7 @@ define([
         var related = {};
 
         $httpBackend.whenGET(/\/rest\/hypermedia\/home$/).respond(JSON.stringify(home));
-        $httpBackend.whenGET(/\/rest\/products\?page/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
+        $httpBackend.whenGET(/\/products\?page/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
         $httpBackend.whenGET(/\/rest\/products\?q\=/).respond(JSON.stringify(productsSearched), { 'content-type': 'application/hal+json' });
         $httpBackend.whenGET(/\/rest\/product\/0\/tags/).respond(JSON.stringify(tags));
         $httpBackend.whenGET(/\/rest\/product\/.*$/).respond(JSON.stringify(product), { 'content-type': 'application/hal+json' });
@@ -459,6 +459,7 @@ define([
 
         $httpBackend.whenGET(/html/).passThrough();
         $httpBackend.whenGET(/\.json/).passThrough();
+        $httpBackend.whenGET("http://b932250.inetpsa.com:8080/rest/").passThrough();
     }]);
 
     return {
