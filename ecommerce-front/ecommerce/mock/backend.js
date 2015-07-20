@@ -69,6 +69,18 @@ define([
                             "tags": {
                                 "href": "/rest/product/0/tags"
                             }
+                        },
+                        "_embedded": {
+                            "stuff": [
+                                {
+                                    "name": 1,
+                                    "_links": {
+                                        "self": {
+                                            "href": "/rest/product/0"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     {

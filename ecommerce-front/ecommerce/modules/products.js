@@ -10,29 +10,34 @@ define([
 
     var module = angular.module('products', []);
 
-    module.controller('ProductsController', ['$scope', 'Products', '$location', function ($scope, Products, $location) {
+    module.controller('ProductsController', ['$scope', 'Products', '$location', 'HypermediaRestAdapter', function ($scope, Products, $location, HypermediaRestAdapter) {
         var self = this;
 
-        function set(resource) {
+        function setup(resource) {
             self.resource = resource;
             self.products = self.resource.$embedded('products');
+
+            angular.forEach(self.products, function (product) {
+                product.tags = product.$links('tags').query();
+            });
+
             self.next = self.resource.$links('next');
             self.previous = self.resource.$links('previous');
         }
 
         self.nextPage = function () {
-            self.next.get(set);
+            self.next.get(setup);
         };
 
         self.previousPage = function () {
-            self.previous.get(set);
+            self.previous.get(setup);
         };
 
         self.search = function (query) {
             if (query) {
-                self.resource.$links('find', { q: query }).get(set);
+                self.resource.$links('find', { q: query }).get(setup);
             } else {
-                Products.list(1, set);
+                Products.list(1, setup);
             }
         };
 
@@ -42,11 +47,7 @@ define([
             });
         };
 
-        self.tags = function (product) {
-            product.tags = product.$links('tags').query();
-        };
-
-        Products.list(1, set);
+        Products.list(1, setup);
 
     }]);
 
