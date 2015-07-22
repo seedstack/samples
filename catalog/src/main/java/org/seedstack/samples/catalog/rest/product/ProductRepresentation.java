@@ -1,7 +1,8 @@
-package org.seedstack.samples.catalog.rest;
+package org.seedstack.samples.catalog.rest.product;
 
 import org.seedstack.business.api.interfaces.assembler.DtoOf;
-import org.seedstack.samples.catalog.domain.Product;
+import org.seedstack.samples.catalog.domain.product.Product;
+import org.seedstack.samples.catalog.rest.CatalogRels;
 import org.seedstack.seed.rest.api.hal.HalRepresentation;
 
 import java.net.URI;
@@ -17,13 +18,15 @@ public class ProductRepresentation extends HalRepresentation {
 
     private URI picture;
 
-    private float amount;
-
-    private String currency;
+    private String pricing;
 
     private String description;
 
     private List<String> tags;
+
+    public void setTags(String uri) {
+        link(CatalogRels.PRODUCT_TAGS, uri);
+    }
 
     public String getName() {
         return name;
@@ -41,20 +44,12 @@ public class ProductRepresentation extends HalRepresentation {
         this.picture = picture;
     }
 
-    public float getAmount() {
-        return amount;
+    public String getPricing() {
+        return pricing;
     }
 
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setPricing(String pricing) {
+        this.pricing = pricing;
     }
 
     public String getDescription() {

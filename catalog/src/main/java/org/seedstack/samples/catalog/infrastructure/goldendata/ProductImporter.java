@@ -1,7 +1,8 @@
 package org.seedstack.samples.catalog.infrastructure.goldendata;
 
 import org.seedstack.business.api.domain.Repository;
-import org.seedstack.samples.catalog.domain.Product;
+import org.seedstack.samples.catalog.domain.product.Product;
+import org.seedstack.samples.catalog.infrastructure.Config;
 import org.seedstack.seed.core.spi.data.DataImporter;
 import org.seedstack.seed.core.spi.data.DataSet;
 import org.seedstack.seed.persistence.jpa.api.Jpa;
@@ -33,7 +34,7 @@ public class ProductImporter implements DataImporter<Product> {
         stating.add(data);
     }
 
-    @JpaUnit("catalog-domain")
+    @JpaUnit(Config.JPA_UNIT)
     @Transactional
     @Override
     public void commit(boolean clear) {

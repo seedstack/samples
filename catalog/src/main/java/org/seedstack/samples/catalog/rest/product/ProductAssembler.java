@@ -1,11 +1,12 @@
-package org.seedstack.samples.catalog.rest;
+package org.seedstack.samples.catalog.rest.product;
 
 
 import org.modelmapper.AbstractConverter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.seedstack.business.api.interfaces.assembler.ModelMapperAssembler;
-import org.seedstack.samples.catalog.domain.Product;
+import org.seedstack.samples.catalog.domain.product.Product;
+import org.seedstack.samples.catalog.rest.CatalogRels;
 import org.seedstack.seed.rest.api.RelRegistry;
 
 import javax.inject.Inject;
@@ -23,16 +24,21 @@ public class ProductAssembler extends ModelMapperAssembler<Product, ProductRepre
         modelMapper.addMappings(new PropertyMap<Product, ProductRepresentation>() {
             @Override
             protected void configure() {
-                AbstractConverter<Object, Object> self = new AbstractConverter<Object, Object>() {
+                AbstractConverter<Object, Object> selfConverter = new AbstractConverter<Object, Object>() {
                     @Override
                     protected Object convert(Object source) {
-                        return relRegistry.uri(CatalogResources.PRODUCT).set("title", source).expand();
+                        return relRegistry.uri(CatalogRels.PRODUCT).set("title", source).expand();
+                    }
+                };
+                AbstractConverter<Object, Object> tagConverter = new AbstractConverter<Object, Object>() {
+                    @Override
+                    protected Object convert(Object source) {
+                        return relRegistry.uri(CatalogRels.PRODUCT_TAGS).set("title", source).expand();
                     }
                 };
 
-                map(source.getPricing().getAmount()).setAmount(0f);
-                map(source.getPricing().getCurrency()).setCurrency(null);
-                using(self).map(source.getName()).self(null);
+                using(selfConverter).map().self(source.getName());
+                using(tagConverter).map().setTags(source.getName());
             }
         });
     }

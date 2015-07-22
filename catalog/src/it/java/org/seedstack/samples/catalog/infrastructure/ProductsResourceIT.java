@@ -36,4 +36,13 @@ public class ProductsResourceIT extends AbstractSeedWebIT {
         response.prettyPrint();
     }
 
+    @RunAsClient
+    @Test
+    public void json_home() throws JSONException {
+        Response response = expect().statusCode(200).given().header("Content-Type", "application/json-home")
+                .get(baseURL.toString() + "rest/");
+
+        response.prettyPrint();
+    }
+
 }

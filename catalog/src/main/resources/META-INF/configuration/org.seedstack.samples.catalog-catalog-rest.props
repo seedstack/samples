@@ -29,6 +29,10 @@ property.hibernate.hbm2ddl.auto = update
 [org.seedstack.samples.catalog.domain.*]
 jpa-unit = catalog-domain
 
+[org.seedstack.seed.web]
+cors.enabled = true
+cors.property.supportedMethods= GET\\, POST\\, HEAD\\, OPTIONS\\, PUT\\, DELETE
+
 # Uncomment to add basic auth
 #[org.seedstack.seed.security.urls]
 #/** = authcBasic
