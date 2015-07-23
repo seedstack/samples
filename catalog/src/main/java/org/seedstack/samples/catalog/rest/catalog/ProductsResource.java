@@ -29,7 +29,7 @@ public class ProductsResource {
 
     @GET
     @Rel(value = CatalogRels.CATALOG, expose = true)
-    @Produces({"application/hal+json", MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
     public Response products(@DefaultValue("0") @QueryParam("pageIndex") Integer pageIndex,
                              @DefaultValue("10") @QueryParam("pageSize") Integer pageSize) {
 
@@ -38,12 +38,25 @@ public class ProductsResource {
         if (result.getSize() > 0) {
             Page page = new Page(pageIndex, pageSize);
             PaginatedView<ProductRepresentation> view = new PaginatedView<ProductRepresentation>(result, page);
+
             HalRepresentation representation = new ProductsRepresentation(view);
 
-            String href = relRegistry.uri(CatalogRels.CATALOG)
-                    .set("pageIndex", pageIndex).set("pageSize", pageSize).expand();
+            representation.self(relRegistry.uri(CatalogRels.CATALOG)
+                    .set("pageIndex", pageIndex).set("pageSize", pageSize).expand());
 
-            return Response.ok(representation.self(href)).build();
+            if (view.hasNext()) {
+                Page next = view.next();
+                representation.link("next", relRegistry.uri(CatalogRels.CATALOG)
+                        .set("pageIndex", next.getIndex()).set("pageSize", next.getCapacity()).expand());
+            }
+
+            if (view.hasPrev()) {
+                Page prev = view.prev();
+                representation.link("prev", relRegistry.uri(CatalogRels.CATALOG)
+                        .set("pageIndex", prev.getIndex()).set("pageSize", prev.getCapacity()).expand());
+            }
+
+            return Response.ok(representation).build();
         } else {
             return Response.status(Response.Status.NO_CONTENT).build();
         }

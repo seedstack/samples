@@ -45,7 +45,7 @@ public class ProductResource {
     @Transactional
     @JpaUnit(Config.JPA_UNIT)
     @Rel(value = CatalogRels.PRODUCT, expose = true)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
     public Response getProduct(@PathParam("title") String title) {
         Product product = repository.load(title);
         if (product == null) {
@@ -60,7 +60,7 @@ public class ProductResource {
     @GET
     @Rel(CatalogRels.PRODUCT_TAGS)
     @Path("/tags")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
     public Response getTags(@PathParam("title") String title) {
         Product product = repository.load(title);
         if (product == null) {

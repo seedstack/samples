@@ -6,7 +6,6 @@ import org.seedstack.samples.catalog.rest.CatalogRels;
 import org.seedstack.seed.rest.api.hal.HalRepresentation;
 
 import java.net.URI;
-import java.util.List;
 
 /**
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
@@ -21,8 +20,6 @@ public class ProductRepresentation extends HalRepresentation {
     private String pricing;
 
     private String description;
-
-    private List<String> tags;
 
     public void setTags(String uri) {
         link(CatalogRels.PRODUCT_TAGS, uri);
@@ -60,11 +57,4 @@ public class ProductRepresentation extends HalRepresentation {
         this.description = description;
     }
 
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
 }

@@ -1,5 +1,6 @@
 package org.seedstack.samples.catalog.domain.product;
 
+import org.hibernate.annotations.Type;
 import org.seedstack.business.api.domain.BaseAggregateRoot;
 
 import javax.persistence.ElementCollection;
@@ -21,6 +22,7 @@ public class Product extends BaseAggregateRoot<String> {
 
     private Price pricing;
 
+    @Type(type = "text")
     private String description;
 
     @ElementCollection
