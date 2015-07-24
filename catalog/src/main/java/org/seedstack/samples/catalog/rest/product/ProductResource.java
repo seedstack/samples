@@ -44,7 +44,7 @@ public class ProductResource {
     @GET
     @Transactional
     @JpaUnit(Config.JPA_UNIT)
-    @Rel(value = CatalogRels.PRODUCT, expose = true)
+    @Rel(value = CatalogRels.PRODUCT, home = true)
     @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
     public Response getProduct(@PathParam("title") String title) {
         Product product = repository.load(title);

@@ -24,7 +24,7 @@ public class ProductAssemblerIT {
         Product product = new Product("productName");
         ProductRepresentation representation = fluently.assemble(product).to(ProductRepresentation.class);
         Assertions.assertThat(representation).isNotNull();
-        Assertions.assertThat(representation.getLinks().get("self").iterator().next().getHref()).isEqualTo("/rest/products/productName");
-        Assertions.assertThat(representation.getLinks().get("tags").iterator().next().getHref()).isEqualTo("/rest/products/productName/tags");
+        Assertions.assertThat(representation.getLinks().get("self").iterator().next().getHref()).isEqualTo("/products/productName");
+        Assertions.assertThat(representation.getLinks().get("tags").iterator().next().getHref()).isEqualTo("/products/productName/tags");
     }
 }

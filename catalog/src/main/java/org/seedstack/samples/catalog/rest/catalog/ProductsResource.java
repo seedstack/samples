@@ -28,7 +28,7 @@ public class ProductsResource {
     private RelRegistry relRegistry;
 
     @GET
-    @Rel(value = CatalogRels.CATALOG, expose = true)
+    @Rel(value = CatalogRels.CATALOG, home = true)
     @Produces({MediaType.APPLICATION_JSON, "application/hal+json"})
     public Response products(@DefaultValue("0") @QueryParam("pageIndex") Integer pageIndex,
                              @DefaultValue("10") @QueryParam("pageSize") Integer pageSize) {
