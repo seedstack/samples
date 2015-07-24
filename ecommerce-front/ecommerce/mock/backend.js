@@ -12,16 +12,16 @@ define([
 
         var home = {
             "resources": {
-                "products": {
-                    "href-template": "/rest/products{?page}",
+                "catalog": {
+                    "href-template": "rest/products{?page}",
                     "href-vars": {
-                        "page": "/rest/param/page"
+                        "page": "rest/param/page"
                     }
                 },
                 "product": {
-                    "href-template": "/rest/product/{name}",
+                    "href-template": "rest/product/{name}",
                     "href-vars": {
-                        "name": "/rest/param/name"
+                        "name": "rest/param/name"
                     },
                     "hints": {
                         "allow": ["GET", "PUT", "DELETE"],
@@ -462,16 +462,20 @@ define([
 
         var related = {};
 
-        $httpBackend.whenGET(/\/rest\/hypermedia\/home$/).respond(JSON.stringify(home));
-        $httpBackend.whenGET(/\/products\?page/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
+        //$httpBackend.whenGET('http://localhost:8080/rest/').respond(JSON.stringify(home), { 'content-type': 'application/json-home' });
+        //$httpBackend.whenGET(/\/products\?page/).respond(JSON.stringify(products), { 'content-type': 'application/hal+json' });
         $httpBackend.whenGET(/\/rest\/products\?q\=/).respond(JSON.stringify(productsSearched), { 'content-type': 'application/hal+json' });
-        $httpBackend.whenGET(/\/rest\/product\/0\/tags/).respond(JSON.stringify(tags));
-        $httpBackend.whenGET(/\/rest\/product\/.*$/).respond(JSON.stringify(product), { 'content-type': 'application/hal+json' });
-        $httpBackend.whenGET(/\/rest\/product\/0\/related/).respond(JSON.stringify(related), { 'content-type': 'application/hal+json' });
+        //$httpBackend.whenGET(/\/rest\/product\/0\/tags/).respond(JSON.stringify(tags));
+        //$httpBackend.whenGET(/\/rest\/product\/.*$/).respond(JSON.stringify(product), { 'content-type': 'application/hal+json' });
+        //$httpBackend.whenGET(/\/rest\/product\/0\/related/).respond(JSON.stringify(related), { 'content-type': 'application/hal+json' });
 
         $httpBackend.whenGET(/html/).passThrough();
         $httpBackend.whenGET(/\.json/).passThrough();
-        $httpBackend.whenGET("http://b932250.inetpsa.com:8080/rest/").passThrough();
+
+        $httpBackend.whenGET('http://localhost:8080/rest/').passThrough();
+        $httpBackend.whenGET('http://localhost:8080/rest/products?page=1').passThrough();
+        $httpBackend.whenGET(/http:\/\/localhost:8080\/rest\/products\/.*\/tags/).passThrough();
+        $httpBackend.whenGET(/http:\/\/localhost:8080\/rest\/products\.*/).passThrough();
     }]);
 
     return {

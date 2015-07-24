@@ -11,21 +11,29 @@ define([
 
     var module = angular.module('product', []);
 
-    module.controller('ProductController', ['Products', '$location', function (Products, $location) {
-        var self = this;
+    module.controller('ProductController', ['$scope', 'DataService', 'HomeService', '$routeParams', '$location', 'ErrorService', function ($scope, dataService, hypermedia, $routeParams, $location, error) {
 
-        function set(selected) {
-            self.product = selected;
-            self.relatedProducts = self.product.$embedded('related');
+        var selectedProduct;
+
+        function setup(selected) {
+            $scope.product = selected;
+            // $scope.relatedProducts = $scope.product.$embedded('related');
         }
 
-        self.select = function (product) {
-            Products.select(product, function(selectedProduct) {
+        $scope.select = function (product) {
+            product.$links('self').get(function (selectedProduct) {
+                dataService.selectedProduct(selectedProduct);
                 $location.path('/ecommerce/product/' + selectedProduct.name);
             });
         };
 
-        Products.selected(set);
+        selectedProduct = dataService.selectedProduct();
+
+        if (selectedProduct) {
+            setup(selectedProduct);
+        } else {
+            hypermedia('ecommerce').enter('product', { title: $routeParams.name }).get(setup, error);
+        }
 
     }]);
 

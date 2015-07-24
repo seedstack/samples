@@ -11,48 +11,23 @@ define([
 
     var module = angular.module('services', ['ngResource']);
 
-    module.factory('Products', ['HomeService', '$location', '$routeParams', function (homeService, $location, $routeParams) {
+    module.factory('ErrorService', ['$log', function ($log) {
 
-        var Products = {
-            all: function (page) {
-                return homeService('ecommerce').resource('catalog', { page: page });
-            },
-            one: function (name) {
-                return homeService('ecommerce').resource('product', { name: name });
-            }
-        };
+      return function (err) {
+          $log.error('Could not get resource, status: ' + err.status);
+      };
+    }]);
+
+    module.factory('DataService', [function () {
 
         var selectedProduct;
 
         return {
-            list: function (page, c) {
-                return Products.all(page).get(function (products) {
-                    if (c) {
-                        c(products);
-                    }
-                });
-            },
-            get: function (name, c) {
-                return Products.one(name).get(function (product) {
-                    if (c) {
-                        c(product);
-                    }
-                });
-            },
-            select: function (product, c) {
-                product.$links('self').get(function (product) {
+            selectedProduct: function (product) {
+                if (product) {
                     selectedProduct = product;
-                    if (c) {
-                        c(selectedProduct);
-                    }
-                });
-            },
-            selected: function (c) {
-                if (selectedProduct) {
-                    return c ? c(selectedProduct) : selectedProduct;
-                } else {
-                    this.get($routeParams.name, c);
                 }
+                return selectedProduct;
             }
         };
     }]);

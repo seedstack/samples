@@ -10,44 +10,46 @@ define([
 
     var module = angular.module('products', []);
 
-    module.controller('ProductsController', ['$scope', 'Products', '$location', 'HypermediaRestAdapter', function ($scope, Products, $location, HypermediaRestAdapter) {
-        var self = this;
+    module.controller('ProductsController', ['$scope', 'DataService', '$location', 'HomeService', 'ErrorService', function ($scope, dataService, $location, hypermedia, error) {
 
-        function setup(resource) {
-            self.resource = resource;
-            self.products = self.resource.$embedded('products');
+        var setup = function (resource) {
+            $scope.resource = resource;
+            $scope.products = $scope.resource.$embedded('products');
+            $scope.next = $scope.resource.$links('next');
+            $scope.previous = $scope.resource.$links('prev');
 
-            angular.forEach(self.products, function (product) {
-                product.tags = product.$links('tags').query();
+            angular.forEach($scope.products, function (product) {
+                 product.$links('tags').get(function (tags) {
+                     product.tags = tags.$embedded('tags');
+                });
             });
-
-            self.next = self.resource.$links('next');
-            self.previous = self.resource.$links('previous');
-        }
-
-        self.nextPage = function () {
-            self.next.get(setup);
         };
 
-        self.previousPage = function () {
-            self.previous.get(setup);
+        $scope.nextPage = function () {
+            $scope.next.get(setup, error);
         };
 
-        self.search = function (query) {
+        $scope.previousPage = function () {
+            $scope.previous.get(setup, error);
+        };
+
+        $scope.search = function (query) {
             if (query) {
-                self.resource.$links('find', { q: query }).get(setup);
+                $scope.resource.$links('find', { q: query }).get(setup, error);
             } else {
-                Products.list(1, setup);
+                hypermedia('ecommerce').enter('catalog', { page: 1 }).get(setup, error);
             }
         };
 
-        self.select = function (product) {
-            Products.select(product, function (selectedProduct) {
+        $scope.select = function (product) {
+            product.$links('self').get(function (selectedProduct) {
+                dataService.selectedProduct(selectedProduct);
                 $location.path('/ecommerce/product/' + selectedProduct.name);
             });
+
         };
 
-        Products.list(1, setup);
+        hypermedia('ecommerce').enter('catalog', { page: 1 }).get(setup, error);
 
     }]);
 
