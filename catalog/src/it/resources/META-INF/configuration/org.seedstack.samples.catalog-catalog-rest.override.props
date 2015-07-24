@@ -1,3 +1,0 @@
-# Add rest module integration test configuration here
-
-org.seedstack.seed.persistence.jpa.unit.catalog-domain.property.hibernate.hbm2ddl.auto=create

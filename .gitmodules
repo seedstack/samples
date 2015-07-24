@@ -1,0 +1,15 @@
+[submodule "simple-ws-sample"]
+	path = simple-ws-sample
+	url = git@github.com:seedstack/simple-ws-sample.git
+[submodule "ecommerce-client-sample"]
+	path = ecommerce-client-sample
+	url = git@github.com:seedstack/ecommerce-client-sample.git
+[submodule "catalog-microservice-sample"]
+	path = catalog-microservice-sample
+	url = git@github.com:seedstack/catalog-microservice-sample.git
+[submodule "ecommerce-domain-sample"]
+	path = ecommerce-domain-sample
+	url = git@github.com:seedstack/ecommerce-domain-sample.git
+[submodule "store-webapp-sample"]
+	path = store-webapp-sample
+	url = git@github.com:seedstack/store-webapp-sample.git
