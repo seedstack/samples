@@ -10,28 +10,46 @@ define([
 
     var module = angular.module('products', []);
 
-    module.controller('ProductsController', ['Products', '$location', function (Products, $location) {
-        var self = this;
+    module.controller('ProductsController', ['$scope', 'DataService', '$location', 'HomeService', 'ErrorService', function ($scope, dataService, $location, hypermedia, error) {
 
-        function set (embedded) {
-            self.products = embedded;
-        }
+        var setup = function (resource) {
+            $scope.resource = resource;
+            $scope.products = $scope.resource.$embedded('products');
+            $scope.next = $scope.resource.$links('next');
+            $scope.previous = $scope.resource.$links('prev');
 
-        self.search = function (query) {
-            if (query) {
-                self.products.$links('find', { q: query }).query(set);
-            } else {
-                Products.query(set);
-            }
-        };
-
-        self.select = function (product) {
-            Products.select(product, function (selectedProduct) {
-                $location.path('/ecommerce/product/' + selectedProduct.name);
+            angular.forEach($scope.products, function (product) {
+                 product.$links('tags').get(function (tags) {
+                     product.tags = tags.$embedded('tags');
+                });
             });
         };
 
-        Products.query(set);
+        $scope.nextPage = function () {
+            $scope.next.get(setup, error);
+        };
+
+        $scope.previousPage = function () {
+            $scope.previous.get(setup, error);
+        };
+
+        $scope.search = function (query) {
+            if (query) {
+                $scope.resource.$links('find', { q: query }).get(setup, error);
+            } else {
+                hypermedia('ecommerce').enter('catalog', { page: 1 }).get(setup, error);
+            }
+        };
+
+        $scope.select = function (product) {
+            product.$links('self').get(function (selectedProduct) {
+                dataService.selectedProduct(selectedProduct);
+                $location.path('/ecommerce/product/' + selectedProduct.name);
+            });
+
+        };
+
+        hypermedia('ecommerce').enter('catalog', { page: 1 }).get(setup, error);
 
     }]);
 

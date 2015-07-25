@@ -2,6 +2,10 @@
     "id": "ecommerce",
     "name": "W20 ecommerce fragment",
 
+    "api": {
+        "ecommerce": "http://localhost:8080/rest/"
+    },
+
     "modules": {
         "services": {
             "path": "{ecommerce}/modules/services",
@@ -13,10 +17,6 @@
         },
         "product": {
             "path": "{ecommerce}/modules/product",
-            "autoload": true
-        },
-        "backend": {
-            "path": "{ecommerce}/mock/backend",
             "autoload": true
         },
         "style": {
@@ -33,13 +33,11 @@
     "routes": {
         "/products": {
             "templateUrl":"{ecommerce}/views/products.html",
-            "controller":"ProductsController",
-            "controllerAs": "pdts"
+            "controller":"ProductsController"
         },
         "/product/:name": {
             "templateUrl":"{ecommerce}/views/product.html",
-            "controller":"ProductController",
-            "controllerAs": "pdt"
+            "controller":"ProductController"
         }
     },
 

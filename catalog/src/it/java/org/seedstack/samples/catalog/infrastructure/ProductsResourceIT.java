@@ -31,9 +31,18 @@ public class ProductsResourceIT extends AbstractSeedWebIT {
     @Test
     public void hal_builder() throws JSONException {
         Response response = expect().statusCode(200).given().header("Content-Type", "application/hal+json")
-                .get(baseURL.toString() + "rest/products");
+                .get(baseURL.toString() + "products");
 
-        response.prettyPrint();
+        response.print();
+    }
+
+    @RunAsClient
+    @Test
+    public void json_home() throws JSONException {
+        Response response = expect().statusCode(200).given().header("Content-Type", "application/json-home")
+                .get(baseURL.toString());
+
+        response.print();
     }
 
 }

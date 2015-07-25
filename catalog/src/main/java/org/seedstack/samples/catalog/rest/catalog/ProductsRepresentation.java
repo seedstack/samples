@@ -1,6 +1,7 @@
-package org.seedstack.samples.catalog.rest;
+package org.seedstack.samples.catalog.rest.catalog;
 
 import org.seedstack.business.api.interfaces.view.PaginatedView;
+import org.seedstack.samples.catalog.rest.product.ProductRepresentation;
 import org.seedstack.seed.rest.api.hal.HalRepresentation;
 
 /**

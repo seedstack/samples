@@ -1,19 +1,14 @@
-package org.seedstack.samples.catalog.domain;
+package org.seedstack.samples.catalog.domain.product;
 
 import org.seedstack.business.api.domain.BaseValueObject;
-
-import javax.persistence.Embeddable;
 
 /**
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
  */
-@Embeddable
+
 public class Tag extends BaseValueObject {
 
     private String name;
-
-    Tag() {
-    }
 
     public Tag(String name) {
         this.name = name;
@@ -27,4 +22,5 @@ public class Tag extends BaseValueObject {
     public String toString() {
         return name;
     }
+
 }

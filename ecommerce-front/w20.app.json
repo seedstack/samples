@@ -45,11 +45,7 @@
                 "persistentRestrictions": false
             },
             "utils": {},
-            "hypermedia": {
-                "homeResources": {
-                    "ecommerce": "/rest/hypermedia/home"
-                }
-            }
+            "hypermedia": {}
         }
     }
 }

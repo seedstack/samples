@@ -1,12 +1,13 @@
-package org.seedstack.samples.catalog.domain;
+package org.seedstack.samples.catalog.domain.product;
 
+import org.hibernate.annotations.Type;
 import org.seedstack.business.api.domain.BaseAggregateRoot;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.net.URI;
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
@@ -21,10 +22,11 @@ public class Product extends BaseAggregateRoot<String> {
 
     private Price pricing;
 
+    @Type(type = "text")
     private String description;
 
     @ElementCollection
-    private List<Tag> tags;
+    private Set<String> tags;
 
     Product() {
     }
@@ -61,12 +63,12 @@ public class Product extends BaseAggregateRoot<String> {
         this.description = description;
     }
 
-    public List<Tag> getTags() {
+    public Set<String> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void tag(String tag) {
+        this.tags.add(tag);
     }
 
     @Override

@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seedstack.business.api.domain.Factory;
 import org.seedstack.business.api.domain.Repository;
-import org.seedstack.samples.catalog.domain.Price;
-import org.seedstack.samples.catalog.domain.Product;
+import org.seedstack.samples.catalog.domain.product.Price;
+import org.seedstack.samples.catalog.domain.product.Product;
 import org.seedstack.seed.it.SeedITRunner;
 import org.seedstack.seed.persistence.jpa.api.Jpa;
 import org.seedstack.seed.persistence.jpa.api.JpaUnit;
@@ -28,11 +28,11 @@ public class ProductRepositoryIT {
 
     @Test
     @Transactional
-    @JpaUnit("catalog-domain")
+    @JpaUnit(Config.JPA_UNIT)
     public void test_database_config() {
         Product product = factory.create("SeedStack in Action");
         product.setDescription("Book presenting seedstack and all its awesome features");
-        product.setPricing(new Price("45", "euro"));
+        product.setPricing(new Price(45, "euro"));
         repository.persist(product);
 
         Product product1 = repository.load("SeedStack in Action");
