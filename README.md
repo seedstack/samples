@@ -4,11 +4,11 @@ This repository contains samples illustrating different project types you can cr
 
 # Samples list
 
-* [E-commerce domain](ecommerce-domain-sample). A reusable model of a very simple e-commerce domain.
-* [Store management](store-webapp-sample). A classic Java Web application based on the e-commerce domain model.
-* [Catalog](catalog-microservice-sample). A REST microservice exposing the API of a product catalog, based on the e-commerce domain model.
-* [E-commerce web client](ecommerce-client-sample). A W20 client for the catalog microservice.
-* [Simple WS](simple-ws-sample). A simple Web-Service exposing product information, based on the e-commerce domain model.
+* [E-commerce domain](https://github.com/seedstack/ecommerce-domain-sample). A reusable model of a very simple e-commerce domain.
+* [Store management](https://github.com/seedstack/store-webapp-sample). A classic Java Web application based on the e-commerce domain model.
+* [Catalog](https://github.com/seedstack/catalog-microservice-sample). A REST microservice exposing the API of a product catalog, based on the e-commerce domain model.
+* [E-commerce web client](https://github.com/seedstack/ecommerce-client-sample). A W20 client for the catalog microservice.
+* [Simple WS](https://github.com/seedstack/simple-ws-sample). A simple Web-Service exposing product information, based on the e-commerce domain model.
 
 # Copyright and license
 
