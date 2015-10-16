@@ -1,6 +1,17 @@
-# SeedStack samples
+# Samples meta-repository
 
-This repository contains samples illustrating different project types you can create with SeedStack along with demonstrations of specific features.
+This meta-repository SeedStack samples as Git submodules. They are intended to illustrate the various project types you can create with SeedStack and/or demonstrate specific features.
+
+# Usage
+
+You can initialize all submodules to the tip of their master branch and checkout it with the following commands:
+
+    git submodule update --remote --recursive --init
+    git submodule foreach --recursive git checkout master
+    
+Later, you may need to update all submodules to the tip of their master branch again:     
+
+    git submodule update --remote --recursive
 
 # Samples list
 
