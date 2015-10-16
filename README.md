@@ -1,6 +1,6 @@
 # Samples meta-repository
 
-This meta-repository SeedStack samples as Git submodules. They are intended to illustrate the various project types you can create with SeedStack and/or demonstrate specific features.
+This meta-repository contains all SeedStack samples as Git submodules. They are intended to illustrate the various project types you can create with SeedStack and/or demonstrate specific features.
 
 # Usage
 
@@ -20,6 +20,10 @@ Later, you may need to update all submodules to the tip of their master branch a
 * [Catalog](https://github.com/seedstack/catalog-microservice-sample). A REST microservice exposing the API of a product catalog, based on the e-commerce domain model.
 * [E-commerce web client](https://github.com/seedstack/ecommerce-client-sample). A W20 client for the catalog microservice.
 * [Simple WS](https://github.com/seedstack/simple-ws-sample). A simple Web-Service exposing product information, based on the e-commerce domain model.
+
+# Issue tracking
+
+All issues regarding SeedStack samples are aggregated on [this Waffle board](https://waffle.io/seedstack/samples).
 
 # Copyright and license
 
