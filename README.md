@@ -6,12 +6,11 @@ This meta-repository contains all SeedStack samples as Git submodules. They are 
 
 You can initialize all submodules to the tip of their master branch and checkout it with the following commands:
 
-    git submodule update --remote --recursive --init
-    git submodule foreach --recursive git checkout master
+    git submodule update --remote --recursive --init && git submodule foreach --recursive git checkout master
     
 Later, you may need to update all submodules to the tip of their master branch again:     
 
-    git submodule update --remote --recursive
+    git submodule foreach --recursive git pull --ff-only origin master:master
 
 # Samples list
 
