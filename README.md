@@ -1,8 +1,8 @@
 # Samples meta-repository
 
-This meta-repository contains all SeedStack samples as Git submodules. They are intended to illustrate the various project types you can create with SeedStack and/or demonstrate specific features.
+This meta-repository contains all SeedStack samples (with some as git submodules). They are intended to illustrate the various project types you can create with SeedStack and/or demonstrate specific features.
 
-# Usage
+# Cloning
 
 You can initialize all submodules to the tip of their master branch and checkout it with the following commands:
 
@@ -14,11 +14,15 @@ Later, you may need to update all submodules to the tip of their master branch a
 
 # Samples list
 
-* [E-commerce domain](https://github.com/seedstack/ecommerce-domain-sample). A reusable model of a very simple e-commerce domain.
-* [Store management](https://github.com/seedstack/store-webapp-sample). A classic Java Web application based on the e-commerce domain model.
-* [Catalog](https://github.com/seedstack/catalog-microservice-sample). A REST microservice exposing the API of a product catalog, based on the e-commerce domain model.
-* [E-commerce web client](https://github.com/seedstack/ecommerce-client-sample). A W20 client for the catalog microservice.
-* [Simple WS](https://github.com/seedstack/simple-ws-sample). A simple Web-Service exposing product information, based on the e-commerce domain model.
+| Sample | Directory | Demonstrated features |
+|---|---|---|
+| Business code | [business](https://github.com/seedstack/samples/tree/master/business) | Business framework usage |
+| Catalog micro-service | [catalog-microservice](https://github.com/seedstack/catalog-microservice-sample/tree/master) | JAX-RS integration, hypermedia and JSON-home |
+| Seed plugin | [seed-plugin](https://github.com/seedstack/samples/tree/master/seed-plugin) | Seed plugin, integration testing |
+| Store Web application | [store-webapp](https://github.com/seedstack/store-webapp-sample/tree/master) | REST resources, JPA persistence, JavaMail, pagination, static resources serving, simple business code |
+| W20 hypermedia | [w20-hypermedia](https://github.com/seedstack/w20-hypermedia-sample/tree/master) | W20 client-side hypermedia |
+| W20 fragment | [w20-fragment](https://github.com/seedstack/samples/tree/master/w20-fragment) | Fragment definition and configuration, basic AngularJS, internationalization. |
+| Web Services | [web-services](https://github.com/seedstack/web-services-sample/tree/master) | JAX-WS integration through Web-Services add-on |
 
 # Issue tracking
 
