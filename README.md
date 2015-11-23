@@ -12,7 +12,7 @@ Later, you may need to update all submodules to the tip of their master branch a
 
     git submodule foreach --recursive git pull --ff-only origin master:master
 
-# Samples list
+# List
 
 | Sample | Directory | Demonstrated features |
 |---|---|---|
