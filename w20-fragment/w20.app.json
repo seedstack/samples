@@ -1,0 +1,24 @@
+{
+  "bower_components/w20/w20-core.w20.json": {
+    "modules": {
+      "application": {
+        "id": "w20-fragment-sample",
+        "home": "/demo/hello"
+      },
+      "culture": {
+        "available": [
+          "en-US",
+          "fr-FR"
+        ],
+        "default": "en-US"
+      }
+    }
+  },
+  "bower_components/w20-bootstrap-3/w20-bootstrap-3.w20.json": {},
+  "bower_components/w20-business-theme/w20-business-theme.w20.json": {},
+  "fragment-sample/fragment-sample.w20.json": {
+    "modules": {
+      "user": {}
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "application.view.fragment-sample.hello": "Hello",
+  "application.view.fragment-sample.user": "User management",
+  "tutorial.user.results": "Results",
+  "tutorial.user.clear": "Clear",
+  "tutorial.user.add": "Add",
+  "tutorial.user.load": "Load",
+  "tutorial.user.first-name": "First name",
+  "tutorial.user.last-name": "Last name",
+  "tutorial.user.birth-date": "Birth date"
+}

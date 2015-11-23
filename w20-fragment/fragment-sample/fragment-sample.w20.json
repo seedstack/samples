@@ -1,0 +1,21 @@
+{
+  "id": "fragment-sample",
+  "name": "W20 fragment sample",
+  "modules": {
+    "user": "{fragment-sample}/modules/user"
+  },
+  "i18n": {
+    "en": [ "{fragment-sample}/i18n/messages-en.json"],
+    "fr": [ "{fragment-sample}/i18n/messages-fr.json"]
+  },
+  "routes": {
+    "hello": {
+      "template": "<div class=\"container\"><h1>Hello World!</h1></div>",
+      "hidden": true
+    },
+    "user": {
+      "templateUrl": "{fragment-sample}/views/user.html",
+      "controller": "UserController"
+    }
+  }
+}

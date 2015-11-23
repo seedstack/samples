@@ -1,12 +1,16 @@
-[submodule "simple-ws-sample"]
-	path = simple-ws
-	url = git@github.com:seedstack/simple-ws-sample.git
-[submodule "ecommerce-client-sample"]
-	path = ecommerce-client
-	url = git@github.com:seedstack/ecommerce-client-sample.git
-[submodule "catalog-microservice-sample"]
+[submodule "web-services"]
+	path = web-services
+	url = https://github.com/seedstack/web-services-sample.git
+	branch = master
+[submodule "w20-hypermedia"]
+	path = w20-hypermedia
+	url = https://github.com/seedstack/w20-hypermedia-sample.git
+	branch = master
+[submodule "catalog-microservice"]
 	path = catalog-microservice
-	url = git@github.com:seedstack/catalog-microservice-sample.git
-[submodule "store-webapp-sample"]
+	url = https://github.com/seedstack/catalog-microservice-sample.git
+	branch = master
+[submodule "store-webapp"]
 	path = store-webapp
-	url = git@github.com:seedstack/store-webapp-sample.git
+	url = https://github.com/seedstack/store-webapp-sample.git
+	branch = master
