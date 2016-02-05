@@ -16,6 +16,7 @@ Later, you may need to update all submodules to the tip of their master branch a
 
 | Sample | Directory | Demonstrated features |
 |---|---|---|
+| Batch job | [batch](https://github.com/seedstack/samples/tree/master/batch) | Spring Batch "Hello World" job |
 | Business code | [business](https://github.com/seedstack/samples/tree/master/business) | Business framework usage |
 | Catalog micro-service | [catalog-microservice](https://github.com/seedstack/catalog-microservice-sample/tree/master) | JAX-RS integration, hypermedia and JSON-home |
 | Seed plugin | [seed-plugin](https://github.com/seedstack/samples/tree/master/seed-plugin) | Seed plugin, integration testing |
