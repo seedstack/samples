@@ -10,7 +10,7 @@
     "package.json"
   ],
   "dependencies": {
-    "w20": "~2.1",
+    "w20": "~2.2",
     "w20-business-theme": "~1.1"
   }
 }

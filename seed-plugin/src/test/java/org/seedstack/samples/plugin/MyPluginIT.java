@@ -10,11 +10,11 @@ import org.seedstack.seed.it.SeedITRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SeedITRunner.class)
-public class MyPluginTest {
+public class MyPluginIT {
     @Inject
     private SomeService someService;
 
-    @Configuration("com.github.adrienlauer.poss.key")
+    @Configuration("org.seedstack.samples.seed-plugin.key")
     private String configurationKey;
 
     @Test
