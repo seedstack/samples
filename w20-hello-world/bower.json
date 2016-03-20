@@ -1,0 +1,7 @@
+{
+  "name": "w20-hello-sample",
+  "version": "1.0.0",
+  "dependencies": {
+    "w20": "^2.2.2"
+  }
+}

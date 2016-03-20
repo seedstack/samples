@@ -1,0 +1,8 @@
+{
+  "name": "w20-hello-world-sample",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.10.1"
+  }
+}

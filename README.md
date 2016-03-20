@@ -22,6 +22,7 @@ Later, you may need to update all submodules to the tip of their master branch a
 | Command-line | [cli](https://github.com/seedstack/samples/tree/master/cli) | CLI commands, options and arguments |
 | Seed plugin | [seed-plugin](https://github.com/seedstack/samples/tree/master/seed-plugin) | Seed plugin, integration testing |
 | Store Web application | [store-webapp](https://github.com/seedstack/store-webapp-sample/tree/master) | REST resources, JPA persistence, JavaMail, pagination, static resources serving, simple business code |
+| W20 hello world | [w20-hello-world](https://github.com/seedstack/samples/tree/master/w20-hello-world) | W20 initialization |
 | W20 hypermedia | [w20-hypermedia](https://github.com/seedstack/w20-hypermedia-sample/tree/master) | W20 client-side hypermedia |
 | W20 fragment | [w20-fragment](https://github.com/seedstack/samples/tree/master/w20-fragment) | Fragment definition and configuration, basic AngularJS, internationalization. |
 | Web Services | [web-services](https://github.com/seedstack/web-services-sample/tree/master) | JAX-WS integration through Web-Services add-on |

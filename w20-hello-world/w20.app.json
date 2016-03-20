@@ -1,0 +1,20 @@
+{
+    "bower_components/w20/w20-core.w20.json" : {
+        "modules" : {
+            "application":{
+                "id":"w20-simple-sample",
+                "home":"/hello"
+            },
+            "culture":{}
+        }
+    },
+
+    "": {
+        "routes": {
+            "hello":{
+                "template":"<h1>Hello World !</h1>",
+                "label": "Hello"
+            }
+        }
+    }
+}
