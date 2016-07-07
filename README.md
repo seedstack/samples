@@ -20,8 +20,9 @@ Later, you may need to update all submodules to the tip of their master branch a
 | Business code | [business](https://github.com/seedstack/samples/tree/master/business) | Business framework usage |
 | Catalog micro-service | [catalog-microservice](https://github.com/seedstack/catalog-microservice-sample/tree/master) | JAX-RS integration, hypermedia and JSON-home |
 | Command-line | [cli](https://github.com/seedstack/samples/tree/master/cli) | CLI commands, options and arguments |
-| Seed plugin | [seed-plugin](https://github.com/seedstack/samples/tree/master/seed-plugin) | Seed plugin, integration testing |
+| Seed | [seed](https://github.com/seedstack/samples/tree/master/seed) | Security, configuration, diagnostic, Guice, custom plugin, CLI, REST, Web, Websocket, integration testing |
 | Store Web application | [store-webapp](https://github.com/seedstack/store-webapp-sample/tree/master) | REST resources, JPA persistence, JavaMail, pagination, static resources serving, simple business code |
+| W20 bridge | [w20-bridge](https://github.com/seedstack/samples/tree/master/w20-bridge) | Backend/frontend integration with W20 bridge |
 | W20 hello world | [w20-hello-world](https://github.com/seedstack/samples/tree/master/w20-hello-world) | W20 initialization |
 | W20 hypermedia | [w20-hypermedia](https://github.com/seedstack/w20-hypermedia-sample/tree/master) | W20 client-side hypermedia |
 | W20 fragment | [w20-fragment](https://github.com/seedstack/samples/tree/master/w20-fragment) | Fragment definition and configuration, basic AngularJS, internationalization. |

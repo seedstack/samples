@@ -12,8 +12,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.seedstack.samples</groupId>
-    <artifactId>seed-samples</artifactId>
+    <groupId>org.seedstack.samples.w20</groupId>
+    <artifactId>w20-bridge-sample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
@@ -63,40 +63,20 @@
     <dependencies>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-security-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-cli</artifactId>
+            <artifactId>seed-web-undertow</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
             <artifactId>seed-rest-jersey2</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-business-theme</artifactId>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.1.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-testing</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.poms</groupId>
-            <artifactId>arquillian-composite</artifactId>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.restassured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>2.5.0</version>
         </dependency>
     </dependencies>
 </project>

@@ -1,0 +1,7 @@
+[org.seedstack.seed]
+core.application-id = demo
+core.application-name = W20 bridge demo
+rest.path = /api
+
+[demo]
+defaultName = World
