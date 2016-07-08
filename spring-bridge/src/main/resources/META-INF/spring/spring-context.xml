@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.seedstack.org/xml-schemas/spring-support http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.1.xsd">
+
+    <!-- This bean is created from plain Java classes -->
+    <bean id="paymentServiceFactory" class="org.seedstack.samples.spring.payment.PaymentServiceFactory">
+        <constructor-arg>
+            <list>
+                <bean class="org.seedstack.samples.spring.payment.impl.CreditCardPaymentService">
+                    <property name="minimum">
+                        <!-- This property is set with a value retrieved from Seed configuration -->
+                        <seed:configuration key="sample.payment.cc.minimum" default="10"/>
+                    </property>
+                </bean>
+                <bean class="org.seedstack.samples.spring.payment.impl.CashPaymentService"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <!-- This bean is created from a Seed instance obtained from the Guice injector -->
+    <seed:instance id="taxesService" class="org.seedstack.samples.spring.taxes.TaxesService" qualifier="fr"/>
+
+    <!-- This bean uses a Spring managed bean and Seed managed instance -->
+    <bean id="checkoutService" class="org.seedstack.samples.spring.CheckoutService">
+        <constructor-arg ref="paymentServiceFactory"/>
+        <constructor-arg ref="taxesService"/>
+    </bean>
+</beans>
+

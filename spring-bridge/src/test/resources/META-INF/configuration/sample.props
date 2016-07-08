@@ -1,0 +1,6 @@
+[sample.payment]
+cc.minimum = 20
+
+[sample.taxes]
+us.rate = 0.1
+france.rate = 0.2
