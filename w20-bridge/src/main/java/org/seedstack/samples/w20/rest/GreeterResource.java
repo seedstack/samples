@@ -7,7 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-@Path("/demo/greeter")
+@Path("/sample/greeter")
 public class GreeterResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)

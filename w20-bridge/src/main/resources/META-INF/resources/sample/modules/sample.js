@@ -4,9 +4,9 @@ define([
     '{angular-resource}/angular-resource'
 ], function (module, angular) {
     var config = module && module.config() || {},
-        demoModule = angular.module('demo', ['ngResource']);
+        sampleModule = angular.module('sample', ['ngResource']);
 
-    demoModule.controller('DemoController', ['$scope', '$resource', function ($scope, $resource) {
+    sampleModule.controller('SampleController', ['$scope', '$resource', function ($scope, $resource) {
         var greeterResource = $resource(config.apiBase + "greeter");
 
         $scope.name = config.defaultName || '';
@@ -22,6 +22,6 @@ define([
 
 
     return {
-        angularModules: ['demo']
+        angularModules: ['sample']
     }
 });

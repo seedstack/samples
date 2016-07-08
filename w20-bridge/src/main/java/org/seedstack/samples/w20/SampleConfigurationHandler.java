@@ -5,8 +5,8 @@ import org.seedstack.w20.spi.FragmentConfigurationHandler;
 
 import java.util.Map;
 
-public class DemoConfigurationHandler implements FragmentConfigurationHandler {
-    @Configuration(value = "demo.defaultName", mandatory = false)
+public class SampleConfigurationHandler implements FragmentConfigurationHandler {
+    @Configuration(value = "sample.defaultName", mandatory = false)
     private String defaultName;
 
     @Override
@@ -21,7 +21,7 @@ public class DemoConfigurationHandler implements FragmentConfigurationHandler {
 
     @Override
     public void overrideConfiguration(String fragmentName, String moduleName, Map<String, Object> sourceConfiguration) {
-        if (fragmentName.equals("demo") & moduleName.equals("demo") && defaultName != null) {
+        if (fragmentName.equals("sample") & moduleName.equals("sample") && defaultName != null) {
             sourceConfiguration.put("defaultName", defaultName);
         }
     }

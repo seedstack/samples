@@ -1,0 +1,20 @@
+{
+  "id": "sample",
+  "name": "W20 bridge sample fragment",
+  "modules": {
+    "sample": {
+      "path": "{sample}/modules/sample",
+      "autoload": true,
+      "config": {
+        "apiBase": "${seed-rest-path-slash:/}sample/"
+      }
+    }
+  },
+  "routes": {
+    "/greeter": {
+      "templateUrl": "{sample}/views/sample.html",
+      "controller": "SampleController",
+      "label": "Greeter"
+    }
+  }
+}

@@ -71,7 +71,12 @@
         </dependency>
         <dependency>
             <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-rest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
             <artifactId>w20-bridge-web-business-theme</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
