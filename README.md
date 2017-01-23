@@ -4,8 +4,13 @@ This meta-repository contains all SeedStack samples (with some as git submodules
 
 # Cloning
 
-You can initialize all submodules to the tip of their master branch and checkout it with the following commands:
+Clone the repository:
 
+    git clone https://github.com/seedstack/samples.git
+
+Go into the cloned repository and initialize all submodules to the tip of their master branch and checkout it with the following commands:
+
+    cd samples
     git submodule update --remote --recursive --init && git submodule foreach --recursive git checkout master
     
 Later, you may need to update all submodules to the tip of their master branch again:     
