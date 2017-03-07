@@ -7,40 +7,54 @@
  */
 package org.seedstack.samples.business.infrastructure;
 
-import org.seedstack.samples.business.domain.seller.Seller;
 import org.seedstack.business.domain.BaseRepository;
+import org.seedstack.samples.business.domain.seller.Seller;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class InMemorySellerRepository extends BaseRepository<Seller, Long> {
-
     private static final ConcurrentMap<Long, Seller> sellers = new ConcurrentHashMap<>();
 
     @Override
-    protected Seller doLoad(Long sellerId) {
+    public boolean exists(Long id) {
+        return sellers.containsKey(id);
+    }
+
+    @Override
+    public long count() {
+        return sellers.size();
+    }
+
+    @Override
+    public void clear() {
+        sellers.clear();
+    }
+
+    @Override
+    public Seller load(Long sellerId) {
         return sellers.get(sellerId);
     }
 
     @Override
-    protected void doDelete(Long sellerId) {
+    public void delete(Long sellerId) {
         sellers.remove(sellerId);
     }
 
     @Override
-    protected void doDelete(Seller seller) {
-        doDelete(seller.getEntityId());
+    public void delete(Seller seller) {
+        delete(seller.getEntityId());
     }
 
     @Override
-    protected void doPersist(Seller seller) {
+    public void persist(Seller seller) {
         if (sellers.putIfAbsent(seller.getEntityId(), seller) != null) {
             throw new IllegalStateException(String.format("Seller %d is already persisted", seller.getEntityId()));
         }
     }
 
     @Override
-    protected Seller doSave(Seller seller) {
+    public Seller save(Seller seller) {
         sellers.put(seller.getEntityId(), seller);
         return seller;
     }

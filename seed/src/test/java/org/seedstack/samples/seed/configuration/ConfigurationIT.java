@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) 2013-2016, The SeedStack authors <http://seedstack.org>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
 package org.seedstack.samples.seed.configuration;
 
 import org.junit.Test;
@@ -11,20 +18,20 @@ import javax.inject.Inject;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SeedITRunner.class)
-public class DiagnosticIT {
-    @Configuration("my-app.key")
+public class ConfigurationIT {
+    @Configuration("myApp.key")
     private String key;
-    @Configuration(value = "my-app.not-existing-key", defaultValue = "defaultValue")
-    private String notExistingKey;
-    @Configuration("my-app.macro")
+    @Configuration(value = "myApp.notExistingKey")
+    private String notExistingKey = "defaultValue";
+    @Configuration("myApp.macro")
     private String macro;
-    @Configuration("my-app.environment-variable")
+    @Configuration("myApp.environmentVariable")
     private String environmentVariable;
-    @Configuration("my-app.system-property")
+    @Configuration("myApp.systemProperty")
     private String systemProperty;
 
     @Inject
-    Application application;
+    private Application application;
 
     @Test
     public void testBasicConfiguration() throws Exception {
@@ -45,6 +52,6 @@ public class DiagnosticIT {
 
     @Test
     public void testProgrammaticAccess() throws Exception {
-        assertThat(application.getConfiguration().getString("my-app.key")).isEqualTo("value");
+        assertThat(application.getConfiguration().get(String.class, "myApp.key")).isEqualTo("value");
     }
 }

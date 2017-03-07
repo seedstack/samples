@@ -1,0 +1,9 @@
+{
+  "w20-core": {
+    "modules": {
+      "security": {
+        "autoLogin": true
+      }
+    }
+  }
+}

@@ -1,4 +1,0 @@
-# This bootstrap configuration file tells Seed to scan the org.seedstack.samples.cli package
-
-[org.seedstack.seed]
-base-packages = org.seedstack.samples.cli

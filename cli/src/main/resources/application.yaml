@@ -6,4 +6,5 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-# This configuration file can override the main configuration for integration tests
+application:
+  id: cli-sample

@@ -29,7 +29,7 @@
             <dependency>
                 <groupId>org.seedstack</groupId>
                 <artifactId>seedstack-bom</artifactId>
-                <version>15.11.2</version>
+                <version>16.11.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.3</version>
+            <version>1.1.6</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
