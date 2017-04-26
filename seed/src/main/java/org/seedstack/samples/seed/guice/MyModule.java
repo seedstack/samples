@@ -9,6 +9,7 @@ package org.seedstack.samples.seed.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.matcher.Matchers;
+import com.google.inject.name.Names;
 import org.aopalliance.intercept.MethodInvocation;
 import org.seedstack.seed.Install;
 
@@ -17,6 +18,7 @@ public class MyModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(Greeter.class);
+        bind(Greeter.class).annotatedWith(Names.named("toto")).toInstance(new Greeter());
 
         bindInterceptor(Matchers.any(), Matchers.annotatedWith(Trace.class), this::traceMethod);
     }

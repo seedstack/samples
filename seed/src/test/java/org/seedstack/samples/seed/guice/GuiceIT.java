@@ -11,11 +11,29 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seedstack.seed.it.SeedITRunner;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 @RunWith(SeedITRunner.class)
 public class GuiceIT {
+    @Inject
+    private Greeter greeter1;
+
+    @Inject
+    @Named("toto")
+    private Greeter greeter2;
+
     @Test
     @Trace
     public void testMethodTracingWorks() throws Exception {
 
+    }
+
+    @Test
+    public void testInjectionWorks() throws Exception {
+        assertThat(greeter1).isNotNull();
+        assertThat(greeter2).isNotNull();
     }
 }
