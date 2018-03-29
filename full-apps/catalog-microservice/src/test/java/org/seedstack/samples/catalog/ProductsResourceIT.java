@@ -8,9 +8,9 @@
 
 package org.seedstack.samples.catalog;
 
-import static com.jayway.restassured.RestAssured.expect;
+import static io.restassured.RestAssured.expect;
 
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 import java.net.URL;
 import org.assertj.core.api.Assertions;
 import org.jboss.arquillian.container.test.api.Deployment;

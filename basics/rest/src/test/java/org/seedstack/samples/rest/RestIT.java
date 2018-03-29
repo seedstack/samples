@@ -8,7 +8,7 @@
 
 package org.seedstack.samples.rest;
 
-import static com.jayway.restassured.RestAssured.expect;
+import static io.restassured.RestAssured.expect;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.net.URL;
@@ -37,6 +37,7 @@ public class RestIT {
         expect()
                 .statusCode(200)
                 .body(equalTo("Hello World from rest-sample!"))
+                .when()
                 .get(baseURL + "greeter/World");
     }
 }

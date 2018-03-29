@@ -122,7 +122,7 @@
             </properties>
         </profile>
         <profile>
-            <id>jdk9</id>
+            <id>jdk9-wsimport</id>
             <activation>
                 <jdk>9</jdk>
             </activation>
@@ -135,23 +135,14 @@
                             <version>2.3</version>
                             <configuration>
                                 <executable>${tool.wsimport}</executable>
+                                <xjcArgs>
+                                    <xjcArg>-encoding UTF-8</xjcArg>
+                                </xjcArgs>
                             </configuration>
                         </plugin>
                     </plugins>
                 </pluginManagement>
             </build>
-            <dependencies>
-                <dependency>
-                    <groupId>org.glassfish.jaxb</groupId>
-                    <artifactId>jaxb-jxc-jdk9</artifactId>
-                    <version>2.3.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>javax.activation</groupId>
-                    <artifactId>activation</artifactId>
-                    <version>1.1.1</version>
-                </dependency>
-            </dependencies>
         </profile>
     </profiles>
 </project>

@@ -8,7 +8,7 @@
 
 package org.seedstack.samples.web;
 
-import static com.jayway.restassured.RestAssured.expect;
+import static io.restassured.RestAssured.expect;
 
 import java.net.URL;
 import org.hamcrest.Matchers;
@@ -37,6 +37,7 @@ public class WebIT {
         expect()
                 .statusCode(200)
                 .body(Matchers.equalTo("Hello World from web-sample!"))
+                .when()
                 .get(baseURL + "my-servlet?name=World");
     }
 }
