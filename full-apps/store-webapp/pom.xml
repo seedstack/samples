@@ -1,0 +1,107 @@
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.seedstack.samples</groupId>
+        <artifactId>samples</artifactId>
+        <version>17.11.3-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
+    </parent>
+
+    <artifactId>store-webapp-sample</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.seedstack</groupId>
+                <artifactId>seedstack-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-capsule</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seedstack</groupId>
+            <artifactId>web-composite</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.business</groupId>
+            <artifactId>business-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.swagger</groupId>
+            <artifactId>swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-bootstrap-3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.jpa</groupId>
+            <artifactId>jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP-java6</artifactId>
+            <version>${HikariCP-java6.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${glassfish-javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

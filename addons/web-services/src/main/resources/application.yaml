@@ -1,0 +1,30 @@
+#
+# Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+web:
+  server:
+    port<heroku>: ${env.PORT}
+
+security:
+  users:
+    demo: demo
+
+webServices:
+  endpoints:
+    ProductInfo:
+      implementation: org.seedstack.samples.ws.ws.product.ProductInfoImpl
+      wsdl: META-INF/ws/wsdl/ProductInfo.wsdl
+      url: /product-info
+    CalculatorUsernameToken:
+      implementation: org.seedstack.samples.ws.ws.calculator.CalculatorUsernameTokenImpl
+      wsdl: META-INF/ws/wsdl/Calculator.wsdl
+      url: /calculator-username-token
+    CalculatorCertificate:
+      implementation: org.seedstack.samples.ws.ws.calculator.CalculatorCertificateImpl
+      wsdl: META-INF/ws/wsdl/Calculator.wsdl
+      url: /calculator-certificate

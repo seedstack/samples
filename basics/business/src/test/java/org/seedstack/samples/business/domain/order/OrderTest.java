@@ -1,17 +1,18 @@
-/**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
 package org.seedstack.samples.business.domain.order;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderTest {
     public static final long ORDER_ID = 1L;
@@ -25,13 +26,13 @@ public class OrderTest {
     }
 
     @Test
-    public void testInitialOrderState() throws Exception {
+    public void testInitialOrderState() {
         assertThat(underTest.getItems()).isEmpty();
         assertThat(underTest.getTotal()).isZero();
     }
 
     @Test
-    public void testAddItemIncreaseTheTotal() throws Exception {
+    public void testAddItemIncreaseTheTotal() {
         final int quantity = 5;
         final int productId = 1;
         final int price = 3;
@@ -42,7 +43,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testRemoveItemUpdateTheTotal() throws Exception {
+    public void testRemoveItemUpdateTheTotal() {
         final int quantity = 5;
         final int productId = 1;
         final int price = 3;
@@ -55,7 +56,7 @@ public class OrderTest {
     }
 
     @Test
-    public void itemQuantityShouldNotBeLowerThan1() throws Exception {
+    public void itemQuantityShouldNotBeLowerThan1() {
         try {
             new OrderItem(0, 1L, 50d);
         } catch (IllegalArgumentException e) {
@@ -64,7 +65,7 @@ public class OrderTest {
     }
 
     @Test
-    public void itemPriceShouldNotBeLowerThan0() throws Exception {
+    public void itemPriceShouldNotBeLowerThan0() {
         try {
             new OrderItem(1, 1L, -1);
         } catch (IllegalArgumentException e) {

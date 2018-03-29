@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.seedstack.samples</groupId>
+    <artifactId>samples</artifactId>
+    <version>17.11.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <seedstack.version>17.11.3</seedstack.version>
+        <seedstack-maven-plugin.version>2.7.0</seedstack-maven-plugin.version>
+
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
+        <logback.version>1.1.6</logback.version>
+        <hsqldb.version>2.3.3</hsqldb.version>
+        <rest-assured.version>2.5.0</rest-assured.version>
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <jsonassert.version>1.2.3</jsonassert.version>
+        <HikariCP-java6.version>2.3.5</HikariCP-java6.version>
+        <glassfish-javax.el.version>3.0.0</glassfish-javax.el.version>
+        <javax.websocket-api.version>1.1</javax.websocket-api.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.seedstack</groupId>
+                    <artifactId>seedstack-maven-plugin</artifactId>
+                    <version>${seedstack-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <id>failsafe-integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>failsafe-verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>basics/business</module>
+        <module>basics/cli</module>
+        <module>basics/configuration</module>
+        <module>basics/diagnostic</module>
+        <module>basics/guice</module>
+        <module>basics/plugin</module>
+        <module>basics/rest</module>
+        <module>basics/security</module>
+        <module>basics/web</module>
+        <module>basics/websocket</module>
+        <module>addons/spring-batch</module>
+        <module>addons/spring-bridge</module>
+        <module>addons/w20-bridge</module>
+        <module>addons/web-services</module>
+        <module>full-apps/catalog-microservice</module>
+        <module>full-apps/ddd</module>
+        <module>full-apps/store-webapp</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.seedstack</groupId>
+                <artifactId>seedstack-bom</artifactId>
+                <version>${seedstack.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

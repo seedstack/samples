@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<definitions xmlns:tns="http://seedstack.org/samples/ws/product"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             name="ProductInfoService"
+             targetNamespace="http://seedstack.org/samples/ws/product"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://seedstack.org/samples/ws/product"
+                        schemaLocation="../xsd/ProductInfo.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="productInfoById">
+        <part name="parameters" element="tns:productInfoById"/>
+    </message>
+    <message name="productInfoByIdResponse">
+        <part name="parameters" element="tns:productInfoByIdResponse"/>
+    </message>
+    <message name="BadProductRequest_Exception">
+        <part name="fault" element="tns:BadProductRequest"/>
+    </message>
+    <portType name="ProductInfoPortType">
+        <operation name="productInfoById">
+            <input message="tns:productInfoById"/>
+            <output message="tns:productInfoByIdResponse"/>
+            <fault message="tns:BadProductRequest_Exception" name="BadProductRequest_Exception"/>
+        </operation>
+    </portType>
+    <binding name="ProductInfoSOAPBinding" type="tns:ProductInfoPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="productInfoById">
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+            <fault name="BadProductRequest_Exception">
+                <soap:fault name="BadProductRequest_Exception" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="ProductInfoService">
+        <port name="ProductInfoPort" binding="tns:ProductInfoSOAPBinding">
+            <soap:address location="/product-info"/>
+        </port>
+    </service>
+</definitions>
+

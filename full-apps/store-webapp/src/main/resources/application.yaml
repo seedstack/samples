@@ -1,0 +1,56 @@
+#
+# Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+application:
+  id: store
+  name: SeedStack store management
+
+logging: INFO
+
+jdbc:
+  datasources:
+    store:
+      provider: org.seedstack.jdbc.internal.datasource.HikariDataSourceProvider
+      url: jdbc:hsqldb:mem:store
+      properties:
+        sql.enforce_strict_size: true
+
+jpa:
+  units:
+    store:
+      datasource: store
+      properties:
+        hibernate.dialect: org.hibernate.dialect.HSQLDialect
+        hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+        hibernate.cache.use_second_level_cache: true
+        hibernate.cache.use_query_cache: true
+        hibernate.hbm2ddl.auto: update
+
+security:
+  users:
+    demo: demo
+  web:
+    urls:
+      -
+        pattern: /**
+        filters: authcBasic
+
+web:
+  server<heroku>: ${env.PORT}
+
+classes:
+  org:
+    seedstack:
+      samples:
+        store:
+          domain:
+            model:
+              jpaUnit: store
+              defaultRepository: org.seedstack.jpa.Jpa
+          interfaces:
+            defaultAssembler: org.seedstack.business.modelmapper.ModelMapper

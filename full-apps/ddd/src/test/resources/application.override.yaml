@@ -1,0 +1,23 @@
+#
+# Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+logging:
+  level: INFO
+
+mongoDb:
+  clients:
+    main:
+      databases:
+        # In test mode, we substitute the dddSample database with dddSample-test aliased to the original name
+        # By doing this, we separate test data while retaining the original name when referenced from code
+        -dddSample:
+        dddSample-test:
+          alias: dddSample
+      uri: mongodb://localhost/dddSample-test
+
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<xs:schema xmlns:tns="http://seedstack.org/samples/ws/product"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           version="1.0"
+           targetNamespace="http://seedstack.org/samples/ws/product">
+
+    <xs:element name="BadProductRequest" nillable="true" type="tns:BadProductRequest"/>
+
+    <xs:element name="productInfoById" type="tns:productInfoById"/>
+
+    <xs:element name="productInfoByIdResponse" type="tns:productInfoByIdResponse"/>
+
+    <xs:complexType name="productInfoById">
+        <xs:sequence>
+            <xs:element name="idProduct" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productInfoByIdResponse">
+        <xs:sequence>
+            <xs:element name="return" type="tns:productInfo" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productInfo">
+        <xs:sequence>
+            <xs:element name="categoryId" type="xs:long" minOccurs="0"/>
+            <xs:element name="designation" type="xs:string" minOccurs="0"/>
+            <xs:element name="details" type="xs:string" minOccurs="0"/>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="picture" type="xs:string" minOccurs="0"/>
+            <xs:element name="price" type="xs:double" minOccurs="0"/>
+            <xs:element name="summary" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BadProductRequest">
+        <xs:sequence>
+            <xs:element name="message" type="xs:string" minOccurs="0"/>
+            <xs:element name="requestedProduct" type="xs:long" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+

@@ -1,24 +1,24 @@
-/**
- * Copyright (c) 2013-2015, The SeedStack authors <http://seedstack.org>
+/*
+ * Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.seedstack.samples.business.domain.order;
 
-import org.seedstack.business.domain.BaseAggregateRoot;
+package org.seedstack.samples.business.domain.order;
 
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import org.seedstack.business.domain.BaseAggregateRoot;
 
 public class Order extends BaseAggregateRoot<Long> {
     private final Long orderId;
     private final Long customerId;
-    private Date checkoutDate;
     private final Set<OrderItem> items = new HashSet<>();
+    private Date checkoutDate;
     private double total;
 
     public Order(Long orderId, Long customerId) {
@@ -27,7 +27,7 @@ public class Order extends BaseAggregateRoot<Long> {
     }
 
     @Override
-    public Long getEntityId() {
+    public Long getId() {
         return orderId;
     }
 
@@ -35,12 +35,12 @@ public class Order extends BaseAggregateRoot<Long> {
         return customerId;
     }
 
-    public void setCheckoutDate(Date checkoutDate) {
-        this.checkoutDate = checkoutDate;
-    }
-
     public Date getCheckoutDate() {
         return checkoutDate;
+    }
+
+    public void setCheckoutDate(Date checkoutDate) {
+        this.checkoutDate = checkoutDate;
     }
 
     public void addItem(OrderItem orderItem) {

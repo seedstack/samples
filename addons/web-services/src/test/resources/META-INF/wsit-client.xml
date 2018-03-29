@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<definitions xmlns:tns="http://seedstack.org/samples/ws/calculator"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy"
+             xmlns:wsc="http://schemas.sun.com/2006/03/wss/client"
+             xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy"
+             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://seedstack.org/samples/ws/calculator">
+    <!--Redefine the needed port types, bindings and services below.-->
+    <portType name="CalculatorPortType"/>
+    <binding name="CalculatorUsernameTokenBinding" type="tns:CalculatorPortType">
+        <!--By default the username and the token will be taken from the client request context.-->
+        <!--If you need to specify a custom username token policy, add it as below.-->
+        <!--<wsp:PolicyReference URI="#UsernameTokenClientPolicy"/>-->
+    </binding>
+    <binding name="CalculatorCertificateBinding" type="tns:CalculatorPortType">
+        <!--For certificate-based security, a custom policy must be defined to specify the key store and the trust store.-->
+        <wsp:PolicyReference URI="#CertificateClientPolicy"/>
+    </binding>
+    <service name="CalculatorService">
+        <port name="CalculatorUsernameTokenPort" binding="tns:CalculatorUsernameTokenBinding"/>
+        <port name="CalculatorCertificatePort" binding="tns:CalculatorCertificateBinding"/>
+    </service>
+
+    <!--When you need a custom username token policy, add it as below.-->
+    <wsp:Policy wsu:Id="UsernameTokenClientPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <!--Alternative 1: you can define a class for providing the username and the password.-->
+                <wsc:CallbackHandlerConfiguration wspp:visibility="private">
+                    <wsc:CallbackHandler name="usernameHandler"
+                                         classname="org.seedstack.samples.ws.fixtures.UsernameTokenClientHandler"/>
+                    <wsc:CallbackHandler name="passwordHandler"
+                                         classname="org.seedstack.samples.ws.fixtures.UsernameTokenClientHandler"/>
+                </wsc:CallbackHandlerConfiguration>
+                <!--Alternative 2: you can hard-code the username and the password as below.-->
+                <wsc:CallbackHandlerConfiguration wspp:visibility="private">
+                    <wsc:CallbackHandler name="usernameHandler" default="usernameToken"/>
+                    <wsc:CallbackHandler name="passwordHandler" default="passwordToken"/>
+                </wsc:CallbackHandlerConfiguration>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <!-- The policy used for certificate security -->
+    <wsp:Policy wsu:Id="CertificateClientPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <!-- Location of the key store, relative to the classpath root or the META-INF classpath directory.-->
+                <wsc:KeyStore wspp:visibility="private"
+                              type="JKS"
+                              location="client-store.jks"
+                              storepass="cspass"
+                              alias="myclientkey"
+                              keypass="ckpass"/>
+                <!-- Location of the trust store, relative to the classpath root or the META-INF classpath directory.-->
+                <wsc:TrustStore wspp:visibility="private"
+                                type="JKS"
+                                location="client-store.jks"
+                                peeralias="myservicekey"
+                                storepass="cspass"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

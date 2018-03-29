@@ -1,0 +1,41 @@
+#
+# Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+application:
+  id: catalog
+
+logging: INFO
+
+jdbc:
+  datasources:
+    catalog:
+      url: jdbc:hsqldb:mem:catalog
+
+jpa:
+  units:
+    catalogDomain:
+      datasource: catalog
+      properties:
+        hibernate.dialect: org.hibernate.dialect.HSQLDialect
+        hibernate.hbm2ddl.auto: update
+
+classes:
+  org:
+    seedstack:
+      samples:
+        catalog:
+          domain:
+            jpaUnit: catalogDomain
+
+web:
+  server:
+    port<heroku>: ${env.PORT}
+  cors:
+    enabled: true
+    properties:
+      supportedMethods: GET, POST, HEAD, OPTIONS, PUT, DELETE

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<definitions xmlns:tns="http://seedstack.org/samples/ws/calculator"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy"
+             xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+             xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"
+             xmlns:sc="http://schemas.sun.com/2006/03/wss/server"
+             xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy"
+             name="CalculatorService"
+             targetNamespace="http://seedstack.org/samples/ws/calculator"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <!--No custom type here -->
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="http://seedstack.org/samples/ws/calculator"
+                        schemaLocation="../xsd/Calculator.xsd"/>
+        </xsd:schema>
+    </types>
+
+    <message name="Add">
+        <part name="numberOne" type="xsd:int"/>
+        <part name="numbertwo" type="xsd:int"/>
+    </message>
+
+    <message name="Minus">
+        <part name="numberOne" type="xsd:int"/>
+        <part name="numbertwo" type="xsd:int"/>
+    </message>
+
+    <message name="AddResponse">
+        <part name="return" type="xsd:int"/>
+    </message>
+
+    <message name="MinusResponse">
+        <part name="return" type="xsd:int"/>
+    </message>
+
+    <message name="NumberFormat">
+        <part name="fault" element="tns:NumberFormat"/>
+    </message>
+
+
+    <portType name="CalculatorPortType">
+        <operation name="Add">
+            <input message="tns:Add"/>
+            <output message="tns:AddResponse"/>
+            <fault message="tns:NumberFormat" name="NumberFormat"/>
+        </operation>
+        <operation name="Minus">
+            <input message="tns:Minus"/>
+            <output message="tns:MinusResponse"/>
+        </operation>
+    </portType>
+
+
+    <binding name="CalculatorCertificateBinding" type="tns:CalculatorPortType">
+        <wsp:PolicyReference URI="#X509ServerPolicy"/>
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Add">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </input>
+            <output name="AddResponse">
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </output>
+            <fault name="NumberFormat">
+                <soap:fault name="NumberFormat" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="Minus">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <binding name="CalculatorUsernameTokenBinding" type="tns:CalculatorPortType">
+        <wsp:PolicyReference URI="#UsernameTokenServerPolicy"/>
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="Add">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </input>
+            <output name="AddResponse">
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </output>
+            <fault name="NumberFormat">
+                <soap:fault name="NumberFormat" use="literal"/>
+            </fault>
+        </operation>
+        <operation name="Minus">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </input>
+            <output>
+                <soap:body namespace="http://seedstack.org/samples/ws/calculator" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CalculatorService">
+        <port name="CalculatorCertificatePort" binding="tns:CalculatorCertificateBinding">
+            <documentation>Calculator</documentation>
+            <soap:address location="/calculator-certificate"/>
+        </port>
+        <port name="CalculatorUsernameTokenPort" binding="tns:CalculatorUsernameTokenBinding">
+            <documentation>Calculator</documentation>
+            <soap:address location="/calculator-username-token"/>
+        </port>
+    </service>
+
+    <wsp:Policy wsu:Id="UsernameTokenServerPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:SupportingTokens>
+                    <wsp:Policy>
+                        <sp:UsernameToken
+                                sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                            <wsp:Policy>
+                                <sp:WssUsernameToken11/>
+                            </wsp:Policy>
+                        </sp:UsernameToken>
+                    </wsp:Policy>
+                </sp:SupportingTokens>
+                <!--By default user/password validation will be delegated to Seed security subsystem (Shiro).-->
+                <!--If you want a specific user/password validation, you can specify a custom validator configuration as below.-->
+                <!--<sc:ValidatorConfiguration wspp:visibility="private">-->
+                <!--<sc:Validator name="usernameValidator"-->
+                <!--classname="org.seedstack.samples.ws.infrastructure.PlainTextPasswordValidator"/>-->
+                <!--</sc:ValidatorConfiguration>-->
+                <sp:Wss11/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+
+    <wsp:Policy wsu:Id="X509ServerPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <wsam:Addressing wsp:Optional="false"/>
+                <sp:AsymmetricBinding>
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:X509Token
+                                        sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token
+                                        sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/Never">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                        <sp:RequireIssuerSerialReference/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Strict/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp/>
+                        <sp:OnlySignEntireHeadersAndBody/>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:Basic128/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:EncryptSignature/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+                <sp:Wss10>
+                    <wsp:Policy>
+                        <sp:MustSupportRefIssuerSerial/>
+                    </wsp:Policy>
+                </sp:Wss10>
+
+                <!-- Add certificate location -->
+                <sc:KeyStore wspp:visibility="private"
+                             type="JKS"
+                             location="server-store.jks"
+                             storepass="sspass"
+                             alias="myservicekey"
+                             keypass="skpass"/>
+
+                <sc:TrustStore wspp:visibility="private"
+                               type="JKS"
+                               location="server-store.jks"
+                               storepass="sspass"/>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

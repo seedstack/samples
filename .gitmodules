@@ -1,4 +1,0 @@
-[submodule "w20-hypermedia"]
-	path = w20-hypermedia
-	url = https://github.com/seedstack/w20-hypermedia-sample.git
-	branch = master
