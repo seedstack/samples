@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>17.11.3-SNAPSHOT</version>
+        <version>18.4</version>
         <relativePath>../..</relativePath>
     </parent>
 

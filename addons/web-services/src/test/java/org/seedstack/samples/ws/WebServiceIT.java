@@ -11,49 +11,43 @@ package org.seedstack.samples.ws;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-import java.net.URL;
 import javax.inject.Inject;
 import javax.xml.ws.BindingProvider;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
-import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.seedstack.samples.ws.calculator.CalculatorPortType;
 import org.seedstack.samples.ws.calculator.CalculatorService;
 import org.seedstack.samples.ws.product.BadProductRequestException;
 import org.seedstack.samples.ws.product.ProductInfoPortType;
 import org.seedstack.samples.ws.product.ProductInfoService;
-import org.seedstack.seed.it.AbstractSeedWebIT;
+import org.seedstack.seed.Configuration;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
+import org.seedstack.seed.undertow.LaunchWithUndertow;
 
-public class WebServiceIT extends AbstractSeedWebIT {
+@RunWith(JUnit4Runner.class)
+@LaunchWithUndertow
+public class WebServiceIT {
     @Inject
     private CalculatorService calculatorService;
     @Inject
     private ProductInfoService productInfoService;
-
-    @Deployment
-    public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class);
-    }
+    @Configuration("web.runtime.baseUrl")
+    private String baseUrl;
 
     @Test
-    @RunAsClient
-    public void testSimple(@ArquillianResource URL baseURL) throws Exception {
+    public void testSimple() throws Exception {
         ProductInfoPortType productInfoPort = productInfoService.getProductInfoPort();
         ((BindingProvider) productInfoPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseURL + "product-info");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "product-info");
 
         assertThat(productInfoPort.productInfoById(1).getDesignation()).isEqualTo("Product #1");
     }
 
     @Test(expected = BadProductRequestException.class)
-    @RunAsClient
-    public void testSimpleWithException(@ArquillianResource URL baseURL) throws Exception {
+    public void testSimpleWithException() throws Exception {
         ProductInfoPortType productInfoPort = productInfoService.getProductInfoPort();
         ((BindingProvider) productInfoPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseURL + "product-info");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "product-info");
 
         productInfoPort.productInfoById(-1);
 
@@ -61,11 +55,10 @@ public class WebServiceIT extends AbstractSeedWebIT {
     }
 
     @Test
-    @RunAsClient
-    public void testUsernameToken(@ArquillianResource URL baseURL) throws Exception {
+    public void testUsernameToken() throws Exception {
         CalculatorPortType calculatorPort = calculatorService.getCalculatorUsernameTokenPort();
         ((BindingProvider) calculatorPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseURL + "calculator-username-token");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "calculator-username-token");
         // User name and password below will be used for username token policy.
         // You can omit them if you have a custom handler configured in the wsit-client.xml file.
         ((BindingProvider) calculatorPort).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "demo");
@@ -75,11 +68,10 @@ public class WebServiceIT extends AbstractSeedWebIT {
     }
 
     @Test
-    @RunAsClient
-    public void testCertificate(@ArquillianResource URL baseURL) throws Exception {
+    public void testCertificate() throws Exception {
         CalculatorPortType calculatorPort = calculatorService.getCalculatorCertificatePort();
         ((BindingProvider) calculatorPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseURL + "calculator-certificate");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "calculator-certificate");
 
         assertThat(calculatorPort.add(1, 1)).isEqualTo(2);
     }

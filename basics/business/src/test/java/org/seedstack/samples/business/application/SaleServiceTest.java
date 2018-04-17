@@ -33,9 +33,9 @@ public class SaleServiceTest {
     private Repository<Seller, Long> repository;
 
     @Before
+    @SuppressWarnings("unchecked")
     public void before() {
         domainRegistry = mock(DomainRegistry.class);
-        //noinspection unchecked
         repository = mock(Repository.class);
         underTest = new SaleServiceImpl(repository, domainRegistry);
     }

@@ -14,13 +14,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class CheckoutIT {
     @Inject
     @Named("checkoutService")
-    CheckoutService checkoutService;
+    private CheckoutService checkoutService;
 
     @Test
     public void testCheckout() {

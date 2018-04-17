@@ -13,9 +13,9 @@ import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seedstack.samples.spring.payment.PaymentServiceFactory;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class PaymentIT {
     @Inject
     @Named("paymentServiceFactory")

@@ -13,9 +13,9 @@ import javax.websocket.ClientEndpoint;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
-import org.seedstack.seed.web.internal.websocket.SeedClientEndpointConfigurator;
+import org.seedstack.seed.web.websocket.BaseClientEndpointConfigurator;
 
-@ClientEndpoint(configurator = SeedClientEndpointConfigurator.class)
+@ClientEndpoint(configurator = BaseClientEndpointConfigurator.class)
 public class ChatClient {
     private Session session;
     private Consumer<String> handler;

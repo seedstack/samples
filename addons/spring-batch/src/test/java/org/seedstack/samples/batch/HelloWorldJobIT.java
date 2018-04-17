@@ -9,15 +9,17 @@
 package org.seedstack.samples.batch;
 
 import org.junit.Test;
-import org.seedstack.seed.cli.WithCommandLine;
-import org.seedstack.seed.it.AbstractSeedIT;
+import org.junit.runner.RunWith;
+import org.seedstack.seed.cli.WithCliCommand;
+import org.seedstack.seed.testing.Arguments;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-public class HelloWorldJobIT extends AbstractSeedIT {
-
+@RunWith(JUnit4Runner.class)
+public class HelloWorldJobIT {
     @Test
-    @WithCommandLine(command = "run-job", args = {"--job", "helloWorldJob"}, expectedExitCode = 0)
+    @WithCliCommand(command = "run-job")
+    @Arguments({"--job", "helloWorldJob"})
     public void helloWorld() {
         // Batch post-execution assertions go here
     }
-
 }

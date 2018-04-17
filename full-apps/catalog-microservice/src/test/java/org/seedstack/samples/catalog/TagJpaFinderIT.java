@@ -17,9 +17,9 @@ import org.seedstack.business.finder.Range;
 import org.seedstack.business.finder.Result;
 import org.seedstack.samples.catalog.interfaces.rest.product.ProductRepresentation;
 import org.seedstack.samples.catalog.interfaces.rest.tags.TagFinder;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class TagJpaFinderIT {
 
     @Inject

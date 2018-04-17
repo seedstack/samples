@@ -15,11 +15,11 @@ import org.junit.runner.RunWith;
 import org.seedstack.business.assembler.FluentAssembler;
 import org.seedstack.samples.catalog.domain.model.product.Product;
 import org.seedstack.samples.catalog.interfaces.rest.product.ProductRepresentation;
-import org.seedstack.seed.it.SeedITRunner;
 import org.seedstack.seed.rest.hal.HalRepresentation;
 import org.seedstack.seed.rest.hal.Link;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class ProductAssemblerIT {
     @Inject
     private FluentAssembler fluently;

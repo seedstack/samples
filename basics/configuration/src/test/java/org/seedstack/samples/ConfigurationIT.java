@@ -16,9 +16,9 @@ import org.junit.runner.RunWith;
 import org.seedstack.samples.configuration.MyAppConfig;
 import org.seedstack.seed.Application;
 import org.seedstack.seed.Configuration;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class ConfigurationIT {
     @Configuration("myApp.key")
     private String key;

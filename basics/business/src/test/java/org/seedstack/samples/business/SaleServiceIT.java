@@ -19,13 +19,10 @@ import org.seedstack.samples.business.application.SaleService;
 import org.seedstack.samples.business.domain.order.Order;
 import org.seedstack.samples.business.domain.order.OrderItem;
 import org.seedstack.samples.business.domain.seller.Seller;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-/**
- * @author pierre.thirouin@ext.mpsa.com (Pierre Thirouin)
- */
-@RunWith(SeedITRunner.class)
-public class SaleServiceTest {
+@RunWith(JUnit4Runner.class)
+public class SaleServiceIT {
     private static final long SELLER_ID = 1111L;
     private static final long CUSTOMER_ID = 3333L;
     private static final long ORDER_ID = 2222L;

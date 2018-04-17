@@ -18,9 +18,9 @@ import org.seedstack.business.view.Page;
 import org.seedstack.business.view.PaginatedView;
 import org.seedstack.samples.catalog.interfaces.rest.catalog.ProductsFinder;
 import org.seedstack.samples.catalog.interfaces.rest.product.ProductRepresentation;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class ProductJpaFinderIT {
 
     @Inject

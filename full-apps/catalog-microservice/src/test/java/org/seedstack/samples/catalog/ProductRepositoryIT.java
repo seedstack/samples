@@ -18,12 +18,12 @@ import org.seedstack.jpa.JpaUnit;
 import org.seedstack.samples.catalog.application.Config;
 import org.seedstack.samples.catalog.domain.model.product.Price;
 import org.seedstack.samples.catalog.domain.model.product.Product;
-import org.seedstack.seed.it.SeedITRunner;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 import org.seedstack.seed.transaction.Transactional;
 
 @Transactional
 @JpaUnit(Config.JPA_UNIT)
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class ProductRepositoryIT {
     private static final String PRODUCT_NAME = "SeedStack in Action";
 

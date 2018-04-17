@@ -12,13 +12,13 @@ import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seedstack.seed.Configuration;
-import org.seedstack.seed.it.SeedITRunner;
 import org.seedstack.seed.security.AuthorizationException;
 import org.seedstack.seed.security.RequiresPermissions;
 import org.seedstack.seed.security.SecuritySupport;
 import org.seedstack.seed.security.WithUser;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
 
-@RunWith(SeedITRunner.class)
+@RunWith(JUnit4Runner.class)
 public class SecurityIT {
     @Configuration("myApp.country")
     private String country;

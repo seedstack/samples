@@ -11,34 +11,27 @@ package org.seedstack.samples.catalog;
 import static io.restassured.RestAssured.expect;
 
 import io.restassured.response.Response;
-import java.net.URL;
 import org.assertj.core.api.Assertions;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
-import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
-import org.seedstack.seed.it.AbstractSeedWebIT;
+import org.junit.runner.RunWith;
+import org.seedstack.seed.Configuration;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
+import org.seedstack.seed.undertow.LaunchWithUndertow;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-public class ProductsResourceIT extends AbstractSeedWebIT {
-    @ArquillianResource
-    private URL baseURL;
+@RunWith(JUnit4Runner.class)
+@LaunchWithUndertow
+public class ProductsResourceIT {
+    @Configuration("web.runtime.baseUrl")
+    private String baseUrl;
 
-    @Deployment
-    public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class);
-    }
-
-    @RunAsClient
     @Test
     public void hal_builder() throws JSONException {
         Response response = expect().statusCode(200).given().header("Content-Type", "application/hal+json")
-                .get(baseURL.toString() + "products?pageSize=10");
+                .get(baseUrl + "products?pageSize=10");
 
         JSONObject expectedResponse = expectedResponse();
 
@@ -61,23 +54,21 @@ public class ProductsResourceIT extends AbstractSeedWebIT {
         return obj;
     }
 
-    @RunAsClient
     @Test
     public void json_home() {
         Response response = expect().statusCode(200).given().header("Content-Type", "application/json-home")
-                .get(baseURL.toString());
+                .get(baseUrl);
 
         Assertions.assertThat(response.asString()).isNotEmpty();
     }
 
-    @RunAsClient
     @Test
     public void validate_pagination() {
         expect().statusCode(400).given().header("Content-Type", "application/hal+json")
-                .get(baseURL.toString() + "products?pageSize=0");
+                .get(baseUrl + "products?pageSize=0");
 
         expect().statusCode(400).given().header("Content-Type", "application/hal+json")
-                .get(baseURL.toString() + "products?pageIndex=-1");
+                .get(baseUrl + "products?pageIndex=-1");
     }
 
     private void expectedLinks(JSONObject obj) throws JSONException {

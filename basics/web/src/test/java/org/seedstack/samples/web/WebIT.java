@@ -10,34 +10,25 @@ package org.seedstack.samples.web;
 
 import static io.restassured.RestAssured.expect;
 
-import java.net.URL;
 import org.hamcrest.Matchers;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.container.test.api.RunAsClient;
-import org.jboss.arquillian.junit.Arquillian;
-import org.jboss.arquillian.test.api.ArquillianResource;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.seedstack.seed.Configuration;
+import org.seedstack.seed.testing.junit4.internal.JUnit4Runner;
+import org.seedstack.seed.undertow.LaunchWithUndertow;
 
-@RunWith(Arquillian.class)
+@RunWith(JUnit4Runner.class)
+@LaunchWithUndertow
 public class WebIT {
-    @ArquillianResource
-    private URL baseURL;
-
-    @Deployment
-    public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class);
-    }
+    @Configuration("web.runtime.baseUrl")
+    private String baseUrl;
 
     @Test
-    @RunAsClient
     public void testServlet() {
         expect()
                 .statusCode(200)
                 .body(Matchers.equalTo("Hello World from web-sample!"))
                 .when()
-                .get(baseURL + "my-servlet?name=World");
+                .get(baseUrl + "my-servlet?name=World");
     }
 }
