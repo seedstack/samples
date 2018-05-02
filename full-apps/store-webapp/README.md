@@ -1,4 +1,4 @@
-# Store Web application sample 
+# SeedStack classic Web application sample 
 
 A Web application project demonstrating the following features of SeedStack:
 
@@ -9,9 +9,7 @@ A Web application project demonstrating the following features of SeedStack:
 * Static resources serving,
 * Simple business code.
 
-## Running it
-
-If you have [Maven 3](http://maven.apache.org/) installed, in the `store-webapp` directory, run:
+## Run
 
     mvn seedstack:run
 
@@ -20,7 +18,7 @@ If you have [Maven 3](http://maven.apache.org/) installed, in the `store-webapp`
 Just point your favorite browser to the base URL.
 **Note that the application is secured with basic authentication. Use demo/demo credentials to log in.**
     
-# Copyright and license
+## Copyright and license
 
 This source code is copyrighted by [The SeedStack Authors](https://github.com/seedstack/seedstack/blob/master/AUTHORS) and
 released under the terms of the [Mozilla Public License 2.0](https://www.mozilla.org/MPL/2.0/).

@@ -1,19 +1,30 @@
-# SeedStack batch sample
+# SeedStack W20-bridge sample
 
-An "Hello World"-style batch job, demonstrating Spring Batch integration and CLI usage and testing.
+This sample demonstrates how to automatically integrate the W20 Web framework in a SeedStack application.
+
+## Build
+
+```bash
+mvn clean package
+```
 
 ## Run
 
-    mvn seedstack:run -Dargs="run-job --job helloWorldJob"
+```bash
+mvn seedstack:run
+```
     
 An alternative is to execute the [Capsule](http://www.capsule.io/) automatically created by the [SeedStack Maven plugin](http://seedstack.org/docs/maven-plugin/package/) on build:
 
-    mvn clean package
-    java -jar target/batch-sample-capsule.jar run-job --job helloWorldJob
-    
-## Usage
+```bash
+mvn clean package
+java -jar target/w20-bridge-sample-capsule.jar
+```
 
-This batch does nothing outside printing "Hello World!" on the console.
+Then point your browser to the following URL:
+
+    http://localhost:8080
+        
 
 ## Copyright and license
 
