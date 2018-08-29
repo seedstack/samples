@@ -24,9 +24,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.5</version>
                 <executions>
                     <execution>
                         <id>generate-product-info</id>
@@ -41,8 +41,9 @@
                                 <wsdlFile>ProductInfo.wsdl</wsdlFile>
                             </wsdlFiles>
                             <vmArgs>
-                                <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                                <vmArg>-Djavax.xml.accessExternalSchema=all -Dfile.encoding=UTF-8</vmArg>
                             </vmArgs>
+                            <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
                 </executions>
@@ -83,6 +84,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <!-- A javax.annotation.Nullable annotation must be in the classpath before Web-Service add-on 3.0.3 -->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
         </dependency>
 
         <dependency>
@@ -130,14 +137,11 @@
                 <pluginManagement>
                     <plugins>
                         <plugin>
-                            <groupId>org.jvnet.jax-ws-commons</groupId>
+                            <groupId>org.codehaus.mojo</groupId>
                             <artifactId>jaxws-maven-plugin</artifactId>
-                            <version>2.3</version>
+                            <version>2.5</version>
                             <configuration>
                                 <executable>${tool.wsimport}</executable>
-                                <xjcArgs>
-                                    <xjcArg>-encoding UTF-8</xjcArg>
-                                </xjcArgs>
                             </configuration>
                         </plugin>
                     </plugins>

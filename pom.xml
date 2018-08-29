@@ -24,7 +24,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <seedstack.version>${project.version}-SNAPSHOT</seedstack.version>
+        <seedstack.version>${project.version}.3</seedstack.version>
         <seedstack-maven-plugin.version>2.7.0</seedstack-maven-plugin.version>
 
         <spring.version>4.2.5.RELEASE</spring.version>
