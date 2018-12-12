@@ -6,7 +6,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-package org.seedstack.samples.web;
+package org.seedstack.samples.servlet;
 
 import static io.restassured.RestAssured.expect;
 
@@ -20,7 +20,7 @@ import org.seedstack.seed.undertow.LaunchWithUndertow;
 @RunWith(JUnit4Runner.class)
 @LaunchWithUndertow
 public class WebIT {
-    @Configuration("web.runtime.baseUrl")
+    @Configuration("runtime.web.baseUrl")
     private String baseUrl;
 
     @Test
@@ -29,6 +29,6 @@ public class WebIT {
                 .statusCode(200)
                 .body(Matchers.equalTo("Hello World from web-sample!"))
                 .when()
-                .get(baseUrl + "my-servlet?name=World");
+                .get(baseUrl + "/my-servlet?name=World");
     }
 }

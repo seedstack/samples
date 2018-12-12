@@ -14,7 +14,7 @@
 
     <groupId>org.seedstack.samples</groupId>
     <artifactId>samples</artifactId>
-    <version>18.7</version>
+    <version>18.11</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -25,12 +25,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <seedstack.version>${project.version}</seedstack.version>
-        <seedstack-maven-plugin.version>2.7.0</seedstack-maven-plugin.version>
+        <seedstack-maven-plugin.version>2.7.3</seedstack-maven-plugin.version>
 
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
         <logback.version>1.1.6</logback.version>
-        <hsqldb.version>2.3.3</hsqldb.version>
+        <hsqldb.version>2.4.1</hsqldb.version>
         <assertj.version>3.9.0</assertj.version>
         <rest-assured.version>3.0.7</rest-assured.version>
         <mockito.version>2.13.0</mockito.version>
@@ -85,7 +85,8 @@
         <module>basics/plugin</module>
         <module>basics/rest</module>
         <module>basics/security</module>
-        <module>basics/web</module>
+        <module>basics/servlet</module>
+        <module>basics/undertow</module>
         <module>basics/websocket</module>
         <module>addons/spring-batch</module>
         <module>addons/spring-bridge</module>

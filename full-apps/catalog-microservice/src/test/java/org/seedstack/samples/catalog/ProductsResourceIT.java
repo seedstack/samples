@@ -25,13 +25,13 @@ import org.skyscreamer.jsonassert.JSONAssert;
 @RunWith(JUnit4Runner.class)
 @LaunchWithUndertow
 public class ProductsResourceIT {
-    @Configuration("web.runtime.baseUrl")
+    @Configuration("runtime.web.baseUrl")
     private String baseUrl;
 
     @Test
     public void hal_builder() throws JSONException {
         Response response = expect().statusCode(200).given().header("Content-Type", "application/hal+json")
-                .get(baseUrl + "products?pageSize=10");
+                .get(baseUrl + "/products?pageSize=10");
 
         JSONObject expectedResponse = expectedResponse();
 
@@ -65,10 +65,10 @@ public class ProductsResourceIT {
     @Test
     public void validate_pagination() {
         expect().statusCode(400).given().header("Content-Type", "application/hal+json")
-                .get(baseUrl + "products?pageSize=0");
+                .get(baseUrl + "/products?pageSize=0");
 
         expect().statusCode(400).given().header("Content-Type", "application/hal+json")
-                .get(baseUrl + "products?pageIndex=-1");
+                .get(baseUrl + "/products?pageIndex=-1");
     }
 
     private void expectedLinks(JSONObject obj) throws JSONException {

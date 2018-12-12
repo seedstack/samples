@@ -33,8 +33,6 @@ classes:
             jpaUnit: catalogDomain
 
 web:
-  server:
-    port<heroku>: ${env.PORT}
   cors:
     enabled: true
     properties:

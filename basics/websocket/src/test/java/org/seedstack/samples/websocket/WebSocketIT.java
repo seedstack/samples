@@ -33,11 +33,11 @@ public class WebSocketIT {
     private ChatClient chatClient1;
     @Inject
     private ChatClient chatClient2;
-    @Configuration("web.runtime.contextPath")
+    @Configuration("runtime.web.servlet.contextPath")
     private String contextPath;
-    @Configuration("web.runtime.host")
+    @Configuration("runtime.web.server.host")
     private String host;
-    @Configuration("web.runtime.port")
+    @Configuration("runtime.web.server.port")
     private int port;
     private CountDownLatch countDownLatch1 = new CountDownLatch(1);
     private CountDownLatch countDownLatch2 = new CountDownLatch(1);

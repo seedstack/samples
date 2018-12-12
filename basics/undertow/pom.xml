@@ -15,26 +15,38 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>18.7</version>
+        <version>18.11</version>
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>web-sample</artifactId>
+    <artifactId>undertow-sample</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.seedstack</groupId>
+                <artifactId>seedstack-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-capsule</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-core</artifactId>
+            <artifactId>seed-web-undertow</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-web-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-            <scope>provided</scope>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
@@ -43,20 +55,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-web-undertow</artifactId>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

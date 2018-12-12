@@ -40,9 +40,6 @@ security:
         pattern: /**
         filters: authcBasic
 
-web:
-  server<heroku>: ${env.PORT}
-
 classes:
   org:
     seedstack:

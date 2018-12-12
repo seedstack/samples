@@ -20,7 +20,7 @@ import org.seedstack.seed.undertow.LaunchWithUndertow;
 @RunWith(JUnit4Runner.class)
 @LaunchWithUndertow
 public class RestIT {
-    @Configuration("web.runtime.baseUrl")
+    @Configuration("runtime.web.baseUrl")
     private String baseUrl;
 
     @Test
@@ -29,6 +29,6 @@ public class RestIT {
                 .statusCode(200)
                 .body(equalTo("Hello World from rest-sample!"))
                 .when()
-                .get(baseUrl + "greeter/World");
+                .get(baseUrl + "/greeter/World");
     }
 }

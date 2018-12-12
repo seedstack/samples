@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>18.7</version>
+        <version>18.11</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -84,12 +84,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-        </dependency>
-        <!-- A javax.annotation.Nullable annotation must be in the classpath before Web-Service add-on 3.0.3 -->
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>3.0.2</version>
         </dependency>
 
         <dependency>

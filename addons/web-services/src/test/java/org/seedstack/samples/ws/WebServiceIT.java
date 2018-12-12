@@ -31,14 +31,14 @@ public class WebServiceIT {
     private CalculatorService calculatorService;
     @Inject
     private ProductInfoService productInfoService;
-    @Configuration("web.runtime.baseUrl")
+    @Configuration("runtime.web.baseUrl")
     private String baseUrl;
 
     @Test
     public void testSimple() throws Exception {
         ProductInfoPortType productInfoPort = productInfoService.getProductInfoPort();
         ((BindingProvider) productInfoPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "product-info");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "/product-info");
 
         assertThat(productInfoPort.productInfoById(1).getDesignation()).isEqualTo("Product #1");
     }
@@ -47,7 +47,7 @@ public class WebServiceIT {
     public void testSimpleWithException() throws Exception {
         ProductInfoPortType productInfoPort = productInfoService.getProductInfoPort();
         ((BindingProvider) productInfoPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "product-info");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "/product-info");
 
         productInfoPort.productInfoById(-1);
 
@@ -58,7 +58,7 @@ public class WebServiceIT {
     public void testUsernameToken() throws Exception {
         CalculatorPortType calculatorPort = calculatorService.getCalculatorUsernameTokenPort();
         ((BindingProvider) calculatorPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "calculator-username-token");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "/calculator-username-token");
         // User name and password below will be used for username token policy.
         // You can omit them if you have a custom handler configured in the wsit-client.xml file.
         ((BindingProvider) calculatorPort).getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "demo");
@@ -71,7 +71,7 @@ public class WebServiceIT {
     public void testCertificate() throws Exception {
         CalculatorPortType calculatorPort = calculatorService.getCalculatorCertificatePort();
         ((BindingProvider) calculatorPort).getRequestContext()
-                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "calculator-certificate");
+                .put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, baseUrl + "/calculator-certificate");
 
         assertThat(calculatorPort.add(1, 1)).isEqualTo(2);
     }

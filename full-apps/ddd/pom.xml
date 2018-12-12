@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>18.7</version>
+        <version>18.11</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -40,9 +40,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.seedstack</groupId>
-            <artifactId>web-composite</artifactId>
-            <type>pom</type>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-rest-jersey2</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
