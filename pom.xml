@@ -29,12 +29,12 @@
 
         <spring.version>4.2.5.RELEASE</spring.version>
         <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
-        <logback.version>1.1.6</logback.version>
+        <logback.version>1.2.3</logback.version>
         <hsqldb.version>2.4.1</hsqldb.version>
-        <assertj.version>3.9.0</assertj.version>
+        <assertj.version>3.11.1</assertj.version>
         <rest-assured.version>3.0.7</rest-assured.version>
-        <mockito.version>2.13.0</mockito.version>
-        <hibernate.version>5.2.10.Final</hibernate.version>
+        <mockito.version>2.23.4</mockito.version>
+        <hibernate.version>5.3.7.Final</hibernate.version>
         <jsonassert.version>1.2.3</jsonassert.version>
         <HikariCP-java6.version>2.3.5</HikariCP-java6.version>
         <glassfish-javax.el.version>3.0.0</glassfish-javax.el.version>
@@ -133,25 +133,4 @@
             <url>http://dl.bintray.com/seedstack/jars</url>
         </repository>
     </repositories>
-
-    <profiles>
-        <profile>
-            <id>jdk9</id>
-            <activation>
-                <jdk>9</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.glassfish.jaxb</groupId>
-                    <artifactId>jaxb-jxc-jdk9</artifactId>
-                    <version>2.3.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>javax.activation</groupId>
-                    <artifactId>activation</artifactId>
-                    <version>1.1.1</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
 </project>

@@ -24,9 +24,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>com.helger.maven</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.6</version>
                 <executions>
                     <execution>
                         <id>generate-product-info</id>
@@ -101,46 +101,22 @@
 
     <profiles>
         <profile>
-            <id>win</id>
+            <id>jdk9</id>
             <activation>
-                <os>
-                    <family>windows</family>
-                </os>
+                <jdk>[9,)</jdk>
             </activation>
-            <properties>
-                <tool.wsimport>${java.home}/bin/wsimport.exe</tool.wsimport>
-            </properties>
-        </profile>
-        <profile>
-            <id>nix</id>
-            <activation>
-                <os>
-                    <family>!windows</family>
-                </os>
-            </activation>
-            <properties>
-                <tool.wsimport>${java.home}/bin/wsimport</tool.wsimport>
-            </properties>
-        </profile>
-        <profile>
-            <id>jdk9-wsimport</id>
-            <activation>
-                <jdk>9</jdk>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>jaxws-maven-plugin</artifactId>
-                            <version>2.5</version>
-                            <configuration>
-                                <executable>${tool.wsimport}</executable>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-jxc-jdk9</artifactId>
+                    <version>2.3.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>activation</artifactId>
+                    <version>1.1.1</version>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 </project>
