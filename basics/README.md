@@ -15,5 +15,6 @@ test class(es).
 | Plugin | [plugin](https://github.com/seedstack/samples/tree/master/basics/plugin) | Extending SeedStack with plugins  |
 | REST | [rest](https://github.com/seedstack/samples/tree/master/basics/rest) | JAX-RS and hypermedia |
 | Security | [security](https://github.com/seedstack/samples/tree/master/basics/security) | Application security |
-| Web | [web](https://github.com/seedstack/samples/tree/master/basics/web) | Web Servlets, Filters and Listeners |
+| Servlet | [servlet](https://github.com/seedstack/samples/tree/master/basics/servlet) | Web Servlets, Filters and Listeners |
+| Undertow | [undertow](https://github.com/seedstack/samples/tree/master/basics/undertow) | Undertow, HTTPS, SSL/TLS |
 | WebSocket | [websocket](https://github.com/seedstack/samples/tree/master/basics/websocket) | WebSockets |
