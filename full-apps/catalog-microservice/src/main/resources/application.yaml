@@ -11,6 +11,9 @@ application:
 
 logging: INFO
 
+rest:
+  jsonHome: true
+
 jdbc:
   datasources:
     catalog:

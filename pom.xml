@@ -14,7 +14,7 @@
 
     <groupId>org.seedstack.samples</groupId>
     <artifactId>samples</artifactId>
-    <version>18.11</version>
+    <version>19.4</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -25,16 +25,17 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <seedstack.version>${project.version}</seedstack.version>
-        <seedstack-maven-plugin.version>2.7.3</seedstack-maven-plugin.version>
+        <seedstack-maven-plugin.version>2.7.4</seedstack-maven-plugin.version>
 
-        <spring.version>4.2.5.RELEASE</spring.version>
-        <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
+        <spring.version>4.3.22.RELEASE</spring.version>
+        <spring-batch.version>3.0.10.RELEASE</spring-batch.version>
         <logback.version>1.2.3</logback.version>
         <hsqldb.version>2.4.1</hsqldb.version>
         <assertj.version>3.11.1</assertj.version>
         <rest-assured.version>3.0.7</rest-assured.version>
         <mockito.version>2.23.4</mockito.version>
-        <hibernate.version>5.3.7.Final</hibernate.version>
+        <hibernate.version>5.4.3.Final</hibernate.version>
+        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <jsonassert.version>1.2.3</jsonassert.version>
         <HikariCP-java6.version>2.3.5</HikariCP-java6.version>
         <glassfish-javax.el.version>3.0.0</glassfish-javax.el.version>
