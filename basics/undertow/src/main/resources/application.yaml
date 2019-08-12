@@ -15,10 +15,10 @@ web:
     https: true
 
 crypto:
+  ssl:
+    keystore: ssl
+    keyPassword: changeMe
   keystores:
-    master:
+    ssl:
       path: src/main/resources/master.jks
-      password: kspasswd
-      aliases:
-        ssl:
-          password: clientpasswd
+      password: changeMe

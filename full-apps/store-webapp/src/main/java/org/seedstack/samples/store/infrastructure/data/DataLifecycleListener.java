@@ -25,6 +25,9 @@ public class DataLifecycleListener implements LifecycleListener {
     @JpaUnit("store")
     public void started() {
         try (InputStream is = DataLifecycleListener.class.getResourceAsStream("/data.json")) {
+            if (is == null) {
+                throw new RuntimeException("Cannot find data.json at classpath root");
+            }
             dataManager.importData(is);
         } catch (IOException e) {
             throw new RuntimeException("Unable to import data", e);

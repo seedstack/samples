@@ -10,6 +10,7 @@ package org.seedstack.samples;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Optional;
 import javax.inject.Inject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +45,7 @@ public class ConfigurationIT {
 
     @Test
     public void testEnvironmentVariable() {
-        assertThat(environmentVariable).isEqualTo(System.getenv("JAVA_HOME"));
+        assertThat(environmentVariable).isEqualTo(Optional.ofNullable(System.getenv("JAVA_HOME")).orElse(""));
     }
 
     @Test
