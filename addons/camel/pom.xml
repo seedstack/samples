@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.seedstack.samples</groupId>
+        <artifactId>samples</artifactId>
+        <version>19.11</version>
+        <relativePath>../..</relativePath>
+    </parent>
+
+    <artifactId>camel-sample</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.seedstack</groupId>
+                <artifactId>seedstack-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>build-capsule</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-testing-junit4</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--The Seedstack plugin subject of this sample project-->
+        <dependency>
+            <groupId>org.seedstack.addons.camel</groupId>
+            <artifactId>camel</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+    </dependencies>
+</project>
