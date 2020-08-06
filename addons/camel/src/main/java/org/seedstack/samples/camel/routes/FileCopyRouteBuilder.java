@@ -12,9 +12,9 @@ import org.seedstack.seed.Configuration;
 
 public class FileCopyRouteBuilder extends RouteBuilder {
 
-    @Configuration("sample.route.from")
+    @Configuration("sample.routeFc.from")
     private String origin;
-    @Configuration("sample.route.to")
+    @Configuration("sample.routeFc.to")
     private String destination;
 
     @Override

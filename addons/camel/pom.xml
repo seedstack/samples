@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>19.11</version>
+        <version>20.7-SNAPSHOT</version>
         <relativePath>../..</relativePath>
     </parent>
 
@@ -39,6 +39,38 @@
     </build>
     <dependencies>
         <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-rest-jersey2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.business</groupId>
+            <artifactId>business-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+        </dependency>
+        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
@@ -48,11 +80,50 @@
             <artifactId>seed-testing-junit4</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--JMS And active MQ-->
+        <dependency>
+            <groupId>org.seedstack.addons.jms</groupId>
+            <artifactId>jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>jms-api</artifactId>
+            <version>1.1-rev-1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>5.15.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-broker</artifactId>
+            <version>5.15.9</version>
+        </dependency>
+        <!--
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>5.7.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        -->
         <!--The Seedstack plugin subject of this sample project-->
         <dependency>
             <groupId>org.seedstack.addons.camel</groupId>
             <artifactId>camel</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--Camel dependencies -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jms</artifactId>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>

@@ -8,8 +8,9 @@
 
 sample:
   folder:
-    origin: /TEMP/Camel/inbox
-    destination: /TEMP/Camel/outbox
+    tempFolder: ${sys.java\.io\.tmpdir}/Camel
+    origin: ${sample.folder.tempFolder}/inbox
+    destination: ${sample.folder.tempFolder}/outbox
   route:
     from: file:${sample.folder.origin}?noop=true
     to: file:${sample.folder.destination}

@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 
 @RunWith(SeedITRunner.class)
 public class FileCopyRouteIT {
@@ -32,9 +33,12 @@ public class FileCopyRouteIT {
     private File originFolder;
     @Configuration("sample.folder.destination")
     private File destinationFolder;
+    @Configuration("sample.folder.tempFolder")
+    private File rootTemporaryFolder;
 
     @Rule
     public TemporaryFolder tempFolder = new TemporaryFolder();
+
 
     /**
      * The file copy route is defined in {@link org.seedstack.samples.camel.routes.FileCopyRouteBuilder}
@@ -45,6 +49,7 @@ public class FileCopyRouteIT {
      */
     @Test
     public void testFileCopyRoute() throws IOException, InterruptedException {
+        logger.info("SMO test : {}", System.getProperty("java.io.tmpdir"));
         cleanTestDirectories();
         File dataFile=createAndFillDataFile();
 
@@ -62,6 +67,7 @@ public class FileCopyRouteIT {
         }
         finally {
             cleanTestDirectories();
+            deleteTempDirs();
         }
     }
     private File createAndFillDataFile(){
@@ -79,13 +85,28 @@ public class FileCopyRouteIT {
     }
 
     private void cleanTestDirectories(){
-        logger.info("Cleaning test directories");
         try {
+        //Preparing test dirs
+        if(!originFolder.exists()){
+            Files.createDirectories(originFolder.toPath());
+        }
+        if(!destinationFolder.exists()){
+                Files.createDirectories(destinationFolder.toPath());
+            }
+        logger.info("Cleaning test directories");
             FileUtils.cleanDirectory(originFolder);
             FileUtils.cleanDirectory(destinationFolder);
         }
         catch(IOException ioe){
             Assert.fail("IOException while cleaning test directories");
+        }
+    }
+
+    private void deleteTempDirs(){
+        try {
+            FileUtils.deleteDirectory(rootTemporaryFolder);
+        } catch (IOException e) {
+            logger.warn("Unable to delete directory : {} : {}"+rootTemporaryFolder.getPath(),e);
         }
     }
 }
