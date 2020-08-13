@@ -29,7 +29,6 @@
         <dependency>
             <groupId>org.seedstack.business</groupId>
             <artifactId>business-core</artifactId>
-            <version>4.3.2-SNAPSHOT</version>
         </dependency>
 
         <dependency>
