@@ -10,7 +10,7 @@ package org.seedstack.samples.ddd.domain.model.voyage;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import org.mongodb.morphia.annotations.Embedded;
+import dev.morphia.annotations.Embedded;
 import org.seedstack.business.domain.BaseValueObject;
 
 /**

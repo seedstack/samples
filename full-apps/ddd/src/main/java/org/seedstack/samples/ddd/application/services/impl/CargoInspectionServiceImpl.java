@@ -10,7 +10,8 @@ package org.seedstack.samples.ddd.application.services.impl;
 
 import java.util.Optional;
 import javax.inject.Inject;
-import org.apache.commons.lang.Validate;
+
+import org.apache.commons.lang3.Validate;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.seedstack.business.domain.Repository;

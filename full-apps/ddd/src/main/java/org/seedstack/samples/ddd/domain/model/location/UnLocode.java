@@ -10,7 +10,8 @@ package org.seedstack.samples.ddd.domain.model.location;
 
 import com.google.common.base.Preconditions;
 import java.util.regex.Pattern;
-import org.mongodb.morphia.annotations.Embedded;
+
+import dev.morphia.annotations.Embedded;
 import org.seedstack.business.domain.BaseValueObject;
 
 /**

@@ -10,8 +10,8 @@ package org.seedstack.samples.ddd.domain.model.location;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Id;
 import org.seedstack.business.domain.BaseAggregateRoot;
 import org.seedstack.business.domain.Identity;
 

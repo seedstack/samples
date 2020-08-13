@@ -16,7 +16,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import org.apache.commons.lang.Validate;
+
+import org.apache.commons.lang3.Validate;
 import org.seedstack.business.domain.BaseValueObject;
 
 /**

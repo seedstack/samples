@@ -12,7 +12,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
 import java.util.Date;
-import org.mongodb.morphia.annotations.Embedded;
+
+import dev.morphia.annotations.Embedded;
 import org.seedstack.business.domain.BaseValueObject;
 import org.seedstack.business.specification.Specification;
 import org.seedstack.samples.ddd.domain.model.location.UnLocode;

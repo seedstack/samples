@@ -11,8 +11,9 @@ package org.seedstack.samples.ddd.domain.model.voyage;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.apache.commons.lang.Validate;
-import org.mongodb.morphia.annotations.Embedded;
+
+import dev.morphia.annotations.Embedded;
+import org.apache.commons.lang3.Validate;
 import org.seedstack.business.domain.BaseValueObject;
 
 /**

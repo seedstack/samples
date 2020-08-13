@@ -11,8 +11,9 @@ package org.seedstack.samples.ddd.domain.model.cargo;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import org.apache.commons.lang.Validate;
-import org.mongodb.morphia.annotations.Embedded;
+
+import dev.morphia.annotations.Embedded;
+import org.apache.commons.lang3.Validate;
 import org.seedstack.business.domain.BaseValueObject;
 import org.seedstack.samples.ddd.domain.model.handling.HandlingEvent;
 import org.seedstack.samples.ddd.domain.model.location.Location;
