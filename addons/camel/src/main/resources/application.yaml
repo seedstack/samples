@@ -1,0 +1,29 @@
+application:
+  id: camel-sample
+  basePackages : org.seedstack.samples.camel
+
+web :
+  server:
+    port: 80
+  static:
+    enabled: true
+
+sample:
+  folder:
+    tempFolder: ${sys.java\.io\.tmpdir}/Camel
+    origin: ${sample.folder.tempFolder}/inbox
+    destination: ${sample.folder.tempFolder}/outbox
+  routeFc:
+    from: file:${sample.folder.origin}?noop=true
+    to: file:${sample.folder.destination}
+
+jms:
+  connectionFactories:
+    connectionFactory1:
+      vendorClass: org.apache.activemq.ActiveMQConnectionFactory
+      vendorProperties:
+        brokerURL: vm://localhost?broker.persistent=false
+  connections:
+    connection1:
+      connectionFactory: connectionFactory1
+      reconnectionDelay: 50
