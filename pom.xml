@@ -116,6 +116,7 @@
         <module>addons/w20-bridge</module>
         <module>addons/web-services</module>
         <module>addons/camel</module>
+        <module>addons/oauth</module>
         <module>full-apps/catalog-microservice</module>
         <module>full-apps/ddd</module>
         <module>full-apps/store-webapp</module>

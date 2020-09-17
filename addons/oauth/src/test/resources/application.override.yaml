@@ -1,0 +1,5 @@
+# This configuration file can override main configuration for integration tests
+
+logging:
+  level: INFO
+
