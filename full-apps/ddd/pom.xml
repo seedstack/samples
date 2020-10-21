@@ -16,7 +16,7 @@
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
         <version>20.7-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>ddd-sample</artifactId>

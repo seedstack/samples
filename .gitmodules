@@ -1,0 +1,4 @@
+[submodule "full-apps/catalog-microservice"]
+	path = full-apps/catalog-microservice
+	url = https://github.com/seedstack/catalog-microservice-sample
+	branch = master

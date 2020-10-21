@@ -16,7 +16,7 @@
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
         <version>20.7-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>web-services-sample</artifactId>
@@ -24,9 +24,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.helger.maven</groupId>
+                <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.3.3</version>
                 <executions>
                     <execution>
                         <id>generate-product-info</id>
@@ -98,25 +98,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>jdk9</id>
-            <activation>
-                <jdk>[9,)</jdk>
-            </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>javax.xml.bind</groupId>
-                    <artifactId>jaxb-api</artifactId>
-                    <version>2.3.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>javax.activation</groupId>
-                    <artifactId>activation</artifactId>
-                    <version>1.1.1</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
 </project>
