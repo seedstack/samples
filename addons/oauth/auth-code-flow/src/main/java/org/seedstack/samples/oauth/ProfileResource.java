@@ -7,7 +7,10 @@
  */
 package org.seedstack.samples.oauth;
 
+import org.apache.shiro.authz.UnauthenticatedException;
+import org.seedstack.seed.security.RequiresPermissions;
 import org.seedstack.seed.security.SecuritySupport;
+import org.seedstack.seed.security.principals.PrincipalProvider;
 import org.seedstack.seed.security.principals.Principals;
 import org.seedstack.seed.security.principals.SimplePrincipalProvider;
 
@@ -26,8 +29,13 @@ public class ProfileResource {
 
     @GET
     @Produces("application/json")
+    @RequiresPermissions("profile")
     public ProfileRepresentation sayHello() {
         ProfileRepresentation profileRepresentation = new ProfileRepresentation();
+        profileRepresentation.setUserId(Optional.ofNullable(securitySupport.getIdentityPrincipal())
+                .map(PrincipalProvider::get)
+                .map(Object::toString)
+                .orElseThrow(() -> new UnauthenticatedException("No user identity available")));
         Optional.ofNullable(securitySupport.getSimplePrincipalByName(Principals.FIRST_NAME))
                 .map(SimplePrincipalProvider::get)
                 .ifPresent(profileRepresentation::setFirstName);

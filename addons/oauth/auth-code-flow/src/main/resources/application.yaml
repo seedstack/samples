@@ -1,0 +1,33 @@
+#
+# Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+logging:
+  level: INFO
+
+application:
+  id: oauth-sample
+
+rest:
+  path: /api
+
+security:
+  realms: OAuthRealm
+  web:
+    urls:
+      - pattern: /profile.html
+        filters: oauth
+      - pattern: /callback
+        filters: oauthCallback
+      - pattern: /api/**
+        filters: oauth
+  oauth:
+    discoveryDocument: https://dev-9i-e7yy7.eu.auth0.com/.well-known/openid-configuration
+    redirect: http://localhost:8080/callback
+    scopes: [email openid profile]
+    clientId: dlaMugUsNXCkV9tuEeoYBHYNkiWY9Nqe
+    clientSecret: o7gTNxdRv76eEHQP1sp2fb9iTkPx6JKdTA9OjwfGUI6cgMw1-376EpD-dNI-iVWz

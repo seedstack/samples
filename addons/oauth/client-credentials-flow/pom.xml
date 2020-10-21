@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
@@ -6,25 +15,20 @@
     <parent>
         <groupId>org.seedstack.samples</groupId>
         <artifactId>samples</artifactId>
-        <version>20.7-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <version>20.11-SNAPSHOT</version>
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>oauth-sample</artifactId>
+    <artifactId>oauth-client-credentials-sample</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-rest-jersey2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.seedstack.seed</groupId>
-            <artifactId>seed-web-undertow</artifactId>
+            <artifactId>seed-cli</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seedstack.addons.oauth</groupId>
             <artifactId>oauth</artifactId>
-            <version>1.1.2</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>

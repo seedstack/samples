@@ -1,0 +1,25 @@
+#
+# Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+logging:
+  level: INFO
+
+application:
+  id: oauth-sample
+
+security:
+  realms: OAuthRealm
+  oauth:
+    discoveryDocument: https://dev-9i-e7yy7.eu.auth0.com/.well-known/openid-configuration
+    scopes: [email, profile, openid]
+    clientId: sXpRGGxj3N6ETt0m63Wji161PiBsJVuh
+    clientSecret: Jn2jAXp6mfa8-sKS3C29FwbXSeD5gIKkrlFG_vUq0IXhxwZOAULL2y4ucnbSD3gF
+    allowedAudiences: http://localhost:8080/api/profile
+    autoFetchUserInfo: true
+    customParameters:
+      audience: http://localhost:8080/api/profile

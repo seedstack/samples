@@ -10,11 +10,20 @@ package org.seedstack.samples.oauth;
 import java.util.Map;
 
 public class ProfileRepresentation {
+    private String userId;
     private String firstName;
     private String lastName;
     private String fullName;
     private String pictureUrl;
     private Map<String, String> principals;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getFirstName() {
         return firstName;

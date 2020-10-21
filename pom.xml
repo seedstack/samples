@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 
-    Copyright © 2013-2018, The SeedStack authors <http://seedstack.org>
+    Copyright © 2013-2020, The SeedStack authors <http://seedstack.org>
 
     This Source Code Form is subject to the terms of the Mozilla Public
     License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -14,7 +14,7 @@
 
     <groupId>org.seedstack.samples</groupId>
     <artifactId>samples</artifactId>
-    <version>20.7-SNAPSHOT</version>
+    <version>20.11-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -24,7 +24,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <seedstack.version>20.7</seedstack.version>
+        <seedstack.version>20.11-SNAPSHOT</seedstack.version>
         <seedstack-maven-plugin.version>2.7.5</seedstack-maven-plugin.version>
 
         <spring.version>4.3.22.RELEASE</spring.version>
@@ -116,7 +116,9 @@
         <module>addons/w20-bridge</module>
         <module>addons/web-services</module>
         <module>addons/camel</module>
-        <module>addons/oauth</module>
+        <module>addons/oauth/auth-code-flow</module>
+        <module>addons/oauth/auth-code-pkce-flow</module>
+        <module>addons/oauth/client-credentials-flow</module>
         <module>full-apps/catalog-microservice</module>
         <module>full-apps/ddd</module>
         <module>full-apps/store-webapp</module>
