@@ -19,12 +19,16 @@
         <relativePath>../../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>oauth-client-credentials-sample</artifactId>
+    <artifactId>client-credentials-flow-cli</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.seedstack.seed</groupId>
             <artifactId>seed-cli</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.feign</groupId>
+            <artifactId>feign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.seedstack.addons.oauth</groupId>

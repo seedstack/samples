@@ -12,22 +12,30 @@ logging:
 application:
   id: oauth-sample
 
+web:
+  server:
+    port: 8090
+
 rest:
   path: /api
 
+
+#Security configuration set to use the OAuth addon
 security:
   realms: OAuthRealm
   web:
     urls:
-      - pattern: /profile.html
-        filters: oauth
-      - pattern: /callback
+      - pattern: /api/callback
         filters: oauthCallback
       - pattern: /api/**
         filters: oauth
+
+ #OAuth addon configuration for an Authorization code flow usage
   oauth:
-    discoveryDocument: https://dev-9i-e7yy7.eu.auth0.com/.well-known/openid-configuration
-    redirect: http://localhost:8080/callback
-    scopes: [email openid profile]
-    clientId: dlaMugUsNXCkV9tuEeoYBHYNkiWY9Nqe
-    clientSecret: o7gTNxdRv76eEHQP1sp2fb9iTkPx6JKdTA9OjwfGUI6cgMw1-376EpD-dNI-iVWz
+    discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
+    redirect: http://localhost:8090/api/callback
+    scopes: [email openid profile CodeFlowScope]
+    clientId: SeedStackClientCodeFlow
+    clientSecret: 3545c109-9cf0-4ccf-82aa-89464f798844
+    allowedAudiences: account
+    autoFetchUserInfo: true

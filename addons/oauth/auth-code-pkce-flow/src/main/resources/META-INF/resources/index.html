@@ -5,10 +5,10 @@
 <script>
     // Configure your application and authorization server details
     const config = {
-        client_id: "RJEdonxWHIqduzWiXxy5kOIiDOI1x8zt",
-        redirect_uri: "http://localhost:8080/",
-        authorization_endpoint: "https://dev-9i-e7yy7.eu.auth0.com/authorize",
-        token_endpoint: "https://dev-9i-e7yy7.eu.auth0.com/oauth/token",
+        client_id: "SeedStackClientCodePkce",
+        redirect_uri: "http://localhost:8090/",
+        authorization_endpoint: "http://localhost:8080/auth/realms/SeedSamplesRealm/protocol/openid-connect/auth",
+        token_endpoint: "http://localhost:8080/auth/realms/SeedSamplesRealm/protocol/openid-connect/token",
         requested_scopes: "email profile openid"
     };
     var access_token = "";

@@ -9,18 +9,18 @@
 logging:
   level: INFO
 
-#The Sample's Authentication server listens on the 8080 port, we are using here port 8090
+application:
+  id: oauth-sample
+
+#As the authentication server is running on port 8080, this sample runs on port 8090
 web:
   server:
     port: 8090
 
-application:
-  id: oauth-sample
-
 rest:
   path: /api
 
-#The api is secured with OAuth configuration
+#Secure the api with Oauth
 security:
   realms: OAuthRealm
   web:
@@ -28,8 +28,14 @@ security:
       - pattern: /api/**
         filters: oauth
 
+#OAuth configuration for a bearer only configured client
+#In the authentication sample server, the SeedStackBearerOnlyClient do not proceed to authentication, but requests an access token
+#providing a previously obtained authentication token
+#The configuration does not need any client secret
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
+    #scopes: [email openid profile]
+    #clientId: SeedStackBearerOnlyClient
     allowedAudiences: account
-    autoFetchUserInfo: true
     treatScopesAsPermissions: true
+    #autoFetchUserInfo: true

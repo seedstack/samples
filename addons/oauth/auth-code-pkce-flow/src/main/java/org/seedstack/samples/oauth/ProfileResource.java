@@ -29,7 +29,8 @@ public class ProfileResource {
 
     @GET
     @Produces("application/json")
-    @RequiresPermissions("profile")
+    //@RequiresPermissions("profile")
+    @RequiresPermissions("pkceScope")
     public ProfileRepresentation sayHello() {
         ProfileRepresentation profileRepresentation = new ProfileRepresentation();
         profileRepresentation.setUserId(Optional.ofNullable(securitySupport.getIdentityPrincipal())

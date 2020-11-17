@@ -9,27 +9,21 @@
 logging:
   level: INFO
 
-#The Sample's Authentication server listens on the 8080 port, we are using here port 8090
-web:
-  server:
-    port: 8090
-
 application:
   id: oauth-sample
 
-rest:
-  path: /api
+#Using feign addon to call the secured API
+feign:
+  endpoints:
+    org.seedstack.samples.oauth.api.SecuredApi:
+      baseUrl: http://localhost:8090/api
+      decoder: feign.jackson.JacksonDecoder
 
-#The api is secured with OAuth configuration
+# Oauth configuration, only requires clientID & client secret
+# The authentication server must have been configured to accept credential flow from this client
 security:
   realms: OAuthRealm
-  web:
-    urls:
-      - pattern: /api/**
-        filters: oauth
-
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
-    allowedAudiences: account
-    autoFetchUserInfo: true
-    treatScopesAsPermissions: true
+    clientId: SeedStackClientCredentials
+    clientSecret: 8b8d20f8-281d-41b4-84ef-be9418b4a21c
