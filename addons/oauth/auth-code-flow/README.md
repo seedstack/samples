@@ -6,6 +6,8 @@ This samples shows how to configure Oauth addon in your seedstack application fo
 
 This sample runs a seedstack application exposing a protected resource.
 
+The OAuth configuration is backend side. When the request is made to a protected resource, the backend sends an authenticaton request to the identity provider and gets the response sending a http error code if user is not authenticated or has a denied access.
+
 The application.yaml configuration file show how the addon is configured for this use case.
 
 * url patterns are secured with oauth and oauthCallback filters
@@ -35,11 +37,11 @@ Run this maven project main class : org.seedstack.samples.oauth.Demo
 
 The seedstack application starts listening ton the 8090 port.
 
-From your browser, make a request to http://localhost:8090/api/profile
+From your browser, make a browse to http://localhost:8090 and click on *Click here to log in.*
 
 At this point, the auth server should request you for authentication.
 
 Enter the following credentials :
  
 * **User "John Doe" password : "P4$$word"** : Pre-configured user with agreement on the required "CodeFlowScope" scope. The displayed page should provide information on the user.
-* **User "Jane Smith" password : "P4$$word"** : pre-configured user with no agreement on the required "CodeFlowScope" scope, when refusing the scope, you should be redirected to an access denied page.
+* **User "Jane Smith" password : "P4$$word"** : pre-configured user with no agreement on the required "CodeFlowScope" scope, **refuse the scope**, you should see an error page.

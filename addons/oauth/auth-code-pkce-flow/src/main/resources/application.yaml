@@ -28,8 +28,10 @@ security:
       - pattern: /api/**
         filters: oauth
 
+#The OAuth configuration required for a PKCE exchange
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
     allowedAudiences: account
+    scopes: [openid, email, profile]
     autoFetchUserInfo: true
     treatScopesAsPermissions: true

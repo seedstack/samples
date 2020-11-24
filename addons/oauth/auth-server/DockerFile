@@ -1,0 +1,6 @@
+FROM jboss/keycloak
+ENV KEYCLOAK_USER=admin
+ENV KEYCLOAK_PASSWORD=admin
+ENV KEYCLOAK_IMPORT=/tmp/SeedSamplesRealm.json
+EXPOSE 8080
+COPY SeedSamplesRealm.json /tmp
