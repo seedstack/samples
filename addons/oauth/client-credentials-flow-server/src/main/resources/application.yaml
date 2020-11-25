@@ -28,14 +28,10 @@ security:
       - pattern: /api/**
         filters: oauth
 
-#OAuth configuration for a bearer only configured client
-#In the authentication sample server, the SeedStackBearerOnlyClient do not proceed to authentication, but requests an access token
-#providing a previously obtained authentication token
-#The configuration does not need any client secret
+#The request is having a token in its Authorization header
+#This configuration is for the oauth addon to validate the token
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
-    #scopes: [email openid profile]
-    #clientId: SeedStackBearerOnlyClient
     allowedAudiences: account
     treatScopesAsPermissions: true
-    #autoFetchUserInfo: true
+

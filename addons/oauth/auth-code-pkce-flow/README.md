@@ -21,7 +21,7 @@ In this sample, the frontend configuration set is :
 *authorization_endpoint : Auth server endpoint for authentication
 *token_endpoint : Auth server end point for tokens
 *requested_scopes : The user's requested scopes
-*audience : the requeted audience
+*audience : the request audience
 *code_challenge_method: The crypting method for the code challenge verification
 
 ###Backend configuration
@@ -33,7 +33,7 @@ The resource if protected using the oauth security filter. As the authentication
 The OAuth addon parameters are set :
 *discoveryDocument : the auth server openId discovery document
 *allowedAudiences : the concerned audiences for this resource
-*scopes : the users's requested scopes
+*scopes : the user's requested scopes for this sample pkceScope is required
 
 ##Running the sample
 
@@ -48,12 +48,13 @@ This sample starts a server listening on the 8090 port. Make sure no other appli
 
 Run this maven project main class : org.seedstack.samples.oauth.Demo
 
-The seedstack application starts listening ton the 8090 port.
+The seedStack application starts listening ton the 8090 port.
 
-From your browser, make a request to http://localhost:8090 and clik on "Click to Sign In"
+From your browser, make a request to http://localhost:8090 and click on "Click to Sign In"
 
 At this point, the auth server should request you for authentication.
 
 Enter the following credentials :
  
-* **User "John Doe" password : "P4$$word"** : Pre-configured user. The displayed page should provide information on the user.
+* **User "John Doe" password : "P4$$word"** : Pre-configured user with accurate scope. The displayed page should provide information on the user.
+* **User "Jane Smith" password : "P4$$word"** : Pre-configured user not associated to the required scope. The displayed page should be an access denied page.

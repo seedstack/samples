@@ -29,9 +29,11 @@ security:
         filters: oauth
 
 #The OAuth configuration required for a PKCE exchange
+#The client secret and ID are managed frontend side.
+#The PKCE sample configuration validates the bearer token coming with the request Authorization header
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
-    allowedAudiences: account
-    scopes: [openid, email, profile]
+    allowedAudiences: ["http://localhost:8090/api/profile","account"]
+    scopes: [openid, email, profile, pkceScope]
     autoFetchUserInfo: true
     treatScopesAsPermissions: true

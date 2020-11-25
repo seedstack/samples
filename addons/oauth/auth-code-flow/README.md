@@ -14,7 +14,7 @@ The application.yaml configuration file show how the addon is configured for thi
 * the addon configuration shows the required items :
     * discoveryDocument : auth server OpenID end-points
     * redirect : callback redirect
-    * scopes : Required scopes
+    * scopes : Required scopes, for this sample CodeFlowScope is required
     * clientId : The auth-server registered client identifier related to this this sample
     * clientSecret : The auth-server registered client secret
     * allowedAudiences : Authorizes the auth-server "account" audience    
