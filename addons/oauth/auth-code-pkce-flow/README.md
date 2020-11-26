@@ -1,6 +1,6 @@
-#OAuth addon - Authorization Code Flow with Proof Key for Code Exchange (PKCE) sample
+# OAuth addon - Authorization Code Flow with Proof Key for Code Exchange (PKCE) sample
 
-##Sample use case
+## Sample use case
 
 This samples shows how to configure Oauth addon in your seedstack application for an Authorization Code Flow with Proof Key for Code Exchange usage.
 
@@ -10,7 +10,7 @@ The Oauth configuration is both on frontend and backend sides.
 
 The Frontend client proceeds to authentication with the auth server and then requests the backend with an auth token. The Backend validates the token an gives access (or not ) to the protected resource.
 
-###Frontend configuration
+### Frontend configuration
 
 Not part of seedstack, the frontend oauth configuration depends on the used technology.
 
@@ -24,7 +24,7 @@ In this sample, the frontend configuration set is :
 *audience : the request audience
 *code_challenge_method: The crypting method for the code challenge verification
 
-###Backend configuration
+### Backend configuration
 
 The application.yaml configuration file show how the addon is configured for this use case.
 
@@ -35,16 +35,16 @@ The OAuth addon parameters are set :
 *allowedAudiences : the concerned audiences for this resource
 *scopes : the user's requested scopes for this sample pkceScope is required
 
-##Running the sample
+## Running the sample
 
-###Prerequisite
+### Prerequisite
 
 In order to run this sample, the provided authentication and access management server must be running. (Please see [this page](https://github.com/seedstack/samples/tree/master/addons/oauth) for more details)
 
 This sample starts a server listening on the 8090 port. Make sure no other application is using this port.
 
 
-###Run the sample
+### Run the sample
 
 Run this maven project main class : org.seedstack.samples.oauth.Demo
 

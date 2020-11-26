@@ -1,6 +1,6 @@
-#OAuth addon - Authorization code flow sample
+# OAuth addon - Authorization code flow sample
 
-##Sample use case
+## Sample use case
 
 This samples shows how to configure Oauth addon in your seedstack application for an Authorization code flow usage.
 
@@ -23,15 +23,15 @@ The application.yaml configuration file show how the addon is configured for thi
 The org.seedstack.samples.oauth.ProfileResource class is the secured end-point of this sample.
 
 
-##Running the sample
+## Running the sample
 
-###Prerequisite
+### Prerequisite
 
 In order to run this sample, the provided authentication and access management server must be running. (Please see [this page](https://github.com/seedstack/samples/tree/master/addons/oauth) for more details)
 
 This sample starts a server listening on the 8090 port. Make sure no other application is using this port.
 
-###Run the sample
+### Run the sample
 
 Run this maven project main class : org.seedstack.samples.oauth.Demo
 
