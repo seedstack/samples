@@ -11,32 +11,32 @@ sure docker is installed on your workstation and docker daemon is running.
 
 ### Building the auth server docker image
 
-In the [auth-server](https://github.com/seedstack/samples/tree/master/addons/oauth/auth-server) directory stand the 
-required files to build the auth server image :
+In this directory stand the required files to build the auth server image :
 
-* DockerFile : A ready to use docker image building script
-* seedstack-oauth-samples.json : File containing the necessary configuration for running the samples (Realm / clients / Users definition)
+* `Dockerfile`: a ready to use docker image building script.
+* `SeedStackRealm.json`: file containing the necessary configuration for running the samples (Realm / clients / Users definition)
 
-To build the auth server image, use the following docker command from within the auth-server directory :
+There is no need to build the image yourself as it is available on the **Docker Hub**, but you can with the following 
+command:
+
 ```
 docker build -t "seedstack/auth-server:1.0" .
 ```
 
 ### Running the auth server
 
-The auth server is listening on the 8080 port, before running it, ensure that no other application is listening on this same port.
-
-To enable the auth server, just start a container running the previously built image:
+The auth server is listening on the 8080 port. Before running it, ensure that no other application is listening on the 
+same port. To enable the auth server, just start the container by running:
 
 ```
 docker run -p 8080:8080 seedstack/auth-server:1.0
 ```
 
-To check that the auth server is running correctly, browse http://localhost:8080/auth, you should see a Keycloack welcome page.
+To check that the auth server is running correctly, browse http://localhost:8080/auth, you should see a Keycloack 
+welcome page.
 
-Ensure that the setting have been correctly imported by connecting to the administration console with the admin/admin credentials.
-You should see the "SeedSamplesRealm" configured realm. 
-
+Ensure that the setting have been correctly imported by connecting to the administration console with the admin/admin 
+credentials. You should see the "SeedSamplesRealm" configured realm. 
 
 ## Use cases
 
