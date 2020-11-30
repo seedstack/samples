@@ -6,11 +6,13 @@ The samples in this directory demonstrate how to configure and use SeedStack's O
 
 The OAuth addon samples use a pre-configured authentication and access management demo server.
 
-We use [docker](https://www.docker.com/) to build and run this authorization server from within a container, please make sure docker is installed on your workstation and docker daemon is running.
+We use [docker](https://www.docker.com/) to build and run this authorization server from within a container, please make 
+sure docker is installed on your workstation and docker daemon is running.
 
 ### Building the auth server docker image
 
-In the [auth-server](https://github.com/seedstack/samples/tree/master/addons/oauth/auth-server) directory stand the required files to build the auth server image :
+In the [auth-server](https://github.com/seedstack/samples/tree/master/addons/oauth/auth-server) directory stand the 
+required files to build the auth server image :
 
 * DockerFile : A ready to use docker image building script
 * seedstack-oauth-samples.json : File containing the necessary configuration for running the samples (Realm / clients / Users definition)

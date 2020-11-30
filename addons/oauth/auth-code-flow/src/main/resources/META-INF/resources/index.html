@@ -75,7 +75,7 @@
                 if (win.document.URL.startsWith("http://localhost:8090")) {
                     clearInterval(pollTimer);
                     var response = JSON.parse(win.document.documentElement.innerText);
-                    console.log("Authrentication done");
+                    console.log("Authentication done");
                     showSuccessResult(response);
                     win.close();
                 }

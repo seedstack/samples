@@ -7,8 +7,8 @@
  */
 package org.seedstack.samples.oauth;
 
-import org.seedstack.oauth.spi.OAuthAuthenticationToken;
-import org.seedstack.oauth.spi.OAuthService;
+import org.seedstack.oauth.OAuthAuthenticationToken;
+import org.seedstack.oauth.OAuthService;
 import org.seedstack.samples.oauth.api.AccountInfo;
 import org.seedstack.samples.oauth.api.SecuredApi;
 import org.seedstack.samples.oauth.error.OAuthCredentialErrorCode;
@@ -41,7 +41,7 @@ public class AccountInfoCommandLineHandler implements CommandLineHandler {
         OAuthAuthenticationToken token = requestAuthenticationToken();
 
         //Step 2 - Request secured api with bearer token
-        String accountId=callSecuredApi(token).getAccountId();
+        String accountId = callSecuredApi(token).getAccountId();
 
         logger.info("Secured call response : {}", accountId);
         return 0;
@@ -50,13 +50,14 @@ public class AccountInfoCommandLineHandler implements CommandLineHandler {
     /**
      * Request the Authentication token from the Auth server
      * Uses the Oauth configuration, more more information to set here.
+     *
      * @return OAuthAuthenticationToken Authentication token
      */
-    private OAuthAuthenticationToken requestAuthenticationToken(){
+    private OAuthAuthenticationToken requestAuthenticationToken() {
         logger.info("Requesting authentication token.");
         OAuthAuthenticationToken token = oAuthService.requestTokensWithClientCredentials();
-        if(token==null){
-            throw SeedException.wrap(new OAuthSampleException("Authentication token is null"),OAuthCredentialErrorCode.TOKEN_NOT_RECEIVED);
+        if (token == null) {
+            throw SeedException.wrap(new OAuthSampleException("Authentication token is null"), OAuthCredentialErrorCode.TOKEN_NOT_RECEIVED);
         }
         logger.info("Authentication token received.");
         return token;
@@ -64,10 +65,11 @@ public class AccountInfoCommandLineHandler implements CommandLineHandler {
 
     /**
      * Call the secured API with an authentication token
+     *
      * @param token The authentication token previously requested from Auth server
      * @return AccountInfo the account information response
      */
-    private AccountInfo callSecuredApi(OAuthAuthenticationToken token){
+    private AccountInfo callSecuredApi(OAuthAuthenticationToken token) {
         logger.info("Calling secured web service");
         return securedApi.accountInfo(token.getAccessToken());
     }

@@ -33,5 +33,4 @@ security:
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
     allowedAudiences: account
-    treatScopesAsPermissions: true
 

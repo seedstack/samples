@@ -25,7 +25,9 @@ security:
   realms: OAuthRealm
   web:
     urls:
-      - pattern: /api/callback
+      - pattern: /logout
+        filters: logout
+      - pattern: /callback
         filters: oauthCallback
       - pattern: /api/**
         filters: oauth
@@ -33,7 +35,7 @@ security:
  #OAuth addon configuration for an Authorization code flow usage
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
-    redirect: http://localhost:8090/api/callback
+    redirect: http://localhost:8090/callback
     scopes: [email openid profile CodeFlowScope]
     clientId: SeedStackClientCodeFlow
     clientSecret: 3545c109-9cf0-4ccf-82aa-89464f798844
