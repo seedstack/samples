@@ -9,12 +9,10 @@ package org.seedstack.samples.oauth;
 
 import org.seedstack.seed.core.Seed;
 
-public class Demo {
-    /**
-     * Launches the SeedStack demo server exposing the protected request
-     * @param args Main arguments
-     * @throws Exception In case of problems
-     */
+/**
+ * Starts the web server, enabling the api/accountInfo secured request
+ */
+public class StartMeFirst {
     public static void main(String[] args) throws Exception {
         Seed.getLauncher().launch(args);
     }

@@ -24,13 +24,20 @@ import java.util.Optional;
 
 @Path("/profile")
 public class ProfileResource {
+    /**Inject security support to access user details*/
     @Inject
     private SecuritySupport securitySupport;
 
+
+    /**
+     * This is the protected resource.<br>
+     * For this sample it only returns a profile representation of the connected user
+     * @return ProfileRepresentation
+     */
     @GET
     @Produces("application/json")
-    @RequiresPermissions("profile")
-    public ProfileRepresentation sayHello() {
+    @RequiresPermissions("pkceScope")
+    public ProfileRepresentation profile() {
         ProfileRepresentation profileRepresentation = new ProfileRepresentation();
         profileRepresentation.setUserId(Optional.ofNullable(securitySupport.getIdentityPrincipal())
                 .map(PrincipalProvider::get)

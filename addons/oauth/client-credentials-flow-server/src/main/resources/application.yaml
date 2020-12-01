@@ -12,6 +12,7 @@ logging:
 application:
   id: oauth-sample
 
+#As the authentication server is running on port 8080, this sample runs on port 8090
 web:
   server:
     port: 8090
@@ -19,25 +20,17 @@ web:
 rest:
   path: /api
 
-
-#Security configuration set to use the OAuth addon
+#Secure the api with Oauth
 security:
   realms: OAuthRealm
   web:
     urls:
-      - pattern: /logout
-        filters: logout
-      - pattern: /callback
-        filters: oauthCallback
       - pattern: /api/**
         filters: oauth
 
- #OAuth addon configuration for an Authorization code flow usage
+#The request is having a token in its Authorization header
+#This configuration is for the oauth addon to validate the token
   oauth:
     discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
-    redirect: http://localhost:8090/callback
-    scopes: [email openid profile CodeFlowScope]
-    clientId: SeedStackClientCodeFlow
-    clientSecret: 3545c109-9cf0-4ccf-82aa-89464f798844
     allowedAudiences: account
-    autoFetchUserInfo: true
+

@@ -25,7 +25,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <seedstack.version>20.11-SNAPSHOT</seedstack.version>
-        <seedstack-maven-plugin.version>2.7.5</seedstack-maven-plugin.version>
+        <seedstack-maven-plugin.version>2.7.6</seedstack-maven-plugin.version>
 
         <spring.version>4.3.22.RELEASE</spring.version>
         <spring-batch.version>3.0.10.RELEASE</spring-batch.version>
@@ -35,7 +35,7 @@
         <rest-assured.version>3.0.7</rest-assured.version>
         <mockito.version>2.23.4</mockito.version>
         <hibernate.version>5.4.10.Final</hibernate.version>
-        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.1.6.Final</hibernate-validator.version>
         <jsonassert.version>1.2.3</jsonassert.version>
         <HikariCP-java6.version>2.3.5</HikariCP-java6.version>
         <glassfish-javax.el.version>3.0.0</glassfish-javax.el.version>
@@ -118,7 +118,8 @@
         <module>addons/camel</module>
         <module>addons/oauth/auth-code-flow</module>
         <module>addons/oauth/auth-code-pkce-flow</module>
-        <module>addons/oauth/client-credentials-flow</module>
+        <module>addons/oauth/client-credentials-flow-server</module>
+        <module>addons/oauth/client-credentials-flow-cli</module>
         <module>full-apps/catalog-microservice</module>
         <module>full-apps/ddd</module>
         <module>full-apps/store-webapp</module>
@@ -131,7 +132,7 @@
                 <artifactId>seedstack-bom</artifactId>
                 <version>${seedstack.version}</version>
                 <type>pom</type>
-                <scope>import</scope>
+               <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

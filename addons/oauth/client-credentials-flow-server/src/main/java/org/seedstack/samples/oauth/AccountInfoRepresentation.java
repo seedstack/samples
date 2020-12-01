@@ -7,15 +7,18 @@
  */
 package org.seedstack.samples.oauth;
 
-import org.seedstack.seed.core.Seed;
+/**
+ * Representation class for api/accountInfo response
+ */
+public class AccountInfoRepresentation {
+    /**Account identifier*/
+    private String accountId;
 
-public class Demo {
-    /**
-     * Launches the SeedStack demo server exposing the protected request
-     * @param args Main arguments
-     * @throws Exception In case of problems
-     */
-    public static void main(String[] args) throws Exception {
-        Seed.getLauncher().launch(args);
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 }

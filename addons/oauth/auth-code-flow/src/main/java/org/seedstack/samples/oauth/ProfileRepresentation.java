@@ -9,6 +9,9 @@ package org.seedstack.samples.oauth;
 
 import java.util.Map;
 
+/**
+ * A user's profile representation to be Mapped to JSON
+ */
 public class ProfileRepresentation {
     private String userId;
     private String firstName;

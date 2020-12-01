@@ -9,20 +9,32 @@
 logging:
   level: INFO
 
+#The Sample's Authentication server listens on the 8080 port, we are using here port 8090
+web:
+  server:
+    port: 8090
+
 application:
   id: oauth-sample
 
 rest:
   path: /api
 
+#The api is secured with OAuth configuration
 security:
   realms: OAuthRealm
   web:
     urls:
+      - pattern: /logout
+        filters: logout
       - pattern: /api/**
         filters: oauth
+
+#The OAuth configuration required for a PKCE exchange
+#The client secret and ID are managed frontend side.
+#The PKCE sample configuration validates the bearer token coming with the request Authorization header
   oauth:
-    discoveryDocument: https://dev-9i-e7yy7.eu.auth0.com/.well-known/openid-configuration
-    allowedAudiences: http://localhost:8080/api/profile
+    discoveryDocument: http://localhost:8080/auth/realms/SeedSamplesRealm/.well-known/openid-configuration
+    allowedAudiences: ["http://localhost:8090/api/profile","account"]
+    scopes: [openid, email, profile, pkceScope]
     autoFetchUserInfo: true
-    treatScopesAsPermissions: true

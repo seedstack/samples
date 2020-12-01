@@ -5,12 +5,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.seedstack.samples.oauth;
+package org.seedstack.samples.oauth.error;
 
-import org.seedstack.seed.core.Seed;
+import org.seedstack.shed.exception.ErrorCode;
 
-public class Demo {
-    public static void main(String[] args) throws Exception {
-        Seed.getLauncher().launch(new String[]{"userinfo"});
-    }
+/**
+ * OAuth Credential Flow errors codes
+ */
+public enum OAuthCredentialErrorCode implements ErrorCode {
+    TOKEN_NOT_RECEIVED,
+    REQUEST_NOT_SUCCESSFUL
 }

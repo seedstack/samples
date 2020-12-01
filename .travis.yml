@@ -2,6 +2,13 @@ sudo: false
 
 language: java
 
+services:
+  - docker
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+
 jdk:
   - openjdk8
   - openjdk9
@@ -20,3 +27,13 @@ script:
   - if [[ $TRAVIS_PULL_REQUEST = false ]] && [[ $TRAVIS_BRANCH = master ]] && [[ $TRAVIS_JDK_VERSION = openjdk15 ]]; then GOAL=deploy; else GOAL=package; fi
   - echo $GOAL
   - mvn -U $GOAL
+  - docker build -t sample-oauth-server:$COMMIT ./addons/oauth
+
+deploy:
+  provider: script
+  script: bash ./addons/oauth/deploy.sh
+  on:
+    all_branches: true
+    jdk: openjdk11
+
+after_success: mvn -q coveralls:report -DrepoToken=$COVERALLS_TOKEN

@@ -9,13 +9,14 @@ package org.seedstack.samples.oauth;
 
 import org.seedstack.seed.core.Seed;
 
-public class Demo {
-    /**
-     * Launches the SeedStack demo server exposing the protected request
-     * @param args Main arguments
-     * @throws Exception In case of problems
-     */
+/**
+ * OAuth sample - client credential flow
+ * Run this class once the Authentication server is running and the client-credential-flow-server secured web service has been started.
+ * (Class StartMeFirst)
+ */
+public class StartInSecond {
+
     public static void main(String[] args) throws Exception {
-        Seed.getLauncher().launch(args);
+        Seed.getLauncher().launch(new String[]{"accountInfo"});
     }
 }

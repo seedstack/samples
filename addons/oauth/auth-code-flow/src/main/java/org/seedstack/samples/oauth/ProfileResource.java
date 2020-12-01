@@ -8,11 +8,13 @@
 package org.seedstack.samples.oauth;
 
 import org.apache.shiro.authz.UnauthenticatedException;
+import org.seedstack.seed.Logging;
 import org.seedstack.seed.security.RequiresPermissions;
 import org.seedstack.seed.security.SecuritySupport;
 import org.seedstack.seed.security.principals.PrincipalProvider;
 import org.seedstack.seed.security.principals.Principals;
 import org.seedstack.seed.security.principals.SimplePrincipalProvider;
+import org.slf4j.Logger;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -24,13 +26,23 @@ import java.util.Optional;
 
 @Path("/profile")
 public class ProfileResource {
+    /**Inject Security support to access user details*/
     @Inject
     private SecuritySupport securitySupport;
 
+    @Logging
+    private Logger logger;
+
+    /**
+     * This is the protected resource.<br>
+     * For this sample it only returns a profile representation of the connected user
+     * @return ProfileRepresentation
+     */
     @GET
     @Produces("application/json")
-    @RequiresPermissions("profile")
+    @RequiresPermissions("CodeFlowScope")
     public ProfileRepresentation sayHello() {
+        logger.info("Request received and access granted to protected resource");
         ProfileRepresentation profileRepresentation = new ProfileRepresentation();
         profileRepresentation.setUserId(Optional.ofNullable(securitySupport.getIdentityPrincipal())
                 .map(PrincipalProvider::get)
@@ -55,6 +67,7 @@ public class ProfileResource {
         }
         profileRepresentation.setPrincipals(principals);
 
+        logger.info("Ending request for user : {}", profileRepresentation.getFullName());
         return profileRepresentation;
     }
 }
