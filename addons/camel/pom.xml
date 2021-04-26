@@ -23,7 +23,7 @@
 
     <properties>
         <camel.version>3.1.0</camel.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <activemq.version>5.15.9</activemq.version>
         <jms-api.version>1.1-rev-1</jms-api.version>
     </properties>
