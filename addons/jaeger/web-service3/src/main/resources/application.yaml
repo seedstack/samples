@@ -1,0 +1,74 @@
+# Put main configuration in this file
+# See http://seedstack.org/docs/seed/configuration for more information
+
+logging:
+  level: INFO
+
+application:
+  # Unique identifier of the application accross your organization
+  id: Web-Service3
+  # Make sure all your application base packages are listed below
+  basePackages: [ org.generated.project ]
+
+security:
+  # The security configuration realm uses the 'users' section below (replace it with a more useful realm later)
+  # See http://seedstack.org/docs/seed/manual/security/#realms for more information
+  realms: ConfigurationRealm
+  users:
+    # A default 'demo' user is defined with password 'demo'
+    demo: demo
+web:
+  server:
+    host: localhost
+    port: 8090
+    # The 'urls' section below in used to secure HTTP requests
+    # See http://seedstack.org/docs/seed/manual/security/#http-access-control for more information
+    urls:
+    #   -
+    #     pattern: /api/**
+    #     filters: authcBasic
+    
+jaeger:
+  #whether using Jaeger in devMode(boolean).if true trace will not reported to backend Server
+  devMode: false
+  samplerConfig: 
+    #The samplerType(String).valid values are remote (default),ratelimiting, probabilistic,const.
+    samplerType: const
+    #The samplerParam(Integer) that makes sense for the sampling. 
+    samplerParam: 1
+    #The http host:port(String) when using the remote controlled sampler.
+    samplerManagerHostPort: 128.0.0.1    
+  senderConfig:
+    #The hostname(String) for communicating with agent via udp.
+    agentHost: 127.0.0.1
+    #The port(Integer) for communicating with agent via udp.
+    agentPort: 6831
+    #The traces http endpoint(String),like http://jaeger-collector:14268/api/traces.
+    endPoint: http://localhost:14268/api/traces
+    #Authentication Token(String) to send as "Bearer" to the http endpoint.
+    authToken: myauthtoken
+    #Username(String) to send as part of "Basic" authentication to the http endpoint.
+    userName: myusername
+    #Password(String) to send as part of "Basic" authentication to the endpoint.
+    password: mypassword 
+  reporterConfig:
+    #Whether the reporter should also log the spans(boolean)
+    reporterLogSpans: true
+    #The reporter's maximum queue size(Integer)
+    reporterMaxQueueSize: 10000
+    #The reporter's flush interval in miliseconds(Integer)
+    reporterFlushInterval: 1000
+  codecConfig:
+    #Comma separated list of trace formats.Defaults is Jaeger.Valid values are jaeger,b3,w3c
+    propagation: jaeger,b3
+  tracerConfig:
+    #Opt-in to use 128 bit traceIds. By default, uses 64 bits(boolean).
+    traceId128Bit: false
+    #The fully qualified class name of the Metrics factory (Optional).(Class<? extends io.jaegertracing.spi.MetricsFactory>)
+    metricsFactory:
+    #Tracer level tags, which get added to all reported spans.optional
+    tracerTags:
+      tracerTag1: TracerValue1
+      tracerTag2: TracerValue2  
+
+    
